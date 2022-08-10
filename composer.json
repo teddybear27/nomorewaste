@@ -1,0 +1,22 @@
+{
+	"repositories": [
+    {
+        "type":"package",
+        "package": {
+          "name": "teddybear27/nomorewaste",
+          "version":"main",
+          "source": {
+              "url": "https://github.com/teddybear27/nomorewaste.git",
+              "type": "git",
+              "reference":"main"
+			}
+		}
+    }
+	],
+
+
+    "require": {
+		"teddybear27/nomorewaste": "main"
+        "phpunit/php-timer": "^5.0"
+    }
+}
