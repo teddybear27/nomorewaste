@@ -2,7 +2,6 @@
 session_start();
 require "functions.php";
 
-var_dump($_POST);
 if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
       //Nettoyage
       $_POST["emailLogin"] = strtolower(trim($_POST["emailLogin"]));
@@ -19,10 +18,8 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
       $result = $queryPrepared->fetch();
       if (empty($result)) {
         $listOfLoginErrors[] = "Identifiants incorrects";
-        redirect("login.php");
       }else if ($result["check_mail"] != 1){
         $listOfLoginErrors[] = "Vous n'avez pas encore validé votre email";
-        redirect("login.php");
       }
 
       //récupère des valeurs de bdd et les met dans les variables $_SESSION
@@ -40,12 +37,17 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
 
 				//$_SESSION["token"] = createToken($_POST["emailLogin"]);
         $listOfLoginErrors[] = "Connexion reussie";
-        header("Location: login.php");
       }else{
         $_SESSION["online"] = 'false';
         $listOfLoginErrors[] = "Identifiants incorrects2";
-        redirect("login.php");
 		  }
+
+      
+    
+      setcookie("errorForme", serialize($listOfLoginErrors)); 
+      header("Location: login.php");
+
+      
 
 }else{
     $listOfLoginErrors[] = "Vous n'avez pas rempli tous les champs ";

@@ -85,8 +85,12 @@ if( count($_POST) == 12
         $age = $ageSec / 3600 / 24 / 365.25;
 
 
-        if($age < 18 || $age > 100){
+        if($age < 18){
+        	$error = true;
+        	$listOfErrors[] = "Vous n'avez pas l'âge requis pour vous inscrire (18ans minimum)";
+        }else if($age > 110){
             $error = true;
+            $listOfErrors[] = "Il se peut que vous vous soyez trompés sur l'année de votre anniversaire";
         }
     }
   }
@@ -169,7 +173,7 @@ if( count($_POST) == 12
         $header .= 'From: <cheikh.kane@nomorewaste.online>' . "\r\n";
         mail($to,$subject,$message,$header);
     }
-    $_SESSION['errors'] = ["Un mail de confirmation vous a été envoyé (Voir spams / courriers indésirable)"];
+    $listOfErrors[] = ["Un mail de confirmation vous a été envoyé (Voir spams / courriers indésirables)"];
     redirect("login.php");
     die();
 		
