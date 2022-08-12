@@ -9,9 +9,9 @@ if(!empty($_POST["email"]) && !empty($_POST["pwd"])) {
 
       $connect = connectDB();
       //Prepare la requête pour éviter les injections SQL
-   		$queryPrepared = $connect->prepare("SELECT id, pwd, blocked, connected FROM user WHERE mail = :mail AND check_mail = 1");
+   		$queryPrepared = $connect->prepare("SELECT status, mdp, blocked FROM user WHERE mail = :$email AND check_mail = 1");
 
-   		$queryPrepared->execute(["mail"=>$_POST["mail"]]);
+   		$queryPrepared->execute(["mail"=>$_POST["email"]]);
         $result = $queryPrepared->fetch();
         if (empty($result)) {
           echo "Identifiants incorrects";
@@ -24,12 +24,9 @@ if(!empty($_POST["email"]) && !empty($_POST["pwd"])) {
             redirect("profile/blocked.php");
           }
             $_SESSION["online"] = 'true';
-            $_SESSION["user"] = $result["id"];
-      
-            $q = $connect->prepare("UPDATE users SET connected='true' WHERE id = :id");
-            $q->execute(["id"=>$_SESSION["user"]]);            
+            $_SESSION["user"] = $result["id"];          
 
-            if ($result["id"]  == 1) {
+            if ($result["status"]  == "admin") {
               redirect("admin/admin.php");
             }
 

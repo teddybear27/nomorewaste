@@ -3,7 +3,7 @@
 
 function connectDB(){
 	try{
-		$connect = new PDO( "mysql:host=mysql.hostinger.fr;dbname=u349012487_nomorewaste;charset=utf8;port=3306" , "u349012487_root", "gVHwVDZX4" , array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+		$connect = new PDO( "mysql:host=127.0.0.1;dbname=u349012487_nomorewaste;charset=utf8;port=3306" , "u349012487_root", "gVHwVDZX4" , array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 	}catch(Exception $e){
 		die("Erreur SQL : ".$e->getMessage());
 	}
@@ -22,7 +22,7 @@ function connectDB(){
 
 	return $connect;
 }
-*/
+
 /*
 function emailExist($connect, $email){
 
