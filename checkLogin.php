@@ -17,8 +17,10 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
    		$queryPrepared->execute(["mail"=>$email]);
       $result = $queryPrepared->fetch();
       if (empty($result)) {
+        $error = true;
         $listOfLoginErrors[] = "Identifiants incorrects";
       }else if ($result["check_mail"] != 1){
+        $error = true;
         $listOfLoginErrors[] = "Vous n'avez pas encore validé votre email";
       }
 
@@ -29,25 +31,28 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
           redirect("profile/blocked.php");
         }*/
           $_SESSION["online"] = 'true';
-          $_SESSION["status"] = $result["status"];          
+          $_SESSION["status"] = $result["status"];
+          $error = false;          
 
           /*if ($result["status"]  == "admin") {
             redirect("admin/admin.php");
           }*/
 
 				//$_SESSION["token"] = createToken($_POST["emailLogin"]);
-        $listOfLoginErrors[] = "Connexion reussie";
+        
       }else{
         $_SESSION["online"] = 'false';
         $listOfLoginErrors[] = "Identifiants incorrects2";
 		  }
 
-      
-    
-      setcookie("errorForme", serialize($listOfLoginErrors)); 
-      header("Location: login.php");
-
-      
+      if($error){    
+        setcookie("errorForme", serialize($listOfLoginErrors)); 
+        header("Location: login.php");
+      }else{
+        $listOfLoginErrors[] = "Connexion reussie";
+        setcookie("errorForme", serialize($listOfLoginErrors));
+        redirect("login.php");
+      }
 
 }else{
     $listOfLoginErrors[] = "Vous n'avez pas rempli tous les champs ";
