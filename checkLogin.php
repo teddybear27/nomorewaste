@@ -19,9 +19,10 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
       $result = $queryPrepared->fetch();
       if (empty($result)) {
         $listOfLoginErrors = "Identifiants incorrects";
-        redirect("index.php");
+        redirect("login.php");
       }else if ($result["check_mail"] != 1){
         $listOfLoginErrors = "Vous n'avez pas encore validé votre email";
+        redirect("login.php");
       }
 
       //récupère des valeurs de bdd et les met dans les variables $_SESSION
@@ -43,8 +44,10 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
       }else{
         $_SESSION["online"] = 'false';
         $listOfLoginErrors = "Identifiants incorrects2";
+        redirect("login.php");
 		  }
 
 }else{
     $listOfLoginErrors = "Vous n'avez pas rempli tous les champs ";
+    redirect("login.php");
 }
