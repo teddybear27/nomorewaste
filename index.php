@@ -396,7 +396,7 @@
 				echo($error);
 			}
 ?>
-			</ul>"
+			</ul>
 <?php
 
 		}
