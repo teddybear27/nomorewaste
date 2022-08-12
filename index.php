@@ -384,7 +384,7 @@
 		        </form>
 <?php
 if (!empty($listOfErrors)) {
-	echo ($listOfErrors);
+	var_dump ($listOfErrors);
 }
 ?>
 			</div>
