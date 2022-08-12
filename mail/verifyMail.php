@@ -8,13 +8,13 @@ $connect = connectDB();
 if(!empty($_GET['code_verif'])) {
   $codeVerif = htmlspecialchars($_GET['code_verif']);
   //Verifier la validité de la clé
-  $q = "SELECT email FROM user WHERE check_mail = '$codeVerif'";
+  $q = "SELECT mail FROM user WHERE check_mail = '$codeVerif'";
   $verif = $connect->query($q)->fetch();
   if ($verif != false) {
 
     // Modifier la colonne check_mail à 1 pour finaliser le compte
     $q = "UPDATE user SET check_mail = 1 WHERE check_mail = '$verif[0]'";
-    $add = $connect->query($q);
+    $connect->query($q);
     $_SESSION["errors"] = ["Votre compte a bien été validé"];
     //header("Location: ../connexion.php");
     exit();
