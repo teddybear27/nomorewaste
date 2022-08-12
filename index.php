@@ -385,13 +385,19 @@
 <?php
 
 		if( !empty( $_COOKIE['errorForm'])){
-
-			echo ("<ul>");
+?>
+			<ul>
+<?php
 			$listOfErrors = unserialize($_COOKIE['errorForm']);
 			foreach ($listOfErrors as $error) {
-				echo ("<li>".$error);
+?>
+				<li>
+<?php
+				echo($error);
 			}
-			echo ("</ul>");
+?>
+			</ul>"
+<?php
 
 		}
 
