@@ -64,6 +64,7 @@
 				<li>
 <?php
 				echo($error);
+				setcookie('errorForme','');
 			}
 ?>
 			</ul>
