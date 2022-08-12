@@ -22,11 +22,11 @@ function connectDB(){
 
 	return $connect;
 }
+*/
 
-/*
 function emailExist($connect, $email){
 
-	$queryPrepared = $connect->prepare("SELECT id FROM user WHERE mail=:mail");
+	$queryPrepared = $connect->prepare("SELECT * FROM user WHERE mail=:mail");
 
 	$queryPrepared->execute(["mail"=>$email]);
 
@@ -39,7 +39,7 @@ function emailExist($connect, $email){
 	
 	return true;
 }
-
+/*
 function isConnected(){
 	if(!empty($_SESSION["email"])){
 		$connect = connectDB();
