@@ -393,8 +393,6 @@
 			}
 			echo "</ul>";
 
-			setcookie("errorForm","");
-
 		}
 
 	?>
