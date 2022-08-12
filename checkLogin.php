@@ -41,6 +41,7 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
 				//$_SESSION["token"] = createToken($_POST["emailLogin"]);
         
       }else{
+        $error = true;
         $_SESSION["online"] = 'false';
         $listOfLoginErrors[] = "Identifiants incorrects2";
 		  }
