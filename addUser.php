@@ -174,7 +174,7 @@ if( count($_POST) == 12
         mail($to,$subject,$message,$header);
     }
     $listOfErrors[] = ["Un mail de confirmation vous a été envoyé (Voir spams / courriers indésirables)"];
-    redirect("login.php");
+    redirect("index.php");
     die();
 		
 	}
