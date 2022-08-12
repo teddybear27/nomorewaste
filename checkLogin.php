@@ -9,7 +9,7 @@ if(!empty($_POST["email"]) && !empty($_POST["pwd"])) {
 
       $connect = connectDB();
       //Prepare la requête pour éviter les injections SQL
-   		$queryPrepared = $connect->prepare("SELECT status, mdp, blocked FROM user WHERE mail = :email AND check_mail = 1");
+   		$queryPrepared = $connect->prepare("SELECT status, mdp, blocked FROM user WHERE mail = :mail AND check_mail = 1");
 
    		$queryPrepared->execute(["mail"=>$_POST["email"]]);
         $result = $queryPrepared->fetch();
