@@ -383,10 +383,21 @@
 		        	</div>
 		        </form>
 <?php
-if (!empty($listOfErrors)) {
-	var_dump ($listOfErrors);
-}
-?>
+
+		if( !empty( $_COOKIE['errorForm'])){
+
+			echo "<ul>";
+			$listOfErrors = unserialize($_COOKIE['errorForm']);
+			foreach ($listOfErrors as $error) {
+				echo "<li>".$error;
+			}
+			echo "</ul>";
+
+			setcookie("errorForm","");
+
+		}
+
+	?>
 			</div>
 		</div>
 	</div>
