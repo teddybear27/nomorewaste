@@ -26,6 +26,9 @@
 			                	<div class="wizard-header">
 									<h3 class="heading">Connexion</h3>
 									<p>Veuillez vous connecter pour continuer</p>
+									<p>Vous n'avez pas encore de compte ?
+										<a href="index.php">Inscrivez-vous</a>
+									</p>
 								</div>
 								<div class="form-row">
 									<div class="form-holder form-holder-2">

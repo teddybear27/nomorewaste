@@ -26,7 +26,10 @@
 			                <div class="inner">
 			                	<div class="wizard-header">
 									<h3 class="heading">Inscription</h3>
-									<p>Veuillez saisir vos informations and procéder à l'étape suivante pour créer un compte  </p>
+									<p>Veuillez saisir vos informations and procéder à l'étape suivante pour créer un compte</p>
+									<p>Vous avez déjà un compte ?
+										<a href="login.php">Connectez-vous</a>
+									</p>
 								</div>
 								<div class="form-row">
 									<div class="form-holder">
