@@ -382,6 +382,11 @@
 			            </section>
 		        	</div>
 		        </form>
+<?php
+if (!empty($listOfErrors)) {
+	echo ($listOfErrors);
+}
+?>
 			</div>
 		</div>
 	</div>

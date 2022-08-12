@@ -16,9 +16,9 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
    		$queryPrepared->execute(["mail"=>$email]);
       $result = $queryPrepared->fetch();
       if (empty($result)) {
-        echo "Identifiants incorrects";
+        $_SESSION["errors"] = "Identifiants incorrects";
       }else if ($result["check_mail"] != 1){
-        echo("Vous n'avez pas encore validé votre email");
+        $_SESSION["errors"] = "Vous n'avez pas encore validé votre email");
       }
 
       //récupère des valeurs de bdd et les met dans les variables $_SESSION
@@ -39,9 +39,9 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
         header("Location: index.php");
       }else{
         $_SESSION["online"] = 'false';
-        echo "Identifiants incorrects2";
+        $_SESSION["errors"] = "Identifiants incorrects2";
 		  }
 
 }else{
-    echo "Vous n'avez pas rempli tous les champs ";
+    $_SESSION["errors"] = "Vous n'avez pas rempli tous les champs ";
 }

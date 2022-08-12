@@ -56,6 +56,11 @@
 			            </section>
 		        	</div>
 		        </form>
+<?php
+if (!empty($_SESSION["errors"])) {
+	echo ($_SESSION["errors"]);
+}
+?>
 			</div>
 		</div>
 	</div>
