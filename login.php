@@ -53,10 +53,6 @@
 					</div>
 				</form>
 <?php
-var_dump($_COOKIE['errorForme']);
-echo("****fr***");
-var_dump($listOfLoginErrors);
-
 		if( !empty( $_COOKIE['errorForme'])){
 ?>
 			<ul>
