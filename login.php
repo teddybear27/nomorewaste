@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,16 +50,27 @@
 									</div>
 								</div>
 			            </section>
-									</div>
-								</div>
-							</div>
-			            </section>
-		        	</div>
-		        </form>
+					</div>
+				</form>
 <?php
-if (!empty($_SESSION["errors"])) {
-	echo ($_SESSION["errors"]);
-}
+
+		if( !empty( $_COOKIE['errorForme'])){
+?>
+			<ul>
+<?php
+			$listOfLoginErrors = unserialize($_COOKIE['errorForme']);
+			foreach ($listOfLoginErrors as $error) {
+?>
+				<li>
+<?php
+				echo($error);
+			}
+?>
+			</ul>
+<?php
+
+		}
+
 ?>
 			</div>
 		</div>
@@ -70,5 +78,5 @@ if (!empty($_SESSION["errors"])) {
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/jquery.steps.js"></script>
 	<script src="js/main.js"></script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 </html>

@@ -9,6 +9,8 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
       $email = htmlspecialchars($_POST["emailLogin"]);
       $pwd   = htmlspecialchars($_POST["pwdLogin"]);
 
+      $listOfLoginErrors = [];
+
       $connect = connectDB();
       //Prepare la requête pour éviter les injections SQL
    		$queryPrepared = $connect->prepare("SELECT status, mdp, check_mail, blocked FROM user WHERE mail = :mail");
@@ -16,9 +18,10 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
    		$queryPrepared->execute(["mail"=>$email]);
       $result = $queryPrepared->fetch();
       if (empty($result)) {
-        $_SESSION["errors"] = "Identifiants incorrects";
+        $listOfLoginErrors = "Identifiants incorrects";
+        redirect("index.php");
       }else if ($result["check_mail"] != 1){
-        $_SESSION["errors"] = "Vous n'avez pas encore validé votre email");
+        $listOfLoginErrors = "Vous n'avez pas encore validé votre email";
       }
 
       //récupère des valeurs de bdd et les met dans les variables $_SESSION
@@ -28,20 +31,20 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
           redirect("profile/blocked.php");
         }*/
           $_SESSION["online"] = 'true';
-          $_SESSION["user"] = $result["id"];          
+          $_SESSION["status"] = $result["status"];          
 
           /*if ($result["status"]  == "admin") {
             redirect("admin/admin.php");
           }*/
 
 				//$_SESSION["token"] = createToken($_POST["emailLogin"]);
-
+        $listOfLoginErrors = "Connexion reussie";
         header("Location: index.php");
       }else{
         $_SESSION["online"] = 'false';
-        $_SESSION["errors"] = "Identifiants incorrects2";
+        $listOfLoginErrors = "Identifiants incorrects2";
 		  }
 
 }else{
-    $_SESSION["errors"] = "Vous n'avez pas rempli tous les champs ";
+    $listOfLoginErrors = "Vous n'avez pas rempli tous les champs ";
 }
