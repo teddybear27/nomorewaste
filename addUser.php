@@ -115,6 +115,7 @@ if( count($_POST) == 12
 	//Vérifier le format du phone -> regex
   if( !preg_match("#^0[1-9]([-. ]?[0-9]{2}){4}$#", $_POST["phone"]) ){
       $error = true;
+      $listOfErrors[] = "Le numéro doit comporter 10 chiffres et commencer par 0";
   }
 
 	

@@ -18,10 +18,10 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
    		$queryPrepared->execute(["mail"=>$email]);
       $result = $queryPrepared->fetch();
       if (empty($result)) {
-        $listOfLoginErrors = "Identifiants incorrects";
+        $listOfLoginErrors[] = "Identifiants incorrects";
         redirect("login.php");
       }else if ($result["check_mail"] != 1){
-        $listOfLoginErrors = "Vous n'avez pas encore validé votre email";
+        $listOfLoginErrors[] = "Vous n'avez pas encore validé votre email";
         redirect("login.php");
       }
 
@@ -39,15 +39,15 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
           }*/
 
 				//$_SESSION["token"] = createToken($_POST["emailLogin"]);
-        $listOfLoginErrors = "Connexion reussie";
+        $listOfLoginErrors[] = "Connexion reussie";
         header("Location: login.php");
       }else{
         $_SESSION["online"] = 'false';
-        $listOfLoginErrors = "Identifiants incorrects2";
+        $listOfLoginErrors[] = "Identifiants incorrects2";
         redirect("login.php");
 		  }
 
 }else{
-    $listOfLoginErrors = "Vous n'avez pas rempli tous les champs ";
+    $listOfLoginErrors[] = "Vous n'avez pas rempli tous les champs ";
     redirect("login.php");
 }
