@@ -3,7 +3,7 @@ session_start();
 require '../functions.php';
 $connect = connectDB();
 
-// http://localhost/mail/verifyMail.php?code_verif=4cb630bcb306121a42af6fb9ea32dac8
+// http://nomorewaste.online/mail/verifyMail.php?code_verif=4cb630bcb306121a42af6fb9ea32dac8
 
 if(!empty($_GET['code_verif'])) {
   $codeVerif = htmlspecialchars($_GET['code_verif']);
@@ -17,7 +17,7 @@ if(!empty($_GET['code_verif'])) {
     $req = $connect->prepare($q);
     $req->execute(["mail" => $verif[0]]);
     $_SESSION["errors"] = ["Votre compte a bien été validé"];
-    //header("Location: ../connexion.php");
+    header("Location: ../login.php");
     exit();
-  }echo "hello";
-}echo "hello2";
+  }
+}

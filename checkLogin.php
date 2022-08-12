@@ -2,8 +2,10 @@
 session_start();
 require "functions.php";
 
-
+var_dump($_POST);
 if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
+      //Nettoyage
+      $_POST["emailLogin"] = strtolower(trim($_POST["emailLogin"]));
       $email = htmlspecialchars($_POST["emailLogin"]);
       $pwd   = htmlspecialchars($_POST["pwdLogin"]);
 
@@ -39,7 +41,7 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
         $_SESSION["online"] = 'false';
         echo "Identifiants incorrects2";
 		  }
-      
+
 }else{
     echo "Vous n'avez pas rempli tous les champs ";
 }
