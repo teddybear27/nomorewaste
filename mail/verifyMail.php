@@ -13,7 +13,7 @@ if(!empty($_GET['code_verif'])) {
   if ($verif != false) {
 
     // Modifier la colonne check_mail à 1 pour finaliser le compte
-    $q = "UPDATE user SET check_mail = 1 WHERE check_mail = '$verif[0]'";
+    $q = "UPDATE user SET check_mail = 1 WHERE check_mail = ".$verif[0]."";
     $connect->query($q);
     $_SESSION["errors"] = ["Votre compte a bien été validé"];
     //header("Location: ../connexion.php");

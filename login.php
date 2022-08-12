@@ -31,7 +31,7 @@
 									<div class="form-holder form-holder-2">
 										<fieldset>
 											<legend>Votre Email</legend>
-											<input type="text" name="email" id="email" class="form-control" placeholder="example@email.com" required>
+											<input type="text" name="emailLogin" id="emailLogin" class="form-control" placeholder="example@email.com" required>
 										</fieldset>
 									</div>
 								</div>
@@ -39,7 +39,7 @@
 									<div class="form-holder form-holder-2">
 										<fieldset>
 											<legend>Mot de Passe</legend>
-											<input type="password" class="form-control" id="pwd" name="pwd" placeholder="Mot de passe" required>
+											<input type="password" class="form-control" id="pwdLogin" name="pwdLogin" placeholder="Mot de passe" required>
 										</fieldset>
 									</div>
 								</div>
