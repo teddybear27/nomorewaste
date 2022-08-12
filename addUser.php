@@ -136,7 +136,7 @@ if( count($_POST) == 12
 
 		$queryPrepared->execute(
 			[
-				"status" => "admin",
+				"status" => "particulier",
 				"nom"=>$_POST["lastname"],
 				"prenom"=>$_POST["firstname"],
 				"mail"=>$_POST["email"],
@@ -160,8 +160,8 @@ if( count($_POST) == 12
     if($queryPrepared) {
         $to = $email;
         $subject = "NoMoreWaste : Vérification du mail";
-        $message = " Veuillez cliquer sur le lien suivant afin de vérifier votre compte : <a href='http://localhost/2a3/rattpa/nomorewaste/mail/verifyMail.php?code_verif=$verifKey'>Valider mon compte</a><br/>\n ";
-        $message .= "En cas de problème essayez ce lien : http://localhost/2a3/rattpa/nomorewaste/mail/verifyMail.php?code_verif=$verifKey";
+        $message = " Veuillez cliquer sur le lien suivant afin de vérifier votre compte : <a href='https://nomorewaste.online/mail/verifyMail.php?code_verif=$verifKey'>Valider mon compte</a><br/>\n ";
+        $message .= "En cas de problème essayez ce lien : https://nomorewaste.online/mail/verifyMail.php?code_verif=$verifKey";
         $header="MIME-Version: 1.0\r\n";
         $header.='Content-Type:text/html; charset="uft-8"'."\r\n";
         $header.='Content-Transfer-Encoding: 8bit'."\r\n";
