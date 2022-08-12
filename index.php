@@ -386,12 +386,12 @@
 
 		if( !empty( $_COOKIE['errorForm'])){
 
-			echo "<ul>";
+			echo ("<ul>");
 			$listOfErrors = unserialize($_COOKIE['errorForm']);
 			foreach ($listOfErrors as $error) {
-				echo "<li>".$error;
+				echo ("<li>".$error);
 			}
-			echo "</ul>";
+			echo ("</ul>");
 
 		}
 
