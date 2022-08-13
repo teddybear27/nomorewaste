@@ -86,7 +86,9 @@
 			                <div class="inner">
 			                	<div class="wizard-header">
 									<h3 class="heading">Inscription</h3>
-									<p>Veuillez saisir vos informations and procéder à l'étape suivante pour créer un compte  </p>
+									<p>Veuillez saisir vos informations and procéder à l'étape suivante pour créer un compte
+									<p>Vous avez déjà un compte ?
+										<a href="login.php">Connectez-vous</a></p>
 								</div>
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
@@ -377,8 +379,11 @@
 <option value="Zimbabwe">Zimbabwe </option>
 
 </select>
-
-<input type="submit" name="valider">
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<input type="submit" id="btn" name="valider" value="Soumettre">
 									</div>
 								</div>
 							</div>

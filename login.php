@@ -46,12 +46,12 @@
 										</fieldset>
 									</div>
 								</div>
-							</div>
-							<div class="form-row">
-									<div class="form-holder">
-											<input type="submit" class="form-control" name="valider">
+								
+									<div class="form-holder form-holder-2">
+										<input type="submit" name="valider" value="Soumettre">
 									</div>
-								</div>
+								
+							</div>
 			            </section>
 					</div>
 				</form>

@@ -821,7 +821,7 @@ function refreshPagination(wizard, options, state)
 {
     if (options.enablePagination)
     {
-        var finish = wizard.find(".actions a[href$='addUser.php']").parent(),
+        var finish = wizard.find(".actions a[href$='#finish']").parent(),
             next = wizard.find(".actions a[href$='#next']").parent();
 
         if (!options.forceMoveForward)
@@ -1065,10 +1065,12 @@ function renderPagination(wizard, options, state)
 
         buttons += buttonTemplate.format("next", options.labels.next);
 
-        if (options.enableFinishButton)
+        /**********************************************************************************************************************************************************************
+		if (options.enableFinishButton)
         {
             buttons += buttonTemplate.format("finish", options.labels.finish);
         }
+		***********************************************************************************************************************************************************************/
 
         if (options.enableCancelButton)
         {
