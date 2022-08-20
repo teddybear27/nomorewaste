@@ -20,15 +20,29 @@
 				<img id="logo" src="assets/img/logo.png">
 			</div>					
 			<div class="nav-item" id="connexion">
-	          	<a class="nav-link text-white " href="login.php">
-	            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-	            </div>
+	          	<a class="nav-link text-white " href="login.php">	            
 	            <span class="material-icons opacity-10 nav-link-text ms-1">Connexion</span>
 	          </a>
 	        </div>
-		</header>
-
-			
+		</header>		
+	</div>
+	<div>
+		<p id="slogan">Agissons ensemble contre le gaspillage. Vous êtes un(e) :</p>
+		<div class="button">
+			<p>
+				<a href="register.php">Particulier</a>
+			</p>
+		</div>
+		<div class="button">
+			<p>
+				<a href="register-shop.php">Commerce</a>
+			</p>
+		</div>
+		<div class="button">
+			<p>
+				<a href="register-assos.php">Association</a>
+			</p>
+		</div>
 	</div>
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/jquery.steps.js"></script>
