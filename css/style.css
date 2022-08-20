@@ -16,9 +16,9 @@ body {
 	-ms-align-items: center;
 	-moz-align-items: center;
 	-webkit-align-items: center;
-    background-image: -moz-linear-gradient( 136deg, #74ebd5 0%, #a1edda 100%);
-    background-image: -webkit-linear-gradient( 136deg, #74ebd5 0%, #063b2d 100%);
-    background-image: -ms-linear-gradient( 136deg, #74ebd5 0%, #a1edda 100%);
+    background-image: -moz-linear-gradient( 136deg, rgb(116, 235, 213) 0%, rgb(161, 237, 218) 100%);
+    background-image: -webkit-linear-gradient( 136deg, rgb(116, 235, 213) 0%, rgb(6, 59, 45) 100%);
+    background-image: -ms-linear-gradient( 136deg, rgb(116, 235, 213) 0%, rgb(161, 237, 218) 100%);
 }
 .form-v1-content   {
 	background: #fff;
