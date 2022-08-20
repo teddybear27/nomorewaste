@@ -127,7 +127,7 @@ if( count($_POST) == 12
 	if($error){
 		
 			setcookie("errorForm", serialize($listOfErrors));	
-			header("Location: index.php");
+			header("Location: register.php");
 
 	}else{		
 
@@ -175,7 +175,7 @@ if( count($_POST) == 12
     }
     $listOfErrors[] = ["Un mail de confirmation vous a été envoyé (Voir spams / courriers indésirables)"];
     setcookie("errorForm", serialize($listOfErrors));
-    redirect("index.php");
+    redirect("register.php");
     die();
 		
 	}

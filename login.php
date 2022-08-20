@@ -8,11 +8,17 @@
 	<!-- Font-->
 	<link rel="stylesheet" type="text/css" href="css/opensans-font.css">
 	<link rel="stylesheet" type="text/css" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+	<link rel="icon" type="image/png" href="assets/img/favicon.png">
 	<!-- Main Style Css -->
     <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-	<div class="page-content">
+	<header>
+		<div>
+			<a href="index.php"><img id="logo" src="assets/img/logo.png"></a>
+		</div>
+	</header>
+	<div class="page-content">		
 		<div class="form-v1-content">
 			<div class="wizard-form">
 		        <form class="form-register" action="checkLogin.php" method="post">
@@ -27,7 +33,7 @@
 									<h3 class="heading">Connexion</h3>
 									<p>Veuillez vous connecter pour continuer</p>
 									<p>Vous n'avez pas encore de compte ?
-										<a href="index.php">Inscrivez-vous</a>
+										<a href="register.php">Inscrivez-vous</a>
 									</p>
 								</div>
 								<div class="form-row">
@@ -48,7 +54,7 @@
 								</div>
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
-										<input type="submit" name="valider" value="Soumettre">
+										<input type="submit" id="valider" value="Soumettre">
 									</div>
 								</div>
 							</div>
