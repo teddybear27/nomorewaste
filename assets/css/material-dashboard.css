@@ -71,7 +71,7 @@
   --bs-heading-color: #344767;
   --bs-link-color: #e91e63;
   --bs-link-hover-color: #e91e63;
-  --bs-code-color: green;
+  --bs-code-color: #d63384;
   --bs-highlight-bg: #fcf8e3;
 }
 
@@ -22524,7 +22524,7 @@ label,
 }
 
 .bg-gradient-primary {
-  background-image: linear-gradient(195deg, #EC407A 0%, #D81B60 100%);
+  background-image: linear-gradient(195deg, #76a89c 0%, #76a89c 100%);
 }
 
 .bg-gradient-secondary {
@@ -22552,7 +22552,7 @@ label,
 }
 
 .bg-gradient-dark {
-  background-image: linear-gradient(195deg, #42424a 0%, #191919 100%);
+  background-image: linear-gradient(195deg, #063b2d 0%, #063b2d 100%);
 }
 
 .bg-gradient-faded-primary {

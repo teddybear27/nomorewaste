@@ -39,6 +39,11 @@ function emailExist($connect, $email){
 	
 	return true;
 }
+
+function getUsers($db) {
+	$results = $db->query("SELECT * from user");	
+	return $results;
+}
 /*
 function isConnected(){
 	if(!empty($_SESSION["email"])){
