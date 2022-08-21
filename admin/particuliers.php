@@ -138,9 +138,9 @@ $res = getUsers($connect);
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                 <h6 class="text-white text-capitalize ps-3">Liste Particuliers</h6>
-                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
-                        </a>
+                <a href="javascript:;" class="text-secondary font-weight-bold text-xs">
+                    Ajouter utilisateur
+                </a>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -236,7 +236,7 @@ if (isset($res)){
                   document.write(new Date().getFullYear())
                 </script>,
                 made with <i class="fa fa-heart"></i> by
-                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Cheikh KANE.</a>
+                <a href="" class="font-weight-bold" target="_blank">Cheikh KANE.</a>
               </div>
             </div>
             <div class="col-lg-6">
