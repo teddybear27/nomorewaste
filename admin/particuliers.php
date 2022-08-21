@@ -236,7 +236,7 @@ if (isset($res)){
                   document.write(new Date().getFullYear())
                 </script>,
                 made with <i class="fa fa-heart"></i> by
-                <a href="" class="font-weight-bold" target="_blank">Cheikh KANE.</a>
+                <a href="" class="font-weight-bold" >Cheikh KANE.</a>
               </div>
             </div>
             <div class="col-lg-6">
