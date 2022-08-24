@@ -141,7 +141,8 @@ if( count($_POST) == 12
     if($queryPrepared) {
         $to = $email;
         $subject = "NoMoreWaste : Vérification du mail";
-        $message = " Veuillez cliquer sur le lien suivant afin de vérifier votre compte : <a href='https://nomorewaste.online/mail/verifyMailShop.php?code_verif=$verifKey'>Valider mon compte</a><br/>\n ";
+        $message = "Veuillez cliquer sur le lien suivant afin de vérifier votre compte : <a href='https://nomorewaste.online/mail/verifyMailShop.php?code_verif=$verifKey'>Valider mon compte</a><br/>\n ";
+        $message .= "Ensuite il faudra attendre la validation de votre inscription par l'administrateur\r\n";
         $message .= "En cas de problème essayez ce lien : https://nomorewaste.online/mail/verifyMailShop.php?code_verif=$verifKey";
         $header="MIME-Version: 1.0\r\n";
         $header.='Content-Type:text/html; charset="uft-8"'."\r\n";
@@ -149,9 +150,15 @@ if( count($_POST) == 12
         $header .= 'From: <cheikh.kane@nomorewaste.online>' . "\r\n";
         mail($to,$subject,$message,$header);
     }
-    $listOfErrors[] = ["Un mail de confirmation vous a été envoyé (Voir spams / courriers indésirables)"];
-    setcookie("errorForm", serialize($listOfErrors));
-    redirect("register_shop.php");
+
+    if ($error){
+    	setcookie("errorForm", serialize($listOfErrors));
+    	redirect("register_shop.php");
+    }else{
+    	echo ("Un mail de confirmation vous a été envoyé (Voir spams / courriers indésirables)");
+    }
+    
+    
     die();
 		
 	}

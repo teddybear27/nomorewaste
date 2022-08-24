@@ -132,6 +132,7 @@ if( count($_POST) == 12
         $to = $email;
         $subject = "NoMoreWaste : Vérification du mail";
         $message = " Veuillez cliquer sur le lien suivant afin de vérifier votre compte : <a href='https://nomorewaste.online/mail/verifyMailOrganization.php?code_verif=$verifKey'>Valider mon compte</a><br/>\n ";
+        $message .= "Ensuite il faudra attendre la validation de votre inscription par l'administrateur\r\n";
         $message .= "En cas de problème essayez ce lien : https://nomorewaste.online/mail/verifyMailOrganization.php?code_verif=$verifKey";
         $header="MIME-Version: 1.0\r\n";
         $header.='Content-Type:text/html; charset="uft-8"'."\r\n";
