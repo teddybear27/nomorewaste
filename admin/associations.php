@@ -2,7 +2,7 @@
 session_start();
 require "../functions.php";
 $connect = connectDB();
-$res = getShops($connect);
+$res = getOrganizations($connect);
 ?>
 
 <!DOCTYPE html>
