@@ -19,7 +19,7 @@ if( count($_POST) == 12
 	$connect = connectDB();
 
 	//Nettoyage
-	$_POST["shopname"] = strtoupper(trim($_POST["shopname"]));
+	$_POST["shopname"] = ucwords(strtolower(trim($_POST["shopname"])));
 	$_POST["category"] = ucwords(strtolower(trim($_POST["category"])));
 	$_POST["siren"] = trim($_POST["siren"]);
 	$_POST["phone"] = trim($_POST["phone"]);

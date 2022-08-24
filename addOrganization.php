@@ -18,7 +18,7 @@ if( count($_POST) == 11
 	$connect = connectDB();
 
 	//Nettoyage
-	$_POST["organizationName"] = strtoupper(trim($_POST["organizationName"]));
+	$_POST["organizationName"] = ucwords(strtolower(trim($_POST["organizationName"])));
 	$_POST["siren"] = trim($_POST["siren"]);
 	$_POST["phone"] = trim($_POST["phone"]);
 	$_POST["email"] = strtolower(trim($_POST["email"]));
