@@ -27,56 +27,91 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
     $resultShop = $queryShop->fetch();
     $resultOrg = $queryOrg->fetch();
 
+    $acteur = 'nobody';
 
-    if (empty($resultUser) && empty($resultShop) && empty($resultOrg)) {
-        $error = true;
-        $listOfLoginErrors[] = "Identifiants incorrects";
-    }else if ($resultUser["check_mail"] != 1 
-           || $resultShop["check_mail"] != 1
-           || $resultOrg["check_mail"] != 1
-    ){
+    // Conditions connexion User, Shop, Organization
+    if (!empty($resultUser)){
+      if ($resultUser["check_mail"] != 1){
         $error = true;
         $listOfLoginErrors[] = "Vous n'avez pas encore validé votre email";
-    }
-
-    //récupère des valeurs de bdd et les met dans les variables $_SESSION
-    else if (password_verify($_POST["pwdLogin"], $resultUser["mdp"])
-          || password_verify($_POST["pwdLogin"], $resultShop["mdp"])
-          || password_verify($_POST["pwdLogin"], $resultOrg["mdp"])
-    ) {
-        // vérifie si l'utilisateur est bloqué
-        if ($resultUser["blocked"] == 'oui'
-         || $resultShop["blocked"] == 'oui'
-         || $resultOrg["blocked"] == 'oui') {
+      }else{
+        if (password_verify($_POST["pwdLogin"], $resultUser["mdp"]){
+          if ($resultUser["blocked"] == 'oui'){
+            $error = true;
             $listOfLoginErrors[] = "Votre compte est bloqué par l'équipe NoMoreWaste. Veuillez contacter l'administrateur pour en connaître les raisons.";
+          }else{
+            $error = false;
+            $acteur = 'user';
+          }
+        }else{
+          $error = true;
+          $listOfLoginErrors[] = "Identifiants incorrects";
         }
-
-        if ($resultShop["autorisation"] == 'mail non valide'
-         || $resultOrg["autorisation"] == 'mail non valide'){
+      }
+    }else if (!empty($resultShop)){
+      if ($resultShop["check_mail"] != 1){
+        $error = true;
+        $listOfLoginErrors[] = "Vous n'avez pas encore validé votre email";
+      }else{
+        if (password_verify($_POST["pwdLogin"], $resultShop["mdp"]){
+          if ($resultShop["blocked"] == 'oui'){
+            $error = true;
+            $listOfLoginErrors[] = "Votre compte est bloqué par l'équipe NoMoreWaste. Veuillez contacter l'administrateur pour en connaître les raisons.";
+          }
+          if ($resultShop["autorisation"] == 'mail non valide'){
             $error = true;
             $listOfLoginErrors[] = "Votre email doit être validé avant que l'admin valide votre inscription";
-        }else if ($resultShop["autorisation"] == 'en attente'
-               || $resultOrg["autorisation"] == 'en attente'){
+          }else if ($resultShop["autorisation"] == 'en attente'){
             $error = true;
-            $listOfLoginErrors[] = "Votre inscription est en attente de validation par l'administrateur.";
-        }else if ($resultShop["autorisation"] == 'refus'
-               || $resultOrg["autorisation"] == 'refus'){
+            $listOfLoginErrors[] = "Votre inscription est en attente de validation par l'administrateur";
+          }else if ($resultShop["autorisation"] == 'refusee'){
             $error = true;
             $listOfLoginErrors[] = "Votre inscription est refusée par l'administrateur. Veuillez contacter l'équipe NoMoreWaste pour en savoir plus";
+          }else{
+            $error = false;
+            $acteur = 'shop';
+          }
+        }else{
+          $error = true;
+          $listOfLoginErrors[] = "Identifiants incorrects";
         }
-      
-    }else{
+      }
+    }else if (!empty($resultOrg)){
+      if ($resultOrg["check_mail"] != 1){
         $error = true;
-        $_SESSION["online"] = 'false';
-        $listOfLoginErrors[] = "Identifiants incorrects2";
-	  }
+        $listOfLoginErrors[] = "Vous n'avez pas encore validé votre email";
+      }else{
+        if (password_verify($_POST["pwdLogin"], $resultOrg["mdp"]){
+          if ($resultOrg["blocked"] == 'oui'){
+            $error = true;
+            $listOfLoginErrors[] = "Votre compte est bloqué par l'équipe NoMoreWaste. Veuillez contacter l'administrateur pour en connaître les raisons.";
+          }
+          if ($resultOrg["autorisation"] == 'mail non valide'){
+            $error = true;
+            $listOfLoginErrors[] = "Votre email doit être validé avant que l'admin valide votre inscription";
+          }else if ($resultOrg["autorisation"] == 'en attente'){
+            $error = true;
+            $listOfLoginErrors[] = "Votre inscription est en attente de validation par l'administrateur";
+          }else if ($resultOrg["autorisation"] == 'refusee'){
+            $error = true;
+            $listOfLoginErrors[] = "Votre inscription est refusée par l'administrateur. Veuillez contacter l'équipe NoMoreWaste pour en savoir plus";
+          }else{
+            $error = false;
+            $acteur = 'organization';
+          }
+        }else{
+          $error = true;
+          $listOfLoginErrors[] = "Identifiants incorrects";
+        }
+      }
+    }
 
     if($error){    
         setcookie("errorForme", serialize($listOfLoginErrors)); 
         header("Location: login.php");
     }else{
         $_SESSION["online"] = 'true';
-        if (!empty($resultUser)){
+        if ($acteur == 'user'){
             $_SESSION["status"] = $resultUser["status"];
             $error = false;
             if ($_SESSION["status"]  == "admin") {
@@ -84,11 +119,9 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
             }else{
                 redirect("particulier/particulier.php");
             }
-        }else if (!empty($resultShop)){
-            $error = false;
+        }else if ($acteur == 'shop'){
             redirect("commerce/commerce.php");
-        }else if (!empty($resultOrg)){
-            $error = false;
+        }else if ($acteur == 'organization'){
             redirect("association/association.php");
         }
     }
