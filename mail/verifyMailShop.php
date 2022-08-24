@@ -13,9 +13,22 @@ if(!empty($_GET['code_verif'])) {
   if ($verif != false) {
 
     // Modifier la colonne check_mail à 1 pour finaliser le compte
-    $q = "UPDATE shop SET check_mail = '1' WHERE mail = :mail";
+    $q = "UPDATE shop SET check_mail = '1', autorisation = 'en attente' WHERE mail = :mail";
     $req = $connect->prepare($q);
     $req->execute(["mail" => $verif[0]]);
+
+    // Envoi un mail à l'admin pour l'informer de la validation du compte
+    $to = "cheikh.kane@nomorewaste.online";
+    $subject = "NoMoreWaste : Accusé de reception - Validation email d'un commerce";
+    $message = "L'adresse email ".$verif[0]." a bien été validé.\n ";
+    $message .= "Ce commerce n'attend que votre accord pour accéder à son compte.\r\n";
+    $header="MIME-Version: 1.0\r\n";
+    $header.='Content-Type:text/html; charset="uft-8"'."\r\n";
+    $header.='Content-Transfer-Encoding: 8bit'."\r\n";
+    $header .= 'From: <'.$verif[0].'>' . "\r\n";
+    mail($to,$subject,$message,$header);
+
+
     $_SESSION["errors"] = ["Votre compte a bien été validé"];
     header("Location: ../login.php");
     exit();

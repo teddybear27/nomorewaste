@@ -140,9 +140,15 @@ if( count($_POST) == 12
         $header .= 'From: <cheikh.kane@nomorewaste.online>' . "\r\n";
         mail($to,$subject,$message,$header);
     }
-    $listOfErrors[] = ["Un mail de confirmation vous a été envoyé (Voir spams / courriers indésirables)"];
-    setcookie("errorForm", serialize($listOfErrors));
-    redirect("register_organization.php");
+    if ($error){
+    	setcookie("errorForm", serialize($listOfErrors));
+    	redirect("register_organization.php");
+    }else{    	
+    	$listOfErrors[] = "Un mail de confirmation vous a été envoyé (Voir spams / courriers indésirables)";
+    	setcookie("errorForm", serialize($listOfErrors));
+    	redirect("register_organization.php");
+    }
+
     die();
 		
 	}
