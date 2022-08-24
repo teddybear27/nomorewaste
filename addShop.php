@@ -2,7 +2,7 @@
 session_start();
 require "functions.php";
 echo(count($_POST));
-if( count($_POST) == 13 
+if( count($_POST) == 12 
 	&& !empty($_POST["shopname"])
 	&& !empty($_POST["category"])
 	&& !empty($_POST["siren"])
