@@ -122,7 +122,7 @@ if( count($_POST) == 12
 				"siren"=>$_POST["siren"],
 				"mail"=>$_POST["email"],
 				"mdp"=>$pwd,
-				"annee_immatriculation" => $_POST["birthday"],
+				"annee_immatriculation" => $_POST["regYear"],
 				"numero_telephone" => $_POST["phone"],
 				"adresse" => $_POST["address"],
 				"code_postal" => $_POST["zip"],
