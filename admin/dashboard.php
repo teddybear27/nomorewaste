@@ -151,12 +151,12 @@ $resOrgToValidate = getOrganizationsToValidate($connect);
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Particuliers</p>
-                <h4 class="mb-0"><?=echo(count($resUsers))?></h4>
+                <h4 class="mb-0"><?=echo(count($resUsers));?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
             <div class="card-footer p-3">
-              <p class="mb-0"><span class="text-success text-sm font-weight-bolder"><?=count($resUsersMembers)?> </span>Adhérents</p>
+              <p class="mb-0"><span class="text-success text-sm font-weight-bolder"><?=echo(count($resUsersMembers));?> </span>Adhérents</p>
             </div>
           </div>
         </div>
@@ -168,12 +168,12 @@ $resOrgToValidate = getOrganizationsToValidate($connect);
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Commerces</p>
-                <h4 class="mb-0"><?=echo(count($resShops))?></h4>
+                <h4 class="mb-0"><?=echo(count($resShops));?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
             <div class="card-footer p-3">
-              <p class="mb-0"><span class="text-danger text-sm font-weight-bolder"><?=echo(count($resShopsToValidate))?> </span>à valider</p>
+              <p class="mb-0"><span class="text-danger text-sm font-weight-bolder"><?=echo(count($resShopsToValidate));?> </span>à valider</p>
             </div>
           </div>
         </div>
@@ -185,12 +185,12 @@ $resOrgToValidate = getOrganizationsToValidate($connect);
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Associations</p>
-                <h4 class="mb-0"><?=echo(count($resOrg))?></h4>
+                <h4 class="mb-0"><?=echo(count($resOrg));?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
             <div class="card-footer p-3">
-              <p class="mb-0"><span class="text-danger text-sm font-weight-bolder"><?=echo(count($resOrgToValidate))?> </span>à valider</p>
+              <p class="mb-0"><span class="text-danger text-sm font-weight-bolder"><?=echo(count($resOrgToValidate));?> </span>à valider</p>
             </div>
           </div>
         </div>
