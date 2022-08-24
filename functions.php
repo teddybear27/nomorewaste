@@ -68,6 +68,16 @@ function getOrganizationsToValidate($db) {
 	$results = $db->query("SELECT * from organization where autorisation = 'mail non valide' OR autorisation = 'en attente'");	
 	return $results;
 }
+
+function getCarts($db) {
+	$results = $db->query("SELECT * from panier");	
+	return $results;
+}
+
+function getCartsToShip($db) {
+	$results = $db->query("SELECT * from panier");	
+	return $results;
+}
 /*
 function isConnected(){
 	if(!empty($_SESSION["email"])){

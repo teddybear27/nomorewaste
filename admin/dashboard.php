@@ -13,6 +13,8 @@ $resShops = getShops($connect);
 $resShopsToValidate = getShopsToValidate($connect);
 $resOrg = getOrganizations($connect);
 $resOrgToValidate = getOrganizationsToValidate($connect);
+$resCarts = getCarts($connect);
+$resCartsToShip = getCartsToShip($connect);
 ?>
 
 <!DOCTYPE html>
@@ -193,12 +195,36 @@ if(!empty($resUsersMembers)){
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Commerces</p>
-                <h4 class="mb-0"><?php echo(count($resShops));?></h4>
+                <h4 class="mb-0">
+<?php
+if(!empty($resShops)){
+  $i = 0;
+  while ($resShops->fetch()) {
+    $i += 1;
+  }
+  echo($i);
+}else{
+  echo('0');
+}
+?>
+                </h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
             <div class="card-footer p-3">
-              <p class="mb-0"><span class="text-danger text-sm font-weight-bolder"><?php echo(count($resShopsToValidate));?> </span>à valider</p>
+              <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">
+<?php
+if(!empty($resShopsToValidate)){
+  $i = 0;
+  while ($resShopsToValidate->fetch()) {
+    $i += 1;
+  }
+  echo($i);
+}else{
+  echo('0');
+}
+?>
+               </span>à valider</p>
             </div>
           </div>
         </div>
@@ -210,12 +236,36 @@ if(!empty($resUsersMembers)){
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Associations</p>
-                <h4 class="mb-0"><?php echo(count($resOrg));?></h4>
+                <h4 class="mb-0">
+<?php
+if(!empty($resOrg)){
+  $i = 0;
+  while ($resOrg->fetch()) {
+    $i += 1;
+  }
+  echo($i);
+}else{
+  echo('0');
+}
+?>
+                </h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
             <div class="card-footer p-3">
-              <p class="mb-0"><span class="text-danger text-sm font-weight-bolder"><?php echo(count($resOrgToValidate));?> </span>à valider</p>
+              <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">
+<?php
+if(!empty($resOrgToValidate)){
+  $i = 0;
+  while ($resOrgToValidate->fetch()) {
+    $i += 1;
+  }
+  echo($i);
+}else{
+  echo('0');
+}
+?>
+               </span>à valider</p>
             </div>
           </div>
         </div>
@@ -227,12 +277,36 @@ if(!empty($resUsersMembers)){
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Paniers</p>
-                <h4 class="mb-0">103,430</h4>
+                <h4 class="mb-0">
+<?php
+if(!empty($resCarts)){
+  $i = 0;
+  while ($resCarts->fetch()) {
+    $i += 1;
+  }
+  echo($i);
+}else{
+  echo('0');
+}
+?>
+                </h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
             <div class="card-footer p-3">
-              <p class="mb-0"><span class="text-success text-sm font-weight-bolder">47,526 </span>à livrer</p>
+              <p class="mb-0"><span class="text-success text-sm font-weight-bolder">
+<?php
+if(!empty($resCartsToShip)){
+  $i = 0;
+  while ($resCartsToShip->fetch()) {
+    $i += 1;
+  }
+  echo($i);
+}else{
+  echo('0');
+}
+?>
+               </span>à livrer</p>
             </div>
           </div>
         </div>
