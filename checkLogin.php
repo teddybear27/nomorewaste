@@ -28,7 +28,7 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
     $resultOrg = $queryOrg->fetch();
 
 
-    if (empty($resultUser) || empty($resultShop) || empty($resultOrg)) {
+    if (empty($resultUser) && empty($resultShop) && empty($resultOrg)) {
         $error = true;
         $listOfLoginErrors[] = "Identifiants incorrects";
     }else if ($resultUser["check_mail"] != 1 
