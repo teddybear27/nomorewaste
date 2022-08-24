@@ -76,7 +76,7 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
         header("Location: login.php");
     }else{
         $_SESSION["online"] = 'true';
-        if (!empty($resultUser){
+        if (!empty($resultUser)){
             $_SESSION["status"] = $resultUser["status"];
             $error = false;
             if ($_SESSION["status"]  == "admin") {
@@ -84,10 +84,10 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
             }else{
                 redirect("particulier/particulier.php");
             }
-        }else if (!empty($resultShop){
+        }else if (!empty($resultShop)){
             $error = false;
             redirect("commerce/commerce.php");
-        }else if (!empty($resultOrg){
+        }else if (!empty($resultOrg)){
             $error = false;
             redirect("association/association.php");
         }
