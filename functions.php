@@ -125,6 +125,10 @@ function unlockUser($email){
 	$q->execute(["email"=>$email]);
 }
 */
+function logout($db){
+	session_destroy();
+}
+
 function redirect($url){
 	header("Location: $url");
 	exit();
