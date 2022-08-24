@@ -1,8 +1,8 @@
 <?php
 session_start();
 require "functions.php";
-echo(count($_POST));
-if( count($_POST) == 12 
+
+if( count($_POST) == 11 
 	&& !empty($_POST["organizationName"])
 	&& !empty($_POST["siren"])
 	&& !empty($_POST["email"])
@@ -39,7 +39,7 @@ if( count($_POST) == 12
 
 	//SIREN
 
-	if( strlen($_POST["siren"])<9  || strlen($_POST["siren"])>9 ){
+	if( strlen($_POST["siren"]) != 9){
 			$error = true;
 			$listOfErrors[] = "Votre numero de SIREN doit faire 9 caractères";
 	}
@@ -56,7 +56,7 @@ if( count($_POST) == 12
 
 	// creationYear
 
-	if( strlen($_POST["creationYear"])<4  || strlen($_POST["creationYear"])>4 ){
+	if( strlen($_POST["creationYear"]) != 4){
 			$error = true;
 			$listOfErrors[] = "L'Année de création doit faire 4 caractères";
 	}
