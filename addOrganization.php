@@ -99,8 +99,8 @@ if( count($_POST) == 11
 	}else{		
 
 		$queryPrepared = $connect->prepare("INSERT INTO organization 
-		(nom, siren, mail, mdp, annee_creation, numero_telephone, adresse, code_postal, ville, pays, check_mail) 
-		VALUES (:nom, :siren, :mail, :mdp, :annee_creation, :numero_telephone, :adresse, :code_postal, :ville, :pays, :check_mail)");
+		(nom, siren, annee_creation, mail, mdp, numero_telephone, adresse, code_postal, ville, pays, check_mail) 
+		VALUES (:nom, :siren, :annee_creation, :mail, :mdp, :numero_telephone, :adresse, :code_postal, :ville, :pays, :check_mail)");
 
 		$organizationName = htmlspecialchars($_POST["organizationName"]);
 		$pwd = password_hash($_POST["pwd"], PASSWORD_DEFAULT);
@@ -110,9 +110,9 @@ if( count($_POST) == 11
 			[
 				"nom"=>$_POST["organizationName"],
 				"siren"=>$_POST["siren"],
-				"mail"=>$_POST["email"],
-				"mdp"=>$pwd,
 				"anne_creation" => $_POST["creationYear"],
+				"mail"=>$_POST["email"],
+				"mdp"=>$pwd,				
 				"numero_telephone" => $_POST["phone"],
 				"adresse" => $_POST["address"],
 				"code_postal" => $_POST["zip"],
@@ -120,7 +120,6 @@ if( count($_POST) == 11
 				"pays" => $_POST["country"],
 				"check_mail"=>$verifKey
 			]
-
 		);
 		//echo "Un mail de confirmation vous a été envoyé. Veuillez vérifier SVP.";
 		//echo "N'oubliez pas de vérifier les spams si besoin";
