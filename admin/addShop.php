@@ -59,7 +59,7 @@ if ($_SESSION['sid'] != 1){
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="particuliers.php">
+          <a class="nav-link text-white " href="particuliers.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -67,7 +67,7 @@ if ($_SESSION['sid'] != 1){
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="commerces.php">
+          <a class="nav-link text-white active bg-gradient-primary" href="commerces.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
