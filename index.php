@@ -35,12 +35,12 @@
 		</div>
 		<div class="button">
 			<p>
-				<a href="register-shop.php">Commerce</a>
+				<a href="register_shop.php">Commerce</a>
 			</p>
 		</div>
 		<div class="button">
 			<p>
-				<a href="register-assos.php">Association</a>
+				<a href="register_organization.php">Association</a>
 			</p>
 		</div>
 	</div>

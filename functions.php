@@ -44,6 +44,16 @@ function getUsers($db) {
 	$results = $db->query("SELECT * from user");	
 	return $results;
 }
+
+function getShops($db) {
+	$results = $db->query("SELECT * from shop");	
+	return $results;
+}
+
+function getOrganizations($db) {
+	$results = $db->query("SELECT * from organization");	
+	return $results;
+}
 /*
 function isConnected(){
 	if(!empty($_SESSION["email"])){

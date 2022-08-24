@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>No More Waste - Inscription</title>
+	<title>No More Waste - Formulaire Association</title>
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<!-- Font-->
@@ -21,7 +21,7 @@
 	<div class="page-content">
 		<div class="form-v1-content">
 			<div class="wizard-form">
-		        <form class="form-register" action="addUser.php" method="post">
+		        <form class="form-register" action="addShop.php" method="post">
 		        	<div id="form-total">
 		        		<!-- SECTION 1 -->
 			            <h2>
@@ -31,23 +31,25 @@
 			            <section>
 			                <div class="inner">
 			                	<div class="wizard-header">
-									<h3 class="heading">Inscription</h3>
-									<p>Veuillez saisir vos informations et procéder à l'étape suivante pour créer un compte</p>
+									<h3 class="heading">Formulaire d'incription pour les associations</h3>
+									<p>Veuillez saisir vos informations et procéder à l'étape suivante pour souscrire à une demande d'inscription</p>
 									<p>Vous avez déjà un compte ?
 										<a href="login.php">Connectez-vous</a>
 									</p>
 								</div>
 								<div class="form-row">
-									<div class="form-holder">
+									<div class="form-holder form-holder-2">
 										<fieldset>
-											<legend>Prénom</legend>
-											<input type="text" class="form-control" id="firstname" name="firstname" placeholder="Prénom" required>
+											<legend>Nom de l'association</legend>
+											<input type="text" class="form-control" id="firstname" name="organizationName" placeholder="Nom de l'association" required>
 										</fieldset>
 									</div>
-									<div class="form-holder">
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
 										<fieldset>
-											<legend>Nom de Famille</legend>
-											<input type="text" class="form-control" id="lastname" name="lastname" placeholder="Nom de Famille" required>
+											<legend>SIREN</legend>
+											<input type="text" name="siren" id="siren" class="form-control" placeholder="N° SIREN" required>
 										</fieldset>
 									</div>
 								</div>
@@ -62,8 +64,8 @@
 								<div class="form-row form-row-date">
 									<div class="form-holder form-holder-2">
 										<fieldset>
-											<legend>Date de naissance</legend>
-											<input type="date" class="form-control" name="birthday" id="birthday" required>
+											<legend>Année création</legend>
+											<input type="text" class="form-control" name="creationYear" id="creationYear" placeholder="Année création" required>
 										</fieldset>
 									</div>
 								</div>
@@ -91,8 +93,8 @@
 			            <section>
 			                <div class="inner">
 			                	<div class="wizard-header">
-									<h3 class="heading">Inscription</h3>
-									<p>Veuillez saisir vos informations et procéder à l'étape suivante pour créer un compte
+									<h3 class="heading">Formulaire d'incription pour les commerces</h3>
+									<p>Veuillez saisir vos informations et procéder à l'étape suivante pour souscrire à une demande d'inscription</p>
 									<p>Vous avez déjà un compte ?
 										<a href="login.php">Connectez-vous</a></p>
 								</div>
@@ -100,7 +102,7 @@
 									<div class="form-holder form-holder-2">
 										<fieldset>
 											<legend>Numéro de Téléphone</legend>
-											<input type="text" class="form-control" id="phone" name="phone" placeholder="0612345789" required>
+											<input type="text" class="form-control" id="phone" name="phone" placeholder="0912345786" required>
 										</fieldset>
 									</div>
 								</div>

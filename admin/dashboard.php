@@ -1,6 +1,8 @@
 <?php
 session_start();
 require "../functions.php";
+$connect = connectDB();
+$resUsers = getUsers($connect);
 ?>
 
 <!DOCTYPE html>
@@ -139,7 +141,19 @@ require "../functions.php";
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Particuliers</p>
-                <h4 class="mb-0">53</h4>
+                <h4 class="mb-0">
+<?php
+if (isset($res)){
+  $i = 0;
+    while($data = $res->fetch()){
+        $i += 1;
+    }
+    echo($i);
+}else{
+  echo("0");
+}
+?>
+                </h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
