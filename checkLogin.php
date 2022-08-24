@@ -27,6 +27,7 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
     $resultShop = $queryShop->fetch();
     $resultOrg = $queryOrg->fetch();
 
+    $error = false;
     $acteur = 'nobody';
 
     // Conditions connexion User, Shop, Organization
