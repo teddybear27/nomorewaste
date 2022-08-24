@@ -1,7 +1,7 @@
 <?php
 session_start();
 require "functions.php";
-echo(count($_POST));
+
 if( count($_POST) == 12 
 	&& !empty($_POST["shopname"])
 	&& !empty($_POST["category"])
@@ -154,8 +154,10 @@ if( count($_POST) == 12
     if ($error){
     	setcookie("errorForm", serialize($listOfErrors));
     	redirect("register_shop.php");
-    }else{
-    	echo ("Un mail de confirmation vous a été envoyé (Voir spams / courriers indésirables)");
+    }else{    	
+    	$listOfErrors[] = "Un mail de confirmation vous a été envoyé (Voir spams / courriers indésirables)";
+    	setcookie("errorForm", serialize($listOfErrors));
+    	redirect("register_shop.php");
     }
     
     
