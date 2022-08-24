@@ -59,6 +59,10 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
                || $resultOrg["autorisation"] == 'en attente'){
             $error = true;
             $listOfLoginErrors[] = "Votre inscription est en attente de validation par l'administrateur.";
+        }else if ($resultShop["autorisation"] == 'refus'
+               || $resultOrg["autorisation"] == 'refus'){
+            $error = true;
+            $listOfLoginErrors[] = "Votre inscription est refusée par l'administrateur. Veuillez contacter l'équipe NoMoreWaste pour en savoir plus";
         }
       
     }else{
