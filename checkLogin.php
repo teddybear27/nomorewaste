@@ -35,7 +35,7 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
         $error = true;
         $listOfLoginErrors[] = "Vous n'avez pas encore validé votre email";
       }else{
-        if (password_verify($_POST["pwdLogin"], $resultUser["mdp"]){
+        if (password_verify($_POST["pwdLogin"], $resultUser["mdp"])){
           if ($resultUser["blocked"] == 'oui'){
             $error = true;
             $listOfLoginErrors[] = "Votre compte est bloqué par l'équipe NoMoreWaste. Veuillez contacter l'administrateur pour en connaître les raisons.";
@@ -53,7 +53,7 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
         $error = true;
         $listOfLoginErrors[] = "Vous n'avez pas encore validé votre email";
       }else{
-        if (password_verify($_POST["pwdLogin"], $resultShop["mdp"]){
+        if (password_verify($_POST["pwdLogin"], $resultShop["mdp"])){
           if ($resultShop["blocked"] == 'oui'){
             $error = true;
             $listOfLoginErrors[] = "Votre compte est bloqué par l'équipe NoMoreWaste. Veuillez contacter l'administrateur pour en connaître les raisons.";
@@ -81,7 +81,7 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
         $error = true;
         $listOfLoginErrors[] = "Vous n'avez pas encore validé votre email";
       }else{
-        if (password_verify($_POST["pwdLogin"], $resultOrg["mdp"]){
+        if (password_verify($_POST["pwdLogin"], $resultOrg["mdp"])){
           if ($resultOrg["blocked"] == 'oui'){
             $error = true;
             $listOfLoginErrors[] = "Votre compte est bloqué par l'équipe NoMoreWaste. Veuillez contacter l'administrateur pour en connaître les raisons.";
