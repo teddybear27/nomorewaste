@@ -116,13 +116,17 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
             $_SESSION["status"] = $resultUser["status"];
             $error = false;
             if ($_SESSION["status"]  == "admin") {
+                $_SESSION['sid'] = 1;
                 redirect("admin/dashboard.php");
             }else{
+                $_SESSION['sid'] = 2;
                 redirect("particulier/particulier.php");
             }
         }else if ($acteur == 'shop'){
+            $_SESSION['sid'] = 3;
             redirect("commerce/commerce.php");
         }else if ($acteur == 'organization'){
+            $_SESSION['sid'] = 4;
             redirect("association/association.php");
         }
     }

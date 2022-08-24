@@ -1,8 +1,18 @@
 <?php
 session_start();
 require "../functions.php";
+
+if ($_SESSION['sid'] != 1){
+  redirect("../denied.php");
+}
+
 $connect = connectDB();
 $resUsers = getUsers($connect);
+$resUsersMembers = getUsersMembers($connect);
+$resShops = getShops($connect);
+$resShopsToValidate = getShopsToValidate($connect);
+$resOrg = getOrganizations($connect);
+$resOrgToValidate = getOrganizationsToValidate($connect);
 ?>
 
 <!DOCTYPE html>
@@ -141,24 +151,12 @@ $resUsers = getUsers($connect);
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Particuliers</p>
-                <h4 class="mb-0">
-<?php
-if (isset($res)){
-  $i = 0;
-    while($data = $res->fetch()){
-        $i += 1;
-    }
-    echo($i);
-}else{
-  echo("0");
-}
-?>
-                </h4>
+                <h4 class="mb-0"><?=count($resUsers)?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
             <div class="card-footer p-3">
-              <p class="mb-0"><span class="text-success text-sm font-weight-bolder">5 </span>Adhérents</p>
+              <p class="mb-0"><span class="text-success text-sm font-weight-bolder"><?=count($resUsersMembers)?> </span>Adhérents</p>
             </div>
           </div>
         </div>
@@ -170,12 +168,12 @@ if (isset($res)){
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Commerces</p>
-                <h4 class="mb-0">2,300</h4>
+                <h4 class="mb-0"><?=count($resShops)?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
             <div class="card-footer p-3">
-              <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">300 </span>à valider</p>
+              <p class="mb-0"><span class="text-danger text-sm font-weight-bolder"><?=count($resShopsToValidate)?> </span>à valider</p>
             </div>
           </div>
         </div>
@@ -187,12 +185,12 @@ if (isset($res)){
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Associations</p>
-                <h4 class="mb-0">62</h4>
+                <h4 class="mb-0"><?=count($resOrg)?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
             <div class="card-footer p-3">
-              <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">14 </span>à valider</p>
+              <p class="mb-0"><span class="text-danger text-sm font-weight-bolder"><?=count($resOrgToValidate)?> </span>à valider</p>
             </div>
           </div>
         </div>

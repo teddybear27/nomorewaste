@@ -41,7 +41,12 @@ function emailExist($connect, $email){
 }
 
 function getUsers($db) {
-	$results = $db->query("SELECT * from user");	
+	$results = $db->query("SELECT * from user where status != 'admin'");	
+	return $results;
+}
+
+function getUsersMembers($db) {
+	$results = $db->query("SELECT * from user where status = 'adherent'");	
 	return $results;
 }
 
@@ -50,8 +55,17 @@ function getShops($db) {
 	return $results;
 }
 
+function getShopsToValidate($db) {
+	$results = $db->query("SELECT * from shop where autorisation = 'mail non valide' OR autorisation = 'en attente'");	
+	return $results;
+}
+
 function getOrganizations($db) {
 	$results = $db->query("SELECT * from organization");	
+	return $results;
+}
+function getOrganizationsToValidate($db) {
+	$results = $db->query("SELECT * from organization where autorisation = 'mail non valide' OR autorisation = 'en attente'");	
 	return $results;
 }
 /*
