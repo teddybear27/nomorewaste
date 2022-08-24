@@ -139,7 +139,7 @@ function unlockUser($email){
 	$q->execute(["email"=>$email]);
 }
 */
-function logout($db){
+function logout(){
 	session_destroy();
 }
 
