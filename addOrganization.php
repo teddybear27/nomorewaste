@@ -98,9 +98,7 @@ if( count($_POST) == 11
 
 	}else{		
 
-		$queryPrepared = $connect->prepare("INSERT INTO organization 
-		(nom, siren, annee_creation, mail, mdp, numero_telephone, adresse, code_postal, ville, pays, check_mail) 
-		VALUES (:nom, :siren, :annee_creation, :mail, :mdp, :numero_telephone, :adresse, :code_postal, :ville, :pays, :check_mail)");
+		$queryPrepared = $connect->prepare("INSERT INTO organization (nom, siren, annee_creation, mail, mdp, numero_telephone, adresse, code_postal, ville, pays, check_mail) VALUES (:nom, :siren, :annee_creation, :mail, :mdp, :numero_telephone, :adresse, :code_postal, :ville, :pays, :check_mail)");
 
 		$organizationName = htmlspecialchars($_POST["organizationName"]);
 		$pwd = password_hash($_POST["pwd"], PASSWORD_DEFAULT);
