@@ -98,7 +98,7 @@ if( count($_POST) == 11
 
 	}else{		
 
-		$queryPrepared = $connect->prepare("INSERT INTO shop 
+		$queryPrepared = $connect->prepare("INSERT INTO organization 
 		(nom, siren, mail, mdp, annee_creation, numero_telephone, adresse, code_postal, ville, pays, check_mail) 
 		VALUES (:nom, :siren, :mail, :mdp, :annee_creation, :numero_telephone, :adresse, :code_postal, :ville, :pays, :check_mail)");
 
