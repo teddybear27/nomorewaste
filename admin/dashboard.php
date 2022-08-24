@@ -151,12 +151,12 @@ $resOrgToValidate = getOrganizationsToValidate($connect);
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Particuliers</p>
-                <h4 class="mb-0"><?php echo(count($resUsers));?></h4>
+                <h4 class="mb-0"><?php echo(count($resUsers->fetch()));?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
             <div class="card-footer p-3">
-              <p class="mb-0"><span class="text-success text-sm font-weight-bolder"><?php echo(count($resUsersMembers));?> </span>Adhérents</p>
+              <p class="mb-0"><span class="text-success text-sm font-weight-bolder"><?php echo(count($resUsersMembers->fetch()));?> </span>Adhérents</p>
             </div>
           </div>
         </div>
