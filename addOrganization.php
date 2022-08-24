@@ -1,7 +1,7 @@
 <?php
 session_start();
 require "functions.php";
-
+count(count($_POST));
 if( count($_POST) == 12 
 	&& !empty($_POST["organizationName"])
 	&& !empty($_POST["siren"])
