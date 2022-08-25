@@ -177,9 +177,16 @@ if (isset($res)){
                         <span class="text-secondary text-xs font-weight-bold"><?=$data["numero_telephone"]?></span>
                       </td>
                       <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
-                        </a>
+                        <div class="col-md-4 text-end">
+                          <a href="modifyParticulier.php">
+                            <i class="fas fa-pencil-alt text-secondary text-sm" style="color: #063b2d;" data-bs-toggle="tooltip" data-bs-placement="top" title="Editer"></i>
+                          </a>
+                        </div>
+                        <div class="col-md-4 text-end">
+                          <a href="deleteParticulier.php">
+                            <i class="fas fa-trash-alt text-secondary text-sm" style="color:red;" data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer"></i>
+                          </a>
+                        </div>
                       </td>
                     </tr>
 <?php
@@ -205,12 +212,12 @@ if (isset($res)){
                       </td>
                       <td class="align-middle">
                         <div class="col-md-4 text-end">
-                          <a href="modifyProfile.php">
+                          <a href="modifyParticulier.php">
                             <i class="fas fa-pencil-alt text-secondary text-sm" style="color: #063b2d;" data-bs-toggle="tooltip" data-bs-placement="top" title="Editer"></i>
                           </a>
                         </div>
                         <div class="col-md-4 text-end">
-                          <a href="modifyProfile.php">
+                          <a href="deleteParticulier.php">
                             <i class="fas fa-trash-alt text-secondary text-sm" style="color:red;" data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer"></i>
                           </a>
                         </div>
