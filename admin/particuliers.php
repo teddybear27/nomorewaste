@@ -211,7 +211,7 @@ if (isset($res)){
                         </div>
                         <div class="col-md-4 text-end">
                           <a href="modifyProfile.php">
-                            <i class="fas fa-trash-alt text-secondary text-sm" style="color:red;" data-bs-toggle="tooltip" data-bs-placement="top" title="Editer"></i>
+                            <i class="fas fa-trash-alt text-secondary text-sm" style="color:red;" data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer"></i>
                           </a>
                         </div>
                       </td>
