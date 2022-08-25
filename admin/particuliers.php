@@ -208,6 +208,8 @@ if (isset($res)){
                           <a href="modifyProfile.php">
                             <i class="fas fa-pencil-alt text-secondary text-sm" style="color: #063b2d;" data-bs-toggle="tooltip" data-bs-placement="top" title="Editer"></i>
                           </a>
+                        </div>
+                        <div class="col-md-4 text-end">
                           <a href="modifyProfile.php">
                             <i class="fas fa-trash-alt text-secondary text-sm" style="color:red;" data-bs-toggle="tooltip" data-bs-placement="top" title="Editer"></i>
                           </a>
