@@ -204,9 +204,11 @@ if (isset($res)){
                         <span class="text-secondary text-xs font-weight-bold"><?=$data["numero_telephone"]?></span>
                       </td>
                       <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
-                        </a>
+                        <div class="col-md-4 text-end">
+                          <a href="modifyProfile.php">
+                            <i class="fas fa-pencil-alt text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Editer"></i>
+                          </a>
+                        </div>
                       </td>
                     </tr>                    
                   </tbody>
