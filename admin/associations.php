@@ -57,7 +57,7 @@ $res = getOrganizations($connect);
         <li class="nav-item">
           <a class="nav-link text-white " href="particuliers.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">table_view</i>
+              <i class="material-icons opacity-10">person</i>
             </div>
             <span class="nav-link-text ms-1">Particuliers</span>
           </a>
@@ -73,7 +73,7 @@ $res = getOrganizations($connect);
         <li class="nav-item">
           <a class="nav-link text-white active bg-gradient-primary" href="associations.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">view_in_ar</i>
+              <i class="material-icons opacity-10">assignment</i>
             </div>
             <span class="nav-link-text ms-1">Associations</span>
           </a>
@@ -81,17 +81,9 @@ $res = getOrganizations($connect);
         <li class="nav-item">
           <a class="nav-link text-white " href="paniers.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
+              <i class="material-icons opacity-10">weekend</i>
             </div>
             <span class="nav-link-text ms-1">Paniers</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/notifications.html">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">notifications</i>
-            </div>
-            <span class="nav-link-text ms-1">Notifications</span>
           </a>
         </li>
         <li class="nav-item mt-3">
@@ -102,7 +94,7 @@ $res = getOrganizations($connect);
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">person</i>
             </div>
-            <span class="nav-link-text ms-1">Profile</span>
+            <span class="nav-link-text ms-1">Profil</span>
           </a>
         </li>
       </ul>
