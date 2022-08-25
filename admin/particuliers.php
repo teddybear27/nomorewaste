@@ -206,10 +206,10 @@ if (isset($res)){
                       <td class="align-middle">
                         <div class="col-md-4 text-end">
                           <a href="modifyProfile.php">
-                            <i class="fas fa-pencil-alt text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Editer"></i>
+                            <i class="fas fa-pencil-alt text-secondary text-sm" style="color: #063b2d;" data-bs-toggle="tooltip" data-bs-placement="top" title="Editer"></i>
                           </a>
                           <a href="modifyProfile.php">
-                            <i class="fas fa-trash-alt text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Editer"></i>
+                            <i class="fas fa-trash-alt text-secondary text-sm" style="color:red;" data-bs-toggle="tooltip" data-bs-placement="top" title="Editer"></i>
                           </a>
                         </div>
                       </td>
