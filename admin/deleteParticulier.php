@@ -1,9 +1,14 @@
 <?php
 session_start();
-require "../functions.php";
+require "functions.php"
 
-if ($_SESSION['sid'] != 1){
-  redirect("../denied.php");
+if (empty($_SESSION['mail'])){
+	redirect("denied.php");
 }
 
-var_dump($_POST["deleteP"]);
+	$connect = connectDB();
+	$adresseElectronique = $_POST['deleteP'];
+	$q = "DELETE FROM user WHERE mail = '$adresseElectronique'";
+	$res = $connect->query($q);
+	redirect("particuliers.php");
+?>

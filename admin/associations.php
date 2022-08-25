@@ -183,9 +183,10 @@ if (isset($res)){
                           </a>
                         </div>
                         <div class="col-md-4 text-end">
-                          <a href="deleteOrganization.php">
-                            <i class="fas fa-trash-alt text-secondary text-sm" style="color:red;" data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer"></i>
-                          </a>
+                          <form action="deleteOrganization.php" method="post"> 
+                              <input type="submit" style="color:red" value="Supprimer">
+                              <input type="hidden" name="deleteO" value="<?=$data["mail"]?>">
+                          </form>
                         </div>
                       </td>
                     </tr>
@@ -217,9 +218,10 @@ if (isset($res)){
                           </a>
                         </div>
                         <div class="col-md-4 text-end">
-                          <a href="deleteOrganization.php">
-                            <i class="fas fa-trash-alt text-secondary text-sm" style="color:red;" data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer"></i>
-                          </a>
+                          <form action="deleteOrganization.php" method="post"> 
+                              <input type="submit" style="color:red" value="Supprimer">
+                              <input type="hidden" name="deleteO" value="<?=$data["mail"]?>">
+                          </form>
                         </div>
                       </td>
                     </tr>                    
