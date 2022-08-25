@@ -8,6 +8,7 @@ if ($_SESSION['sid'] != 1){
 
 $connect = connectDB();
 $resCurrent = getCurrentUser($connect,$_SESSION['mail']);
+$data = $resCurrent->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +20,7 @@ $resCurrent = getCurrentUser($connect,$_SESSION['mail']);
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Infos Personelles
+    Informations Personnelles
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -144,10 +145,10 @@ $resCurrent = getCurrentUser($connect,$_SESSION['mail']);
           <div class="col-auto my-auto">
             <div class="h-100">
               <h5 class="mb-1">
-                Richard Davis
+                <?=$data["prenom"]." ".$data["nom"]?>
               </h5>
               <p class="mb-0 font-weight-normal text-sm">
-                CEO / Co-Founder
+                PDG / Co-Fondateur
               </p>
             </div>
           </div>
