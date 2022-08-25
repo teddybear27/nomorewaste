@@ -454,7 +454,7 @@ $data = $resCurrent->fetch();
 
 </select>
           </li>
-          <input type="submit" name="">
+          <input type="submit" id="valider" value="Soumettre">
         </ul>
       </div>
     </div>
