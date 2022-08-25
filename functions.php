@@ -40,17 +40,17 @@ function emailExist($connect, $email){
 	return true;
 }
 
-function getCurrentUser($mail) {
+function getCurrentUser($db,$mail) {
 	$results = $db->query("SELECT * from user where mail = '$mail'");	
 	return $results;
 }
 
-function getCurrentShop($mail) {
+function getCurrentShop($db,$mail) {
 	$results = $db->query("SELECT * from shop where mail = '$mail'");	
 	return $results;
 }
 
-function getCurrentOrganization($mail) {
+function getCurrentOrganization($db,$mail) {
 	$results = $db->query("SELECT * from organization where mail = '$mail'");	
 	return $results;
 }

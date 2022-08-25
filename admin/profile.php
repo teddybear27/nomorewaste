@@ -7,7 +7,7 @@ if ($_SESSION['sid'] != 1){
 }
 
 $connect = connectDB();
-$resCurrent = getCurrentUser($connect);
+$resCurrent = getCurrentUser($connect,$_SESSION['mail']);
 ?>
 
 <!DOCTYPE html>
