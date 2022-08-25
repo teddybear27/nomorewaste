@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "functions.php";
+require "../functions.php";
 
 if( count($_POST) == 12 
 	&& !empty($_POST["lastname"])
