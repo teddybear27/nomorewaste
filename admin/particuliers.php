@@ -184,9 +184,11 @@ if (isset($res)){
                         </div>
                         <div class="col-md-4 text-end">
                           <form action="deleteParticulier.php" method="post">
-                            <i class="fas fa-trash-alt text-secondary text-sm" style="color:red;" data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer"></i>
-                            <input type="submit" class="fas fa-trash-alt" style="color:red" value="Supprimer"></input>
-                            <input type="hidden" name="deleteP" value="<?=$data["mail"]?>">
+                            <i class="fas fa-trash-alt text-secondary text-sm" style="color:red;" data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer">
+                              <input type="submit" style="color:red" value="Supprimer">
+                              <input type="hidden" name="deleteP" value="<?=$data["mail"]?>">
+                            </i>
+                            
                           </form>
                         </div>
                       </td>
