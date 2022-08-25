@@ -163,9 +163,7 @@ $data = $resCurrent->fetch();
             <h6 class="mb-0">Modification Informations</h6>
           </div>
           <div class="col-md-4 text-end">
-            <a href="modifyProfile.php">
-              <i class="fas fa-check text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Valider"></i>
-            </a>
+              <i class="fas fa-check text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Valider"><input type="submit" name=""></i>
           </div>
         </div>                  
         <hr class="horizontal gray-light my-4">
