@@ -188,7 +188,7 @@ $data = $resCurrent->fetch();
           </div>
           <div class="col-md-4 text-end">
             <a href="modifyProfile.php">
-              <i class="fa-solid fa-user-check text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Valider"></i>
+              <i class="fas fa-check text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Valider"></i>
             </a>
           </div>
         </div>                  
