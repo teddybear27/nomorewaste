@@ -196,7 +196,7 @@ $data = $resCurrent->fetch();
             <input type="text" name="phone" placeholder="0612345789" value="<?=$data["numero_telephone"]?>" required>
           </li>
           <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; 
-            <input type="text" name="email" id="email" class="form-control" placeholder="example@email.com" value="<?=$data["mail"]?>" required>
+            <input type="text" name="email" placeholder="example@email.com" value="<?=$data["mail"]?>" required>
           </li>
           <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Adresse:</strong> &nbsp; 
             <input type="text" name="address" placeholder="123 rue emile" value="<?=$data["adresse"]?>" required>
