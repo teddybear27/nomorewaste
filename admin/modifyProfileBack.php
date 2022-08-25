@@ -136,9 +136,8 @@ if ($_SESSION['mail'] != $_POST["email"]){
 
 	}else{		
 		if ($mailChanged == 1){
-			$queryPrepared = $connect->prepare("INSERT INTO user 
-			(nom, prenom, mail, mdp, date_naissance, numero_telephone, adresse, code_postal, ville, pays, check_mail) 
-			VALUES (:nom, :prenom, :mail, :mdp, :date_naissance, :numero_telephone, :adresse, :code_postal, :ville, :pays, :check_mail)");
+			$queryPrepared = $connect->prepare("UPDATE user SET nom = :nom, prenom = :prenom, mail = :mail, mdp = :mdp, date_naissance = :date_naissance, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays, check_mail = :check_mail) 
+			WHERE mail = '$_SESSION['mail']'");
 
 			$lastname = htmlspecialchars($_POST["lastname"]);
 			$pwd = password_hash($_POST["pwdConfirm"], PASSWORD_DEFAULT);
@@ -179,9 +178,8 @@ if ($_SESSION['mail'] != $_POST["email"]){
 		    }
     		$listOfErrors[] = ["Un mail de confirmation vous a été envoyé (Voir spams / courriers indésirables)"];
 		}else{
-			$queryPrepared = $connect->prepare("INSERT INTO user 
-			(nom, prenom, mdp, date_naissance, numero_telephone, adresse, code_postal, ville, pays) 
-			VALUES (:nom, :prenom, :mdp, :date_naissance, :numero_telephone, :adresse, :code_postal, :ville, :pays)");
+			$queryPrepared = $connect->prepare("UPDATE user SET nom = :nom, prenom = :prenom, mdp = :mdp, date_naissance = :date_naissance, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays) 
+			WHERE mail = '$_SESSION['mail']'");
 
 			$lastname = htmlspecialchars($_POST["lastname"]);
 			$pwd = password_hash($_POST["pwdConfirm"], PASSWORD_DEFAULT);
