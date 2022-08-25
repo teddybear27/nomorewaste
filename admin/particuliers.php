@@ -183,10 +183,11 @@ if (isset($res)){
                           </a>
                         </div>
                         <div class="col-md-4 text-end">
-                          <a href="deleteParticulier.php">
+                          <form action="deleteParticulier.php" method="post">
                             <i class="fas fa-trash-alt text-secondary text-sm" style="color:red;" data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer"></i>
+                            <input type="submit" name="">
                             <input type="hidden" name="deleteP" value="<?=$data["mail"]?>">
-                          </a>
+                          </form>
                         </div>
                       </td>
                     </tr>
