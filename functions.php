@@ -40,6 +40,21 @@ function emailExist($connect, $email){
 	return true;
 }
 
+function getCurrentUser($mail) {
+	$results = $db->query("SELECT * from user where mail = '$mail'");	
+	return $results;
+}
+
+function getCurrentShop($mail) {
+	$results = $db->query("SELECT * from shop where mail = '$mail'");	
+	return $results;
+}
+
+function getCurrentOrganization($mail) {
+	$results = $db->query("SELECT * from organization where mail = '$mail'");	
+	return $results;
+}
+
 function getUsers($db) {
 	$results = $db->query("SELECT * from user where status != 'admin'");	
 	return $results;

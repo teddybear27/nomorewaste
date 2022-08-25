@@ -90,7 +90,7 @@ $res = getUsers($connect);
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Compte</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/profile.html">
+          <a class="nav-link text-white " href="profile.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">person</i>
             </div>
@@ -136,7 +136,7 @@ $res = getUsers($connect);
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                 <h6 class="text-white text-capitalize ps-3">Liste Particuliers</h6>
                 <a href="addUser.php" class="text-secondary font-weight-bold text-xs">
-                    Ajouter utilisateur
+                    Ajouter un utilisateur
                 </a>
               </div>
             </div>
