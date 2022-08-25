@@ -44,7 +44,7 @@ if( count($_POST) == 11
 			$error = true;
 			$listOfErrors[] = "Votre prénom doit faire entre 2 et 50 caractères";
 	}
-
+$mailChanged = 0;
 if ($_SESSION['mail'] != $_POST["email"]){
 	// Vérifier email
 
@@ -53,8 +53,9 @@ if ($_SESSION['mail'] != $_POST["email"]){
 			$listOfErrors[] = "Votre email est incorrect";
 	}else if(  emailExist($connect, $_POST['email'])  ){
 			$error = true;
-			$listOfErrors[] = "Cette adresse mail est déjà utilisé";
+			$listOfErrors[] = "Cette adresse mail est déjà utilisée";
 	}
+	$mailChanged = 1;
 }
 
 	//// Vérifier birthday
@@ -134,51 +135,72 @@ if ($_SESSION['mail'] != $_POST["email"]){
 			header("Location: modifyProfile.php");
 
 	}else{		
+		if ($mailChanged == 1){
+			$queryPrepared = $connect->prepare("INSERT INTO user 
+			(nom, prenom, mail, mdp, date_naissance, numero_telephone, adresse, code_postal, ville, pays, check_mail) 
+			VALUES (:nom, :prenom, :mail, :mdp, :date_naissance, :numero_telephone, :adresse, :code_postal, :ville, :pays, :check_mail)");
 
-		$queryPrepared = $connect->prepare("INSERT INTO user 
-		(status, nom, prenom, mail, mdp, date_naissance, numero_telephone, adresse, code_postal, ville, pays, check_mail) 
-		VALUES (:status, :nom, :prenom, :mail, :mdp, :date_naissance, :numero_telephone, :adresse, :code_postal, :ville, :pays, :check_mail)");
+			$lastname = htmlspecialchars($_POST["lastname"]);
+			$pwd = password_hash($_POST["pwdConfirm"], PASSWORD_DEFAULT);
+			$verifKey = md5(time().$lastname); //Génère une clé avec le nom
 
-		$lastname = htmlspecialchars($_POST["lastname"]);
-		$pwd = password_hash($_POST["pwdConfirm"], PASSWORD_DEFAULT);
-		$verifKey = md5(time().$lastname); //Génère une clé avec le nom
+			$queryPrepared->execute(
+				[
+					"nom"=>$_POST["lastname"],
+					"prenom"=>$_POST["firstname"],
+					"mail"=>$_POST["email"],
+					"mdp"=>$pwd,
+					"date_naissance" => $_POST["birthday"],
+					"numero_telephone" => $_POST["phone"],
+					"adresse" => $_POST["address"],
+					"code_postal" => $_POST["zip"],
+					"ville" => $_POST["city"],
+					"pays" => $_POST["country"],
+					"check_mail"=>$verifKey
+				]
 
-		$queryPrepared->execute(
-			[
-				"status" => "particulier",
-				"nom"=>$_POST["lastname"],
-				"prenom"=>$_POST["firstname"],
-				"mail"=>$_POST["email"],
-				"mdp"=>$pwd,
-				"date_naissance" => $_POST["birthday"],
-				"numero_telephone" => $_POST["phone"],
-				"adresse" => $_POST["address"],
-				"code_postal" => $_POST["zip"],
-				"ville" => $_POST["city"],
-				"pays" => $_POST["country"],
-				"check_mail"=>$verifKey
-			]
-
-		);
+			);
 		//echo "Un mail de confirmation vous a été envoyé. Veuillez vérifier SVP.";
 		//echo "N'oubliez pas de vérifier les spams si besoin";
 
 		//Envoi mail de verification
-		$email = htmlspecialchars($_POST["email"]);
-if ($_SESSION['mail'] != $email){
-    if($queryPrepared) {
-        $to = $email;
-        $subject = "NoMoreWaste : Vérification du mail";
-        $message = " Veuillez cliquer sur le lien suivant afin de vérifier votre compte : <a href='https://nomorewaste.online/mail/verifyMail.php?code_verif=$verifKey'>Valider mon compte</a><br/>\n ";
-        $message .= "En cas de problème essayez ce lien : https://nomorewaste.online/mail/verifyMail.php?code_verif=$verifKey";
-        $header="MIME-Version: 1.0\r\n";
-        $header.='Content-Type:text/html; charset="uft-8"'."\r\n";
-        $header.='Content-Transfer-Encoding: 8bit'."\r\n";
-        $header .= 'From: <cheikh.kane@nomorewaste.online>' . "\r\n";
-        mail($to,$subject,$message,$header);
-    }
-    $listOfErrors[] = ["Un mail de confirmation vous a été envoyé (Voir spams / courriers indésirables)"];
-}
+			$email = htmlspecialchars($_POST["email"]);
+
+		    if($queryPrepared) {
+		        $to = $email;
+		        $subject = "NoMoreWaste : Vérification du mail";
+		        $message = " Veuillez cliquer sur le lien suivant afin de vérifier votre compte : <a href='https://nomorewaste.online/mail/verifyMail.php?code_verif=$verifKey'>Valider mon compte</a><br/>\n ";
+		        $message .= "En cas de problème essayez ce lien : https://nomorewaste.online/mail/verifyMail.php?code_verif=$verifKey";
+		        $header="MIME-Version: 1.0\r\n";
+		        $header.='Content-Type:text/html; charset="uft-8"'."\r\n";
+		        $header.='Content-Transfer-Encoding: 8bit'."\r\n";
+		        $header .= 'From: <cheikh.kane@nomorewaste.online>' . "\r\n";
+		        mail($to,$subject,$message,$header);
+		    }
+    		$listOfErrors[] = ["Un mail de confirmation vous a été envoyé (Voir spams / courriers indésirables)"];
+		}else{
+			$queryPrepared = $connect->prepare("INSERT INTO user 
+			(nom, prenom, mdp, date_naissance, numero_telephone, adresse, code_postal, ville, pays) 
+			VALUES (:nom, :prenom, :mdp, :date_naissance, :numero_telephone, :adresse, :code_postal, :ville, :pays)");
+
+			$lastname = htmlspecialchars($_POST["lastname"]);
+			$pwd = password_hash($_POST["pwdConfirm"], PASSWORD_DEFAULT);
+
+			$queryPrepared->execute(
+				[
+					"nom"=>$_POST["lastname"],
+					"prenom"=>$_POST["firstname"],
+					"mdp"=>$pwd,
+					"date_naissance" => $_POST["birthday"],
+					"numero_telephone" => $_POST["phone"],
+					"adresse" => $_POST["address"],
+					"code_postal" => $_POST["zip"],
+					"ville" => $_POST["city"],
+					"pays" => $_POST["country"]
+				]
+
+			);
+		}
     setcookie("errorForm", serialize($listOfErrors));
     redirect("modifyProfile.php");
     die();
