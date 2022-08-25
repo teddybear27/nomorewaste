@@ -178,6 +178,7 @@ $data = $resCurrent->fetch();
                 </div>
               </div>
             </div>
+<form class="form-register" action="modifyProfileBack.php" method="post">
   <div class="col-12 col-xl-4">
     <div class="card card-plain h-100">
       <div class="card-body p-3">
@@ -187,7 +188,7 @@ $data = $resCurrent->fetch();
           </div>
           <div class="col-md-4 text-end">
             <a href="modifyProfile.php">
-              <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Valider"></i>
+              <i class="fa-solid fa-check text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Valider"></i>
             </a>
           </div>
         </div>                  
@@ -486,6 +487,7 @@ $data = $resCurrent->fetch();
       </div>
     </div>
   </div>
+</form>
       </div>
     </div>
 
