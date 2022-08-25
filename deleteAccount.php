@@ -48,7 +48,7 @@ if ($_SESSION["sid"] == 1){
 	}else{
 ?>
 				<p>Etes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.</p>
-				<p>Cliquez sur le lien suivant pour <a href="supDefinitive.php" style="color:red;">supprimer définitivement votre compte</a>.
+				<p>Cliquez sur le lien suivant pour <a href="supDefinitive.php" style="color:red">supprimer définitivement votre compte</a>.
 				</p>
 				<p>Sinon faites précédent pour revenir à la page précédente.</p>
 <?php
@@ -56,7 +56,7 @@ if ($_SESSION["sid"] == 1){
 }else{
 ?>
 				<p>Etes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.</p>
-				<p>Cliquez sur le lien suivant pour <a href="supDefinitive.php" style="color:red;">supprimer définitivement votre compte</a>.
+				<p>Cliquez sur le lien suivant pour <a href="supDefinitive.php" style="color:red">supprimer définitivement votre compte</a>.
 				</p>
 				<p>Sinon faites précédent pour revenir à la page précédente.</p>
 <?php
