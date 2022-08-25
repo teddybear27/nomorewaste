@@ -148,9 +148,6 @@ if ($_SESSION['sid'] != 1){
                         <div class="wizard-header">
                   <h3 class="heading">Formulaire d'incription pour les associations</h3>
                   <p>Veuillez saisir vos informations et procéder à l'étape suivante pour souscrire à une demande d'inscription</p>
-                  <p>Vous avez déjà un compte ?
-                    <a href="login.php">Connectez-vous</a>
-                  </p>
                 </div>
                 <div class="form-row">
                   <div class="form-holder form-holder-2">
@@ -210,8 +207,6 @@ if ($_SESSION['sid'] != 1){
                         <div class="wizard-header">
                   <h3 class="heading">Formulaire d'incription pour les commerces</h3>
                   <p>Veuillez saisir vos informations et procéder à l'étape suivante pour souscrire à une demande d'inscription</p>
-                  <p>Vous avez déjà un compte ?
-                    <a href="login.php">Connectez-vous</a></p>
                 </div>
                 <div class="form-row">
                   <div class="form-holder form-holder-2">
