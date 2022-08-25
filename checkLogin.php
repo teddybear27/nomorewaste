@@ -29,6 +29,7 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
 
     $error = false;
     $acteur = 'nobody';
+    $_SESSION["mail"] = $_POST["emailLogin"];
 
     // Conditions connexion User, Shop, Organization
     if (!empty($resultUser)){
@@ -117,20 +118,16 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
             $error = false;
             if ($_SESSION["status"]  == "admin") {
                 $_SESSION['sid'] = 1;
-                $_SESSION["mail"] = $_POST["emailLogin"];
                 redirect("admin/dashboard.php");
             }else{
                 $_SESSION['sid'] = 2;
-                $_SESSION["mail"] = $_POST["emailLogin"];
                 redirect("particulier/particulier.php");
             }
         }else if ($acteur == 'shop'){
             $_SESSION['sid'] = 3;
-            $_SESSION["mail"] = $_POST["emailLogin"];
             redirect("commerce/commerce.php");
         }else if ($acteur == 'organization'){
             $_SESSION['sid'] = 4;
-            $_SESSION["mail"] = $_POST["emailLogin"];
             redirect("association/association.php");
         }
     }
