@@ -179,8 +179,7 @@ if ($_SESSION['mail'] != $_POST["email"]){
 		    }
     		$listOfErrors[] = ["Un mail de confirmation vous a été envoyé (Voir spams / courriers indésirables)"];
 		}else{
-			$queryPrepared = $connect->prepare("UPDATE user SET nom = :nom, prenom = :prenom, mdp = :mdp, date_naissance = :date_naissance, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays) 
-			WHERE mail = '$currentMail'");
+			$queryPrepared = $connect->prepare("UPDATE user SET nom = :nom, prenom = :prenom, mdp = :mdp, date_naissance = :date_naissance, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays WHERE mail = '$currentMail'");
 
 			$lastname = htmlspecialchars($_POST["lastname"]);
 			$pwd = password_hash($_POST["pwdConfirm"], PASSWORD_DEFAULT);
