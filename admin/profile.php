@@ -163,7 +163,7 @@ $data = $resCurrent->fetch();
                     <div class="col-md-4 text-end">
                       <a href="modifyProfile.php">
                         <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Editer"></i>
-                      </a> class="col-md-4 text-end">
+                      </a>
                       <a href="../deleteAccount.php">
                         <i class="fa fa-trash-o text-secondary text-sm" style="color:red" data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer compte"></i>
                       </a>
