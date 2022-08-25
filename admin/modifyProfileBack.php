@@ -45,6 +45,7 @@ if( count($_POST) == 11
 			$listOfErrors[] = "Votre prénom doit faire entre 2 et 50 caractères";
 	}
 
+if ($_SESSION['mail'] != $_POST["email"]){
 	// Vérifier email
 
 	if( !filter_var($_POST["email"], FILTER_VALIDATE_EMAIL) ){
@@ -54,6 +55,7 @@ if( count($_POST) == 11
 			$error = true;
 			$listOfErrors[] = "Cette adresse mail est déjà utilisé";
 	}
+}
 
 	//// Vérifier birthday
     //2022-08-03
@@ -103,7 +105,7 @@ if( count($_POST) == 11
 		!preg_match("#[A-Z]#", $_POST["pwd"]) ||
 		!preg_match("#[0-9]#", $_POST["pwd"]) ||
 		strlen( $_POST["pwd"]) < 6 ||
-		strlen( $_POST["pwd"]) > 30 
+		strlen( $_POST["pwd"]) > 300 
 	){
 			$error = true;
 			$listOfErrors[] = "Votre mot de passe est incorrect. Il doit comporter au minimum 6 caractères, une majuscule et un chiffre.";
