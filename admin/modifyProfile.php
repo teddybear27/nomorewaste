@@ -162,9 +162,6 @@ $data = $resCurrent->fetch();
           <div class="col-md-8 d-flex align-items-center">
             <h6 class="mb-0">Modification Informations</h6>
           </div>
-          <div class="col-md-4 text-end">
-              <i class="fas fa-check text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Valider"><input type="submit" name=""></i>
-          </div>
         </div>                  
         <hr class="horizontal gray-light my-4">
         <ul class="list-group">
@@ -457,6 +454,7 @@ $data = $resCurrent->fetch();
 
 </select>
           </li>
+          <input type="submit" name="">
         </ul>
       </div>
     </div>
