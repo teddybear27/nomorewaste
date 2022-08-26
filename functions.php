@@ -168,11 +168,13 @@ function logout(){
 	$curMail = $_SESSION['mail'];
 	$connect = connectDB();
 	
-	if ($_SESSION["online"] == 1 || $_SESSION["online"] == 2){
+	if ($_SESSION["online"] == 1 
+	 || $_SESSION["online"] == 2 
+	 || $_SESSION["online"] == 3){
 		$connect->query("UPDATE user SET online='0' where  mail='$curMail'");
-	}else if ($_SESSION["online"] == 3){
+	}else if ($_SESSION["online"] == 4){
 		$connect->query("UPDATE shop SET online='0' where  mail='$curMail'");
-	}else if ($_SESSION["online"] == 3){
+	}else if ($_SESSION["online"] == 5){
 		$connect->query("UPDATE organization SET online='0' where  mail='$curMail'");
 	}
 	session_destroy();
