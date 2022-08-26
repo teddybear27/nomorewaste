@@ -200,7 +200,7 @@ if ($_SESSION['mail'] != $_POST["email"]){
 			);
 		}
     setcookie("errorForm", serialize($listOfErrors));
-    redirect("modifyProfile.php");
+    redirect("profile.php");
     die();
 		
 	}
