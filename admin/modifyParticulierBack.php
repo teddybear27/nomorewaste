@@ -44,7 +44,7 @@ if( count($_POST) == 9
 			$listOfErrors[] = "Votre prénom doit faire entre 2 et 50 caractères";
 	}
 $mailChanged = 0;
-if ($_SESSION['mail'] != $_POST["email"]){
+if ($userMail != $_POST["email"]){
 	// Vérifier email
 
 	if( !filter_var($_POST["email"], FILTER_VALIDATE_EMAIL) ){
