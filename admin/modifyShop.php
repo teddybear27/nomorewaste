@@ -8,8 +8,8 @@ if ($_SESSION['sid'] != 1){
 
 $connect = connectDB();
 
-$adresseElectronique = $_POST['modifyP'];
-$q = "SELECT * FROM user WHERE mail = '$adresseElectronique'";
+$adresseElectronique = $_POST['modifyS'];
+$q = "SELECT * FROM shop WHERE mail = '$adresseElectronique'";
 $res = $connect->query($q);
 $data = $res->fetch();
 
@@ -24,7 +24,7 @@ $data = $res->fetch();
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Modification Particulier
+    Modification Commerce
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -60,7 +60,7 @@ $data = $res->fetch();
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="particuliers.php">
+          <a class="nav-link text-white " href="particuliers.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">person</i>
             </div>
@@ -68,7 +68,7 @@ $data = $res->fetch();
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="commerces.php">
+          <a class="nav-link text-white active bg-gradient-primary" href="commerces.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
@@ -117,10 +117,10 @@ $data = $res->fetch();
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Admin</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Particuliers</li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Modification Particulier</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Commerces</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Modification Commerce</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Modification Particulier</h6>
+          <h6 class="font-weight-bolder mb-0">Modification Commerce</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -141,19 +141,22 @@ $data = $res->fetch();
             <div class="card-body p-3">
               <div class="row">
                 <div class="col-md-8 d-flex align-items-center">
-                  <h6 class="mb-0">Modification Particulier</h6>
+                  <h6 class="mb-0">Modification Commerce</h6>
                 </div>
               </div>                  
               <hr class="horizontal gray-light my-4">
               <ul class="list-group">
-                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nom:</strong> &nbsp;
-                  <input type="text" name="lastname" placeholder="Nom de Famille" value="<?=$data["nom"]?>" required>      
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nom du commerce:</strong> &nbsp;
+                  <input type="text" name="shopname" placeholder="Nom du commerce" value="<?=$data["nom"]?>" required>      
                 </li>
-                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Prenom:</strong> &nbsp;
-                  <input type="text"  name="firstname" placeholder="Prénom" value="<?=$data["prenom"]?>" required>        
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Catégorie:</strong> &nbsp;
+                  <input type="text"  name="category" placeholder="Catégorie" value="<?=$data["categorie"]?>" required>        
                 </li>
-                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Date de Naissance:</strong> &nbsp;
-                  <input type="date" name="birthday" placeholder="Date de naissance" value="<?=$data["date_naissance"]?>" required>        
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">SIREN:</strong> &nbsp;
+                  <input type="text"  name="siren" placeholder="SIREN" value="<?=$data["siren"]?>" required>        
+                </li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Année immatriculation:</strong> &nbsp;
+                  <input type="date" name="regYear" placeholder="Année immatriculation" value="<?=$data["annee_immatriculation"]?>" required>        
                 </li>
                 <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Téléphone:</strong> &nbsp; 
                   <input type="text" name="phone" placeholder="0612345789" value="<?=$data["numero_telephone"]?>" required>
@@ -430,7 +433,7 @@ $data = $res->fetch();
       </select>
                 </li>
                 <input type="submit" id="valider" value="Soumettre">
-                <input type="hidden" name="modifyP" value="<?=$data["mail"]?>">
+                <input type="hidden" name="modifyS" value="<?=$data["mail"]?>">
               </ul>
             </div>
           </div>

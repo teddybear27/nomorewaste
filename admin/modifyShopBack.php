@@ -2,11 +2,12 @@
 session_start();
 require "../functions.php";
 
-if( count($_POST) == 10 
-	&& !empty($_POST["lastname"])
-	&& !empty($_POST["firstname"])
+if( count($_POST) == 11 
+	&& !empty($_POST["shopname"])
+	&& !empty($_POST["category"])
+	&& !empty($_POST["siren"])
 	&& !empty($_POST["email"])
-	&& !empty($_POST["birthday"])
+	&& !empty($_POST["regYear"])
 	&& !empty($_POST["phone"])
 	&& !empty($_POST["address"])
 	&& !empty($_POST["zip"])
@@ -16,11 +17,11 @@ if( count($_POST) == 10
 	$connect = connectDB();
 
 	//Nettoyage
-	$_POST["lastname"] = strtoupper(trim($_POST["lastname"]));
-	$_POST["firstname"] = ucwords(strtolower(trim($_POST["firstname"])));
+	$_POST["shopname"] = ucwords(strtolower(trim($_POST["shopname"])));
+	$_POST["category"] = ucwords(strtolower(trim($_POST["category"])));
+	$_POST["siren"] = trim($_POST["siren"]);
 	$_POST["phone"] = trim($_POST["phone"]);
 	$_POST["email"] = strtolower(trim($_POST["email"]));
-	$_POST["birthday"] = trim($_POST["birthday"]);
 	$_POST["address"] = trim($_POST["address"]);
 	$_POST["zip"] = trim($_POST["zip"]);
 	$_POST["city"] = ucwords(strtolower(trim($_POST["city"])));
@@ -28,23 +29,30 @@ if( count($_POST) == 10
 
 	$error = false;
 	$listOfErrors = [];
-	$userMail = $_POST['modifyP'];
+	$shopMail = $_POST['modifyS'];
 
-	//lastname
+	//shopname
 
-	if( strlen($_POST["lastname"])<2  || strlen($_POST["lastname"])>100 ){
+	if( strlen($_POST["shopname"])<2  || strlen($_POST["shopname"])>100 ){
 			$error = true;
 			$listOfErrors[] = "Votre nom doit faire entre 2 et 100 caractères";
 	}
 
-	//firstname
+	//category
 
-	if( strlen($_POST["firstname"])<2  || strlen($_POST["firstname"])>50 ){
+	if( strlen($_POST["category"])<2  || strlen($_POST["category"])>100 ){
 			$error = true;
 			$listOfErrors[] = "Votre prénom doit faire entre 2 et 50 caractères";
 	}
+
+	//SIREN
+
+	if( strlen($_POST["siren"])<9  || strlen($_POST["siren"])>9 ){
+			$error = true;
+			$listOfErrors[] = "Votre numero de SIREN doit faire 9 caractères";
+	}
 $mailChanged = 0;
-if ($userMail != $_POST["email"]){
+if ($shopMail != $_POST["email"]){
 	// Vérifier email
 
 	if( !filter_var($_POST["email"], FILTER_VALIDATE_EMAIL) ){
@@ -52,50 +60,17 @@ if ($userMail != $_POST["email"]){
 			$listOfErrors[] = "Votre email est incorrect";
 	}else if(  emailExist($connect, $_POST['email'])  ){
 			$error = true;
-			$listOfErrors[] = "Cette adresse mail est déjà utilisée";
+			$listOfErrors[] = "Cette adresse mail est déjà utilisé";
 	}
 	$mailChanged = 1;
 }
 
-	//// Vérifier birthday
-    //2022-08-03
-    //03/08/2022
-  if(
-      !preg_match("#^[0-9]{2}/[0-9]{2}/[0-9]{4}$#", $_POST["birthday"]) &&
-      !preg_match("#^[0-9]{4}-[0-9]{2}-[0-9]{2}$#", $_POST["birthday"])
-  ){
-    //Format incorrect
-    	$error = true;
-  }else{
+	// regYear
 
-    $birthdayExploded = explode("/", $_POST["birthday"]);
-    if( count($birthdayExploded) == 3) {
-    		$_POST["birthday"] = $birthdayExploded[2]."-".$birthdayExploded[1]."-".$birthdayExploded[0];
-    }
-
-
-    $birthdayExploded = explode("-", $_POST["birthday"]);
-
-    if(!checkdate($birthdayExploded[1], $birthdayExploded[2], $birthdayExploded[0])){
-        $error = true;
-    }else{
-
-        $birthdaySec = strtotime($_POST["birthday"]);
-        $timeToDay =  time();
-
-        $ageSec = $timeToDay-$birthdaySec;
-        $age = $ageSec / 3600 / 24 / 365.25;
-
-
-        if($age < 18){
-        	$error = true;
-        	$listOfErrors[] = "Vous n'avez pas l'âge requis pour vous inscrire (18ans minimum)";
-        }else if($age > 110){
-            $error = true;
-            $listOfErrors[] = "Il se peut que vous vous soyez trompés sur l'année de votre anniversaire";
-        }
-    }
-  }
+	if( strlen($_POST["regYear"])<4  || strlen($_POST["regYear"])>4 ){
+			$error = true;
+			$listOfErrors[] = "Votre Année Immatriculation doit faire 4 caractères";
+	}
 
 
 	//Vérifier le format du phone -> regex
@@ -109,21 +84,22 @@ if ($userMail != $_POST["email"]){
 	if($error){
 		
 			setcookie("errorForm", serialize($listOfErrors));	
-			header("Location: modifyParticulier.php");
+			header("Location: modifyShop.php");
 
 	}else{		
 		if ($mailChanged == 1){
-			$queryPrepared = $connect->prepare("UPDATE user SET nom = :nom, prenom = :prenom, mail = :mail, date_naissance = :date_naissance, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays, check_mail = :check_mail WHERE mail = '$userMail'");
+			$queryPrepared = $connect->prepare("UPDATE user SET nom = :nom, categorie = :categorie, siren = :siren, mail = :mail, annee_immatriculation = :annee_immatriculation, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays, check_mail = :check_mail WHERE mail = '$shopMail'");
 
-			$lastname = htmlspecialchars($_POST["lastname"]);
-			$verifKey = md5(time().$lastname); //Génère une clé avec le nom
+			$shopname = htmlspecialchars($_POST["shopname"]);
+			$verifKey = md5(time().$shopname); //Génère une clé avec le nom
 
 			$queryPrepared->execute(
 				[
-					"nom"=>$_POST["lastname"],
-					"prenom"=>$_POST["firstname"],
+					"nom"=>$_POST["shopname"],
+					"categorie"=>$_POST["category"],
+					"siren" =>$_POST["siren"],
 					"mail"=>$_POST["email"],
-					"date_naissance" => $_POST["birthday"],
+					"annee_immatriculation" => $_POST["regYear"],
 					"numero_telephone" => $_POST["phone"],
 					"adresse" => $_POST["address"],
 					"code_postal" => $_POST["zip"],
@@ -152,13 +128,14 @@ if ($userMail != $_POST["email"]){
 		    }
     		$listOfErrors[] = ["Un mail de confirmation vous a été envoyé (Voir spams / courriers indésirables)"];
 		}else{
-			$queryPrepared = $connect->prepare("UPDATE user SET nom = :nom, prenom = :prenom, date_naissance = :date_naissance, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays WHERE mail = '$userMail'");
+			$queryPrepared = $connect->prepare("UPDATE user SET nom = :nom, categorie = :categorie, siren = :siren, annee_immatriculation = :annee_immatriculation, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays WHERE mail = '$shopMail'");
 
 			$queryPrepared->execute(
 				[
-					"nom"=>$_POST["lastname"],
-					"prenom"=>$_POST["firstname"],
-					"date_naissance" => $_POST["birthday"],
+					"nom"=>$_POST["shopname"],
+					"categorie"=>$_POST["category"],
+					"siren" =>$_POST["siren"],
+					"annee_immatriculation" => $_POST["regYear"],
 					"numero_telephone" => $_POST["phone"],
 					"adresse" => $_POST["address"],
 					"code_postal" => $_POST["zip"],
@@ -169,7 +146,7 @@ if ($userMail != $_POST["email"]){
 			);
 		}
     setcookie("errorForm", serialize($listOfErrors));
-    redirect("particuliers.php");
+    redirect("commerces.php");
     die();
 		
 	}
