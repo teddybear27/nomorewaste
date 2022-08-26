@@ -118,7 +118,7 @@ $data = $resCurrent->fetch();
               <h5 class="mb-1">
                 <?=$data["nom"]?>
               </h5>
-              <p class="mb-0 font-weight-normal text-sm"><?=$data["categorie"]?></p>
+              <p class="mb-0 font-weight-normal text-sm">Association</p>
             </div>
           </div>          
         </div>
