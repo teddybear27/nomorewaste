@@ -7,12 +7,11 @@ if ($_SESSION['sid'] != 1){
 }
 
 $connect = connectDB();
-if (isset($_POST['modifyP'])){
-  $adresseElectronique = $_POST['modifyP'];
-}
-  $q = "SELECT * FROM user WHERE mail = '$adresseElectronique'";
-  $res = $connect->query($q);
-  $data = $res->fetch();
+
+$adresseElectronique = $_POST['modifyP'];
+$q = "SELECT * FROM user WHERE mail = '$adresseElectronique'";
+$res = $connect->query($q);
+$data = $res->fetch();
 
 ?>
 

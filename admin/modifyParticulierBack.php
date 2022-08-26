@@ -172,7 +172,7 @@ if ($userMail != $_POST["email"]){
 			);
 		}
     setcookie("errorForm", serialize($listOfErrors));
-    redirect("modifyParticulier.php");
+    redirect("particuliers.php");
     die();
 		
 	}
