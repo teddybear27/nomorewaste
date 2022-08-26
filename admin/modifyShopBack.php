@@ -127,6 +127,7 @@ if ($shopMail != $_POST["email"]){
 		        mail($to,$subject,$message,$header);
 		    }
     		$listOfErrors[] = ["Un mail de confirmation vous a été envoyé (Voir spams / courriers indésirables)"];
+    		$_SESSION['mail'] = $_POST["email"];
 		}else{
 			$queryPrepared = $connect->prepare("UPDATE shop SET nom = :nom, categorie = :categorie, siren = :siren, annee_immatriculation = :annee_immatriculation, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays WHERE mail = '$shopMail'");
 

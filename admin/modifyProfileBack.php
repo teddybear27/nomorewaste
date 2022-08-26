@@ -177,6 +177,7 @@ if ($_SESSION['mail'] != $_POST["email"]){
 		        mail($to,$subject,$message,$header);
 		    }
     		$listOfErrors[] = ["Un mail de confirmation vous a été envoyé (Voir spams / courriers indésirables)"];
+    		$_SESSION['mail'] = $_POST["email"];
 		}else{
 			$queryPrepared = $connect->prepare("UPDATE user SET nom = :nom, prenom = :prenom, mdp = :mdp, date_naissance = :date_naissance, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays WHERE mail = '$currentMail'");
 
