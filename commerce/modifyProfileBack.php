@@ -21,7 +21,7 @@ if( count($_POST) == 12
 	//Nettoyage
 	$_POST["shopname"] = strtoupper(trim($_POST["shopname"]));
 	$_POST["category"] = strtoupper(trim($_POST["category"]));
-	$_POST["category"] = ucwords(strtolower(trim($_POST["category"])));
+	$_POST["siren"] = ucwords(strtolower(trim($_POST["siren"])));
 	$_POST["phone"] = trim($_POST["phone"]);
 	$_POST["email"] = strtolower(trim($_POST["email"]));
 	$_POST["regYear"] = trim($_POST["regYear"]);

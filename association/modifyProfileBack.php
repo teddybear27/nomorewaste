@@ -3,10 +3,10 @@ session_start();
 require "../functions.php";
 
 if( count($_POST) == 11 
-	&& !empty($_POST["shopname"])
-	&& !empty($_POST["category"])
+	&& !empty($_POST["organizationName"])
 	&& !empty($_POST["email"])
-	&& !empty($_POST["regYear"])
+	&& !empty($_POST["creationYear"])
+	&& !empty($_POST["siren"])
 	&& !empty($_POST["pwd"])
 	&& !empty($_POST["pwdConfirm"])
 	&& !empty($_POST["phone"])
@@ -18,12 +18,11 @@ if( count($_POST) == 11
 	$connect = connectDB();
 
 	//Nettoyage
-	$_POST["shopname"] = strtoupper(trim($_POST["shopname"]));
-	$_POST["category"] = strtoupper(trim($_POST["category"]));
-	$_POST["category"] = ucwords(strtolower(trim($_POST["category"])));
+	$_POST["organizationName"] = strtoupper(trim($_POST["organizationName"]));
+	$_POST["siren"] = ucwords(strtolower(trim($_POST["siren"])));
 	$_POST["phone"] = trim($_POST["phone"]);
 	$_POST["email"] = strtolower(trim($_POST["email"]));
-	$_POST["regYear"] = trim($_POST["regYear"]);
+	$_POST["creationYear"] = trim($_POST["creationYear"]);
 	$_POST["address"] = trim($_POST["address"]);
 	$_POST["zip"] = trim($_POST["zip"]);
 	$_POST["city"] = ucwords(strtolower(trim($_POST["city"])));
@@ -33,19 +32,20 @@ if( count($_POST) == 11
 	$listOfErrors = [];
 	$currentMail = $_SESSION['mail'];
 
-	//shopname
+	//organizationName
 
-	if( strlen($_POST["shopname"])<2  || strlen($_POST["shopname"])>100 ){
+	if( strlen($_POST["organizationName"])<2  || strlen($_POST["organizationName"])>100 ){
 			$error = true;
 			$listOfErrors[] = "Votre nom doit faire entre 2 et 100 caractères";
 	}
 
-	//category
+	//SIREN
 
-	if( strlen($_POST["category"])<2  || strlen($_POST["category"])>100 ){
+	if( strlen($_POST["siren"])<9  || strlen($_POST["siren"])>9 ){
 			$error = true;
-			$listOfErrors[] = "Votre prénom doit faire entre 2 et 50 caractères";
+			$listOfErrors[] = "Votre numero de SIREN doit faire 9 caractères";
 	}
+
 $mailChanged = 0;
 if ($_SESSION['mail'] != $_POST["email"]){
 	// Vérifier email
@@ -98,19 +98,19 @@ if ($_SESSION['mail'] != $_POST["email"]){
 
 	}else{		
 		if ($mailChanged == 1){
-			$queryPrepared = $connect->prepare("UPDATE shop SET nom = :nom, categorie = :categorie, mail = :mail, mdp = :mdp, annee_immatriculation = :annee_immatriculation, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays, check_mail = :check_mail WHERE mail = '$currentMail'");
+			$queryPrepared = $connect->prepare("UPDATE organization SET nom = :nom, siren = :siren, mail = :mail, mdp = :mdp, annee_creation = :annee_creation, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays, check_mail = :check_mail WHERE mail = '$currentMail'");
 
-			$shopname = htmlspecialchars($_POST["shopname"]);
+			$organizationName = htmlspecialchars($_POST["organizationName"]);
 			$pwd = password_hash($_POST["pwdConfirm"], PASSWORD_DEFAULT);
-			$verifKey = md5(time().$shopname); //Génère une clé avec le nom
+			$verifKey = md5(time().$organizationName); //Génère une clé avec le nom
 
 			$queryPrepared->execute(
 				[
-					"nom"=>$_POST["shopname"],
-					"categorie"=>$_POST["category"],
+					"nom"=>$_POST["organizationName"],
+					"siren"=>$_POST["siren"],
 					"mail"=>$_POST["email"],
 					"mdp"=>$pwd,
-					"annee_immatriculation" => $_POST["regYear"],
+					"annee_creation" => $_POST["creationYear"],
 					"numero_telephone" => $_POST["phone"],
 					"adresse" => $_POST["address"],
 					"code_postal" => $_POST["zip"],
@@ -140,17 +140,17 @@ if ($_SESSION['mail'] != $_POST["email"]){
     		$listOfErrors[] = ["Un mail de confirmation vous a été envoyé (Voir spams / courriers indésirables)"];
     		$_SESSION['mail'] = $_POST["email"];
 		}else{
-			$queryPrepared = $connect->prepare("UPDATE shop SET nom = :nom, categorie = :categorie, mdp = :mdp, annee_immatriculation = :annee_immatriculation, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays WHERE mail = '$currentMail'");
+			$queryPrepared = $connect->prepare("UPDATE organization SET nom = :nom, siren = :siren, mdp = :mdp, annee_creation = :annee_creation, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays WHERE mail = '$currentMail'");
 
-			$shopname = htmlspecialchars($_POST["shopname"]);
+			$organizationName = htmlspecialchars($_POST["organizationName"]);
 			$pwd = password_hash($_POST["pwdConfirm"], PASSWORD_DEFAULT);
 
 			$queryPrepared->execute(
 				[
-					"nom"=>$_POST["shopname"],
-					"categorie"=>$_POST["category"],
+					"nom"=>$_POST["organizationName"],
+					"siren"=>$_POST["siren"],
 					"mdp"=>$pwd,
-					"annee_immatriculation" => $_POST["regYear"],
+					"annee_creation" => $_POST["creationYear"],
 					"numero_telephone" => $_POST["phone"],
 					"adresse" => $_POST["address"],
 					"code_postal" => $_POST["zip"],

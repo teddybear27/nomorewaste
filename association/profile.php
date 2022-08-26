@@ -2,7 +2,7 @@
 session_start();
 require "../functions.php";
 
-if ($_SESSION['sid'] != 4){
+if ($_SESSION['sid'] != 5){
   redirect("../denied.php");
 }
 
@@ -150,7 +150,8 @@ $data = $resCurrent->fetch();
                 <div class="card-body p-3">                  
                   <hr class="horizontal gray-light my-4">
                   <ul class="list-group">
-                    <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Annee Immatriculation:</strong> &nbsp; <?=$data["annee_immatriculation"]?></li>
+                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">SIREN:</strong> &nbsp; <?=$data["siren"]?></li>
+                    <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Annee Creation:</strong> &nbsp; <?=$data["annee_creation"]?></li>
                     <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Téléphone:</strong> &nbsp; <?=$data["numero_telephone"]?></li>
                     <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; <?=$data["mail"]?></li>
                     <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Adresse:</strong> &nbsp; <?=$data["adresse"]." ".$data["code_postal"]." ".$data["ville"].", ".$data["pays"]?></li>
