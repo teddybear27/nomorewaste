@@ -182,12 +182,13 @@ if (isset($res)){
                       </td>
                       <td class="align-middle">
                         <div class="col-md-4 text-end">
-                          <a href="modifyShop.php">
-                            <i class="fas fa-pencil-alt text-secondary text-sm" style="color: #063b2d;" data-bs-toggle="tooltip" data-bs-placement="top" title="Editer"></i>
-                          </a>
+                          <form action="modifyShop.php" method="post"> 
+                              <input type="submit" style="color:#063b2d" value="Editer">
+                              <input type="hidden" name="modifyS" value="<?=$data["mail"]?>">
+                          </form>
                         </div>
                         <div class="col-md-4 text-end">
-                          <form action="deleteCommerce.php" method="post"> 
+                          <form action="deleteShop.php" method="post"> 
                               <input type="submit" style="color:red" value="Supprimer">
                               <input type="hidden" name="deleteS" value="<?=$data["mail"]?>">
                           </form>
@@ -220,12 +221,13 @@ if (isset($res)){
                       </td>
                       <td class="align-middle">
                         <div class="col-md-4 text-end">
-                          <a href="modifyShop.php">
-                            <i class="fas fa-pencil-alt text-secondary text-sm" style="color: #063b2d;" data-bs-toggle="tooltip" data-bs-placement="top" title="Editer"></i>
-                          </a>
+                          <form action="modifyShop.php" method="post"> 
+                              <input type="submit" style="color:#063b2d" value="Editer">
+                              <input type="hidden" name="modifyS" value="<?=$data["mail"]?>">
+                          </form>
                         </div>
                         <div class="col-md-4 text-end">
-                          <form action="deleteCommerce.php" method="post"> 
+                          <form action="deleteShop.php" method="post"> 
                               <input type="submit" style="color:red" value="Supprimer">
                               <input type="hidden" name="deleteS" value="<?=$data["mail"]?>">
                           </form>

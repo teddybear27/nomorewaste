@@ -178,9 +178,10 @@ if (isset($res)){
                       </td>
                       <td class="align-middle">
                         <div class="col-md-4 text-end">
-                          <a href="modifyOrganization.php">
-                            <i class="fas fa-pencil-alt text-secondary text-sm" style="color: #063b2d;" data-bs-toggle="tooltip" data-bs-placement="top" title="Editer"></i>
-                          </a>
+                          <form action="modifyOrganization.php" method="post"> 
+                              <input type="submit" style="color:#063b2d" value="Editer">
+                              <input type="hidden" name="modifyO" value="<?=$data["mail"]?>">
+                          </form>
                         </div>
                         <div class="col-md-4 text-end">
                           <form action="deleteOrganization.php" method="post"> 
@@ -213,9 +214,10 @@ if (isset($res)){
                       </td>
                       <td class="align-middle">
                         <div class="col-md-4 text-end">
-                          <a href="modifyOrganization.php">
-                            <i class="fas fa-pencil-alt text-secondary text-sm" style="color: #063b2d;" data-bs-toggle="tooltip" data-bs-placement="top" title="Editer"></i>
-                          </a>
+                          <form action="modifyOrganization.php" method="post"> 
+                              <input type="submit" style="color:#063b2d" value="Editer">
+                              <input type="hidden" name="modifyO" value="<?=$data["mail"]?>">
+                          </form>
                         </div>
                         <div class="col-md-4 text-end">
                           <form action="deleteOrganization.php" method="post"> 
