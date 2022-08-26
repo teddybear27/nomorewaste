@@ -7,7 +7,10 @@ if ($_SESSION['sid'] != 1){
 }
 
 $connect = connectDB();
-$res = getUsers($connect);
+
+$adresseElectronique = $_POST['modifyP'];
+$q = "SELECT * FROM user WHERE mail = '$adresseElectronique'";
+$res = $connect->query($q);
 ?>
 
 <!DOCTYPE html>
@@ -447,7 +450,7 @@ $res = getUsers($connect);
 ?>
         <li>
 <?php
-        echo($error[]);
+        echo($error);
       }
 ?>
       </ul>
