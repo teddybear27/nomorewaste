@@ -6,7 +6,7 @@ if( count($_POST) == 11
 	&& !empty($_POST["shopname"])
 	&& !empty($_POST["category"])
 	&& !empty($_POST["email"])
-	&& !empty($_POST["annee_immatriculation"])
+	&& !empty($_POST["regYear"])
 	&& !empty($_POST["pwd"])
 	&& !empty($_POST["pwdConfirm"])
 	&& !empty($_POST["phone"])
@@ -23,7 +23,7 @@ if( count($_POST) == 11
 	$_POST["category"] = ucwords(strtolower(trim($_POST["category"])));
 	$_POST["phone"] = trim($_POST["phone"]);
 	$_POST["email"] = strtolower(trim($_POST["email"]));
-	$_POST["annee_immatriculation"] = trim($_POST["annee_immatriculation"]);
+	$_POST["regYear"] = trim($_POST["regYear"]);
 	$_POST["address"] = trim($_POST["address"]);
 	$_POST["zip"] = trim($_POST["zip"]);
 	$_POST["city"] = ucwords(strtolower(trim($_POST["city"])));
@@ -110,7 +110,7 @@ if ($_SESSION['mail'] != $_POST["email"]){
 					"categorie"=>$_POST["category"],
 					"mail"=>$_POST["email"],
 					"mdp"=>$pwd,
-					"annee_immatriculation" => $_POST["annee_immatriculation"],
+					"annee_immatriculation" => $_POST["regYear"],
 					"numero_telephone" => $_POST["phone"],
 					"adresse" => $_POST["address"],
 					"code_postal" => $_POST["zip"],
@@ -150,7 +150,7 @@ if ($_SESSION['mail'] != $_POST["email"]){
 					"nom"=>$_POST["shopname"],
 					"categorie"=>$_POST["category"],
 					"mdp"=>$pwd,
-					"annee_immatriculation" => $_POST["annee_immatriculation"],
+					"annee_immatriculation" => $_POST["regYear"],
 					"numero_telephone" => $_POST["phone"],
 					"adresse" => $_POST["address"],
 					"code_postal" => $_POST["zip"],
