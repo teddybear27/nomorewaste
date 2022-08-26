@@ -60,8 +60,8 @@ function getUsers($db) {
 	return $results;
 }
 
-function getUsersMembers($db) {
-	$results = $db->query("SELECT * from user where status = 'adherent'");	
+function getUsersVolunteers($db) {
+	$results = $db->query("SELECT * from user where status = 'benevole'");	
 	return $results;
 }
 

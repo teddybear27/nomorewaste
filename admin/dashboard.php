@@ -8,7 +8,7 @@ if ($_SESSION['sid'] != 1){
 
 $connect = connectDB();
 $resUsers = getUsers($connect);
-$resUsersMembers = getUsersMembers($connect);
+$resUsersVolunteers = getUsersVolunteers($connect);
 $resShops = getShops($connect);
 $resShopsToValidate = getShopsToValidate($connect);
 $resOrg = getOrganizations($connect);
@@ -83,6 +83,14 @@ $resCartsToShip = getCartsToShip($connect);
               <i class="material-icons opacity-10">assignment</i>
             </div>
             <span class="nav-link-text ms-1">Associations</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="benevoles.php">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">person</i>
+            </div>
+            <span class="nav-link-text ms-1">Bénévoles</span>
           </a>
         </li>
         <li class="nav-item">
@@ -165,9 +173,9 @@ if(!empty($resUsers)){
             <div class="card-footer p-3">
               <p class="mb-0"><span class="text-success text-sm font-weight-bolder">
 <?php
-if(!empty($resUsersMembers)){
+if(!empty($resUsersVolunteers)){
   $i = 0;
-  while ($resUsersMembers->fetch()) {
+  while ($resUsersVolunteers->fetch()) {
     $i += 1;
   }
   echo($i);
@@ -175,7 +183,7 @@ if(!empty($resUsersMembers)){
   echo('0');
 }
 ?>
-               </span>Adhérents</p>
+               </span>Bénévole(s)</p>
             </div>
           </div>
         </div>
