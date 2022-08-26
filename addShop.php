@@ -157,7 +157,7 @@ if( count($_POST) == 12
     }else{    	
     	$listOfErrors[] = "Un mail de confirmation vous a été envoyé (Voir spams / courriers indésirables)";
     	setcookie("errorForm", serialize($listOfErrors));
-    	redirect("register_shop.php");
+    	redirect("login.php");
     }
     
     
