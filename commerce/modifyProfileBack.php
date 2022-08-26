@@ -98,7 +98,7 @@ if ($_SESSION['mail'] != $_POST["email"]){
 
 	}else{		
 		if ($mailChanged == 1){
-			$queryPrepared = $connect->prepare("UPDATE user SET nom = :nom, categorie = :categorie, mail = :mail, mdp = :mdp, annee_immatriculation = :annee_immatriculation, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays, check_mail = :check_mail WHERE mail = '$currentMail'");
+			$queryPrepared = $connect->prepare("UPDATE shop SET nom = :nom, categorie = :categorie, mail = :mail, mdp = :mdp, annee_immatriculation = :annee_immatriculation, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays, check_mail = :check_mail WHERE mail = '$currentMail'");
 
 			$shopname = htmlspecialchars($_POST["shopname"]);
 			$pwd = password_hash($_POST["pwdConfirm"], PASSWORD_DEFAULT);
@@ -140,7 +140,7 @@ if ($_SESSION['mail'] != $_POST["email"]){
     		$listOfErrors[] = ["Un mail de confirmation vous a été envoyé (Voir spams / courriers indésirables)"];
     		$_SESSION['mail'] = $_POST["email"];
 		}else{
-			$queryPrepared = $connect->prepare("UPDATE user SET nom = :nom, categorie = :categorie, mdp = :mdp, annee_immatriculation = :annee_immatriculation, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays WHERE mail = '$currentMail'");
+			$queryPrepared = $connect->prepare("UPDATE shop SET nom = :nom, categorie = :categorie, mdp = :mdp, annee_immatriculation = :annee_immatriculation, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays WHERE mail = '$currentMail'");
 
 			$shopname = htmlspecialchars($_POST["shopname"]);
 			$pwd = password_hash($_POST["pwdConfirm"], PASSWORD_DEFAULT);
