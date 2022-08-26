@@ -403,11 +403,8 @@
 			<ul>
 <?php
 			$listOfErrors = unserialize($_COOKIE['errorForm']);
-			foreach ($listOfErrors as $error) {
-?>
-				<li>
-<?php
-				echo($error);
+			foreach($myarray as $ma){
+				echo $ma . '<br>';
 			}
 ?>
 			</ul>
