@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>No More Waste - Inscription Particulier</title>
+	<title>No More Waste - Inscription Benevole</title>
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<!-- Font-->
@@ -21,7 +21,7 @@
 	<div class="page-content">
 		<div class="form-v1-content">
 			<div class="wizard-form">
-		        <form class="form-register" action="addUser.php" method="post">
+		        <form class="form-register" action="addVolunteer.php" method="post">
 		        	<div id="form-total">
 		        		<!-- SECTION 1 -->
 			            <h2>
@@ -31,7 +31,7 @@
 			            <section>
 			                <div class="inner">
 			                	<div class="wizard-header">
-									<h3 class="heading">Inscription Particulier</h3>
+									<h3 class="heading">Inscription Bénévole</h3>
 									<p>Veuillez saisir vos informations et procéder à l'étape suivante pour créer un compte</p>
 									<p>Vous avez déjà un compte ?
 										<a href="login.php">Connectez-vous</a>
@@ -91,7 +91,7 @@
 			            <section>
 			                <div class="inner">
 			                	<div class="wizard-header">
-									<h3 class="heading">Inscription Particulier</h3>
+									<h3 class="heading">Inscription Bénévole</h3>
 									<p>Veuillez saisir vos informations et procéder à l'étape suivante pour créer un compte
 									<p>Vous avez déjà un compte ?
 										<a href="login.php">Connectez-vous</a></p>

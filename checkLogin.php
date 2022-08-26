@@ -122,17 +122,21 @@ if(!empty($_POST["emailLogin"]) && !empty($_POST["pwdLogin"])) {
                 $_SESSION['sid'] = 1;
                 $connect->query("UPDATE user SET online='1' where  mail='$curMail'");
                 redirect("admin/dashboard.php");
-            }else{
+            }else if ($_SESSION["status"]  == "particulier"){
                 $_SESSION['sid'] = 2;
                 $connect->query("UPDATE user SET online='1' where  mail='$curMail'");
                 redirect("particulier/particulier.php");
+            }else{
+                $_SESSION['sid'] = 3;
+                $connect->query("UPDATE user SET online='1' where  mail='$curMail'");
+                redirect("benevole/benevole.php");
             }
         }else if ($acteur == 'shop'){
-            $_SESSION['sid'] = 3;
+            $_SESSION['sid'] = 4;
             $connect->query("UPDATE shop SET online='1' where  mail='$curMail'");
             redirect("commerce/commerce.php");
         }else if ($acteur == 'organization'){
-            $_SESSION['sid'] = 4;
+            $_SESSION['sid'] = 5;
             $connect->query("UPDATE organization SET online='1' where  mail='$curMail'");
             redirect("association/association.php");
         }

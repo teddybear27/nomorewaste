@@ -146,6 +146,15 @@ $data = $res->fetch();
               </div>                  
               <hr class="horizontal gray-light my-4">
               <ul class="list-group">
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Status:</strong> &nbsp;
+                  <select name="status">
+                    <option value="<?=$data["status"]?>" selected="selected">
+                      <?=$data["status"]?>          
+                    </option>
+                    <option value="particulier">particulier </option>
+                    <option value="benevole">benevole </option>
+                  </select>      
+                </li>
                 <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nom:</strong> &nbsp;
                   <input type="text" name="lastname" placeholder="Nom de Famille" value="<?=$data["nom"]?>" required>      
                 </li>

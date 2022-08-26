@@ -30,17 +30,22 @@
 		<p id="slogan">Agissons ensemble contre le gaspillage. Vous êtes un(e) :</p>
 		<div class="button">
 			<p>
-				<a href="register.php">Particuliers</a>
+				<a href="register.php">Particulier</a>
 			</p>
 		</div>
 		<div class="button">
 			<p>
-				<a href="register_shop.php">Commerce</a>
+				<a href="register_shop.php">Commerçant</a>
 			</p>
 		</div>
 		<div class="button">
 			<p>
 				<a href="register_organization.php">Association</a>
+			</p>
+		</div>
+		<div class="button">
+			<p>
+				<a href="register_volunteer.php">Bénévole</a>
 			</p>
 		</div>
 	</div>
