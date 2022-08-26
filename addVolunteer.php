@@ -2,7 +2,7 @@
 session_start();
 require "functions.php";
 
-if( count($_POST) == 12 
+if( count($_POST) == 11 
 	&& !empty($_POST["lastname"])
 	&& !empty($_POST["firstname"])
 	&& !empty($_POST["email"])
