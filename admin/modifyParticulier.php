@@ -452,7 +452,7 @@ $res = getUsers($connect);
 ?>
       </ul>
 <?php
-
+      unset($listOfErrors);
     }
 
 ?>
