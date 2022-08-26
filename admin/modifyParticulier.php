@@ -11,6 +11,7 @@ $connect = connectDB();
 $adresseElectronique = $_POST['modifyP'];
 $q = "SELECT * FROM user WHERE mail = '$adresseElectronique'";
 $res = $connect->query($q);
+$data = $res->fetch();
 ?>
 
 <!DOCTYPE html>
