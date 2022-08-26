@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "functions.php"
+require "functions.php";
 
 if (empty($_SESSION['mail'])){
 	redirect("denied.php");
