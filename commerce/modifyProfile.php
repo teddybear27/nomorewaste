@@ -138,7 +138,7 @@ $data = $resCurrent->fetch();
             <input type="text" name="shopname" placeholder="Nom du Commerce" value="<?=$data["nom"]?>" required>      
           </li>
           <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Catégorie:</strong> &nbsp;
-            <input type="text"  name="category" placeholder="Boulangerie, ..." value="<?=$data["category"]?>" required>        
+            <input type="text"  name="category" placeholder="Boulangerie, ..." value="<?=$data["categorie"]?>" required>        
           </li>
           <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Annee Immatriculation:</strong> &nbsp;
             <input type="date" name="regYear" placeholder="Annee Immatriculation" value="<?=$data["annee_immatriculation"]?>" required>        
