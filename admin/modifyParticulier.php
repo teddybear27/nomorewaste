@@ -445,10 +445,7 @@ $data = $res->fetch();
 ?>
         <li>
 <?php
-        echo '<pre>';
-        print_r($error);
-        echo '</pre>';
-      }
+        echo ($error);      }
 ?>
       </ul>
 <?php
