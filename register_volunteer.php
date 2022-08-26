@@ -403,7 +403,7 @@
 			<ul>
 <?php
 			$listOfErrors = unserialize($_COOKIE['errorForm']);
-			foreach($i = 0; $i<count($listOfErrors); ++$i){
+			for($i = 0; $i<count($listOfErrors); ++$i){
 				echo ($listOfErrors[$i]);
 			}
 ?>
