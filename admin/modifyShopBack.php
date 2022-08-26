@@ -1,7 +1,7 @@
 <?php
 session_start();
 require "../functions.php";
-
+echo(count($_POST));
 if( count($_POST) == 11 
 	&& !empty($_POST["shopname"])
 	&& !empty($_POST["category"])
