@@ -54,6 +54,7 @@ if ($_SESSION["sid"] == 1){
 <?php
 	}
 }else{
+	$_SESSION['deleteAccount'] = 2508;
 ?>
 				<p>Etes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.</p>
 				<p>Cliquez sur le lien suivant pour <a href="supDefinitive.php" style="color:red">supprimer définitivement votre compte</a>.
