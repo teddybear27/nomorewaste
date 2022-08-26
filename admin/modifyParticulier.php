@@ -447,7 +447,7 @@ $res = getUsers($connect);
 ?>
         <li>
 <?php
-        echo((string)$error);
+        echo($error[]);
       }
 ?>
       </ul>
