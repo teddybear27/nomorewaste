@@ -135,7 +135,7 @@ $data = $res->fetch();
     </nav>
     <!-- End Navbar -->
     <div class="container-fluid py-4">
-      <form class="form-register" action="modifyParticulierBack.php" method="post">
+      <form class="form-register" action="modifyShopBack.php" method="post">
         <div class="col-12 col-xl-4">
           <div class="card card-plain h-100">
             <div class="card-body p-3">
