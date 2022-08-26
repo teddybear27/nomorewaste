@@ -2,7 +2,7 @@
 session_start();
 require "../functions.php";
 
-if( count($_POST) == 9 
+if( count($_POST) == 10 
 	&& !empty($_POST["lastname"])
 	&& !empty($_POST["firstname"])
 	&& !empty($_POST["email"])
