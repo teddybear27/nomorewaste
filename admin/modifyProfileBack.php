@@ -137,8 +137,7 @@ if ($_SESSION['mail'] != $_POST["email"]){
 
 	}else{		
 		if ($mailChanged == 1){
-			$queryPrepared = $connect->prepare("UPDATE user SET nom = :nom, prenom = :prenom, mail = :mail, mdp = :mdp, date_naissance = :date_naissance, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays, check_mail = :check_mail) 
-			WHERE mail = '$currentMail'");
+			$queryPrepared = $connect->prepare("UPDATE user SET nom = :nom, prenom = :prenom, mail = :mail, mdp = :mdp, date_naissance = :date_naissance, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays, check_mail = :check_mail WHERE mail = '$currentMail'");
 
 			$lastname = htmlspecialchars($_POST["lastname"]);
 			$pwd = password_hash($_POST["pwdConfirm"], PASSWORD_DEFAULT);
