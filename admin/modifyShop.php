@@ -175,7 +175,7 @@ $data = $res->fetch();
                 </li>
                 <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Pays:</strong> &nbsp; 
                   <select name="country">
-      <option value="<?=$data["pays"]?>" selected="selected"> </option>
+      <option value="<?=$data["pays"]?>" selected="selected"><?=$data["pays"]?></option>
 
       <option value="Afghanistan">Afghanistan </option>
       <option value="Afrique_Centrale">Afrique_Centrale </option>
