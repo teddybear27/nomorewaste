@@ -141,7 +141,7 @@ $data = $resCurrent->fetch();
             <input type="text"  name="category" placeholder="Boulangerie, ..." value="<?=$data["categorie"]?>" required>        
           </li>
           <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Annee Immatriculation:</strong> &nbsp;
-            <input type="date" name="regYear" placeholder="Annee Immatriculation" value="<?=$data["annee_immatriculation"]?>" required>        
+            <input type="text" name="regYear" placeholder="Annee Immatriculation" value="<?=$data["annee_immatriculation"]?>" required>        
           </li>
           <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Téléphone:</strong> &nbsp; 
             <input type="text" name="phone" placeholder="0612345789" value="<?=$data["numero_telephone"]?>" required>
