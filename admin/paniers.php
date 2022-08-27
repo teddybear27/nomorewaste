@@ -184,13 +184,13 @@ if (isset($res)){
                         <div class="col-md-4 text-end">
                           <form action="modifyCart.php" method="post"> 
                               <input type="submit" style="color:#063b2d" value="Editer">
-                              <input type="hidden" name="modifyC" value="<?=$data["mail"]?>">
+                              <input type="hidden" name="modifyC" value="<?=$data["id"]?>">
                           </form>
                         </div>
                         <div class="col-md-4 text-end">
                           <form action="deleteCart.php" method="post"> 
                               <input type="submit" style="color:red" value="Supprimer">
-                              <input type="hidden" name="deleteC" value="<?=$data["mail"]?>">
+                              <input type="hidden" name="deleteC" value="<?=$data["id"]?>">
                           </form>
                         </div>
                       </td>
