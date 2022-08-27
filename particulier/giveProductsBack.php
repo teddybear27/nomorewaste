@@ -1,7 +1,7 @@
 <?php
 session_start();
 require "../functions.php";
-
+echo(count($_POST));
 if( count($_POST) == 6 
 	&& !empty($_POST["cartname"])
 	&& !empty($_POST["description"])
