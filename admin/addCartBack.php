@@ -1,7 +1,7 @@
 <?php
 session_start();
 require "../functions.php";
-
+echo(count($_POST));
 if( count($_POST) == 6 
 	&& !empty($_POST["cartname"])
 	&& !empty($_POST["description"])
@@ -98,7 +98,7 @@ if( count($_POST) == 6
 			header("Location: addCart.php");
 
 	}else{
-		if (!empty($_POST['id_benevole'])){
+		if ($_POST['id_benevole'] != "0"){
 			$queryPrepared = $connect->prepare("INSERT INTO panier (nom, description, etat, date_consommation, acteur, id_acteur, id_benevole, quantite_total, date_transaction, disponible) VALUES (:nom, :description, :etat, :date_consommation, :acteur, :id_acteur, :id_benevole, :quantite_total, :date_transaction, :disponible)");
 
 
