@@ -20,7 +20,7 @@ $res = getCartsAvailable($connect);
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Liste Paniers Disponibles
+    Liste de mes Actions
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -56,7 +56,7 @@ $res = getCartsAvailable($connect);
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="cartsAvailable.php">
+          <a class="nav-link text-white " href="cartsAvailable.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
@@ -64,7 +64,7 @@ $res = getCartsAvailable($connect);
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="myPickUpAndDelivery.php">
+          <a class="nav-link text-white active bg-gradient-primary" href="myPickUpAndDelivery.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -97,9 +97,9 @@ $res = getCartsAvailable($connect);
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Benevole</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Liste Paniers Disponibles</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Mes collectes et livraisons</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Liste Paniers Disponibles</h6>
+          <h6 class="font-weight-bolder mb-0">Mes collectes et livraisons</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -165,7 +165,13 @@ if (isset($res)){
                         <div class="col-md-4 text-end">
                           <a href="takeCart.php">
                               <?php $_SESSION['takeC'] = $data["id"]; ?> 
-                              <i class='fas fa-toggle-off' style="color:#76a89c"></i>
+                              <i class='fas fa-toggle-on' style="color:#76a89c"></i>
+                          </a>
+                        </div>
+                        <div class="col-md-4 text-end">
+                          <a href="arrivalCart.php" title="Arrivée du panier à destination">
+                              <?php $_SESSION['arrivalC'] = $data["id"]; ?> 
+                              <i class='fas fa-shipping'></i>
                           </a>
                         </div>
                       </td>
@@ -196,9 +202,15 @@ if (isset($res)){
                       </td>
                       <td class="align-middle">
                         <div class="col-md-4 text-end">
-                          <a href="takeCart.php">
+                          <a href="takeCart.php" title="Enlever du planning">
                               <?php $_SESSION['takeC'] = $data["id"]; ?> 
-                              <i class='fas fa-toggle-off' style="color:#76a89c"></i>
+                              <i class='fas fa-toggle-on' style="color:#76a89c"></i>
+                          </a>
+                        </div>
+                        <div class="col-md-4 text-end">
+                          <a href="arrivalCart.php" title="Arrivée du panier à destination">
+                              <?php $_SESSION['arrivalC'] = $data["id"]; ?> 
+                              <i class='fas fa-shipping'></i>
                           </a>
                         </div>
                       </td>
