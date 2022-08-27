@@ -7,7 +7,7 @@ if ($_SESSION['sid'] != 1){
 }
 
 	$connect = connectDB();
-	$idCart = $_POST['deleteC'];
+	$idCart = $_SESSION['deleteC'];
 	$q = "DELETE FROM panier WHERE id = '$idCart'";
 	$res = $connect->query($q);
 	redirect("paniers.php");

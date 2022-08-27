@@ -188,10 +188,10 @@ if (isset($res)){
                           </a>
                         </div>
                         <div class="col-md-4 text-end">
-                          <form action="deleteCart.php" method="post"> 
-                              <input type="submit" style="color:red" value="Supprimer">
-                              <input type="hidden" name="deleteC" value="<?=$data["id"]?>">
-                          </form>
+                          <a href="deleteCart.php">
+                              <?php $_SESSION['deleteC'] = $data["id"]; ?> 
+                              <i class='fas fa-trash-alt'></i>
+                          </a>
                         </div>
                       </td>
                     </tr>
@@ -227,10 +227,10 @@ if (isset($res)){
                           </a>
                         </div>
                         <div class="col-md-4 text-end">
-                          <form action="deleteCart.php" method="post"> 
-                              <input type="submit" style="color:red" value="Supprimer">
-                              <input type="hidden" name="deleteC" value="<?=$data["id"]?>">
-                          </form>
+                          <a href="deleteCart.php">
+                              <?php $_SESSION['deleteC'] = $data["id"]; ?> 
+                              <i class='fas fa-trash-alt'></i>
+                          </a>
                         </div>
                       </td>
                     </tr>                    
