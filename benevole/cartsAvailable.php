@@ -163,7 +163,7 @@ if (isset($res)){
                       </td>
                       <td class="align-middle">
                         <div class="col-md-4 text-end">
-                          <a href="takeCart.php">
+                          <a href="takeCart.php" title="Ajouter dans le planning">
                               <?php $_SESSION['takeC'] = $data["id"]; ?> 
                               <i class='fas fa-toggle-off' style="color:#76a89c"></i>
                           </a>
@@ -196,7 +196,7 @@ if (isset($res)){
                       </td>
                       <td class="align-middle">
                         <div class="col-md-4 text-end">
-                          <a href="takeCart.php">
+                          <a href="takeCart.php" title="Ajouter dans le planning">
                               <?php $_SESSION['takeC'] = $data["id"]; ?> 
                               <i class='fas fa-toggle-off' style="color:#76a89c"></i>
                           </a>
@@ -208,7 +208,7 @@ if (isset($res)){
         }
     }
 }else{
-  echo("Liste des Paniers vide");
+  echo("Liste des Paniers Disponibles vide");
 }
 ?>
                 </table>
