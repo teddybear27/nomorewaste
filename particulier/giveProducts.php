@@ -7,6 +7,10 @@ if ($_SESSION['sid'] != 2){
 }
 
 
+$connect = connectDB();
+$resCurrent = getCurrentUser($connect,$_SESSION['mail']);
+$data = $resCurrent->fetch();
+
 ?>
 
 <!DOCTYPE html>
@@ -120,9 +124,58 @@ if ($_SESSION['sid'] != 2){
 
 
 
-    
+    <!-- End Navbar -->
+    <div class="container-fluid py-4">
+      <form class="form-register" action="giveProductsBack.php" method="post">
+        <div class="col-12 col-xl-4">
+          <div class="card card-plain h-100">
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-md-8 d-flex align-items-center">
+                  <h6 class="mb-0">Donner Produits</h6>
+                </div>
+              </div>                  
+              <hr class="horizontal gray-light my-4">
+              <ul class="list-group">
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nom du Panier:</strong> &nbsp;
+                  <input type="text" name="cartname" placeholder="Fruits, Légumes, Patisserie, ..."  required>      
+                </li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Description:</strong> &nbsp;
+                  <textarea type="text"  name="description" placeholder="2 pommes, 1 banane, ..." required></textarea>        
+                </li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Date Consommation:</strong> &nbsp;
+                  <input type="date" name="consumptionDate" required>        
+                </li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Quantité Totale Produits:</strong> &nbsp;
+                  <input type="number"  name="quantite" placeholder="quantite" required>        
+                </li>                              
+                <input type="submit" id="valider" value="Soumettre">
+                <input type="hidden" name="id_acteur" value="<?=$data["id"]?>">
+                <input type="hidden" name="status_acteur" value="<?=$data["status"]?>">
+              </ul>
+            </div>
+          </div>
+        </div>
+      </form>
+<?php
 
+    if( !empty( $_COOKIE['errorForm'])){
+?>
+      <ul>
+<?php
+      $listOfErrors = unserialize($_COOKIE['errorForm']);
+      foreach ($listOfErrors as $error) {
+?>
+        <li>
+<?php
+        echo ($error);      }
+?>
+      </ul>
+<?php
+      unset($listOfErrors);
+    }
 
+?>
 
 
 
@@ -157,6 +210,7 @@ if ($_SESSION['sid'] != 2){
           </div>
         </div>
       </footer>
+    </div>
   </main>
   <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
