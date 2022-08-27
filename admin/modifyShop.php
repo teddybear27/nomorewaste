@@ -148,11 +148,11 @@ $data = $res->fetch();
               <ul class="list-group">
                 <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Autorisation Inscription :</strong> &nbsp;
                   <div>
-                    <input type="radio" name="autorisation" id="autorisee" value="autorisee" required>
+                    <input type="radio" name="autorisation" id="autorisee" value="autorisee">
                     <label for="autorisee">Valider</label>
                   </div>
                   <div>
-                    <input type="radio" name="autorisation" id="refusee" value="refusee" required>
+                    <input type="radio" name="autorisation" id="refusee" value="refusee" >
                     <label for="refusee">Refuser</label>
                   </div>  
                 </li>
