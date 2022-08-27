@@ -150,7 +150,7 @@ $data = $res->fetch();
                   <input type="text" name="cartname" placeholder="Fruits, Légumes, Patisserie, ..." value="<?=$data["nom"]?>" required>      
                 </li>
                 <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Description:</strong> &nbsp;
-                  <textarea type="text"  name="description" placeholder="2 pommes, 1 banane, ..." value="<?=$data["description"]?>" required></textarea>        
+                  <textarea type="text"  name="description" placeholder="2 pommes, 1 banane, ..." required><?=$data["description"]?></textarea>        
                 </li>
                 <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Date Consommation:</strong> &nbsp;
                   <input type="date" name="consumptionDate" value="<?=$data["date_consommation"]?>" required>        
