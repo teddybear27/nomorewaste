@@ -477,7 +477,7 @@ $data = $resCurrent->fetch();
 ?>
       </ul>
 <?php
-
+      unset($listOfErrors);
     }
 
 ?>
