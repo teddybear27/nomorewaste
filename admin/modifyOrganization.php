@@ -440,7 +440,6 @@ $data = $res->fetch();
       </select>
                 </li>
                 <input type="submit" id="valider" value="Soumettre">
-                <input type="hidden" name="modifyO" value="<?=$data["mail"]?>">
               </ul>
             </div>
           </div>
