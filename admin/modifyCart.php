@@ -160,7 +160,6 @@ $data = $res->fetch();
                 </li>                              
                 <input type="submit" id="valider" value="Soumettre">
                 <input type="hidden" name="idCart" value="$idCart">
-                <?php echo($_POST["idCart"]); echo($idCart); ?>
               </ul>
             </div>
           </div>
