@@ -108,7 +108,7 @@ if( count($_POST) == 6
 				"etat"=>$_POST["etat"],
 				"date_consommation" => $_POST["consumptionDate"],
 				"acteur" => $statusUser,
-				"id_acteur" => $idUser
+				"id_acteur" => $idUser,
 				"id_benevole"=>$_POST["id_benevole"],
 				"quantite_total" => $_POST["quantite"]
 			]
