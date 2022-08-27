@@ -2,7 +2,7 @@
 session_start();
 require "../functions.php";
 
-if( count($_POST) == 11 
+if( count($_POST) == 10 
 	&& !empty($_POST["autorisation"]) 
 	&& !empty($_POST["organizationName"])
 	&& !empty($_POST["siren"])
