@@ -149,9 +149,7 @@ $data = $res->fetch();
               <ul class="list-group">
                 <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Status:</strong> &nbsp;
                   <select name="status">
-                    <option value="<?=$data["status"]?>" selected="selected">
-                      <?=$data["status"]?>          
-                    </option>
+                    <option value="<?=$data["status"]?>" selected="selected"><?=$data["status"]?></option>
                     <option value="particulier">particulier </option>
                     <option value="benevole">benevole </option>
                   </select>      
