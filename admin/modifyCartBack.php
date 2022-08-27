@@ -104,7 +104,7 @@ if( count($_POST) == 4
 			]
 
 		);
-		$listOfErrors[] = "Panier ajouté";
+		$listOfErrors[] = "Panier modifié";
     setcookie("errorForm", serialize($listOfErrors));
     redirect("modifyCart.php");
     die();

@@ -172,6 +172,7 @@ if ($userMail != $_POST["email"]){
 
 			);
 		}
+		$listOfErrors[] = "Utilisateur modifié";
     setcookie("errorForm", serialize($listOfErrors));
     redirect("particuliers.php");
     die();

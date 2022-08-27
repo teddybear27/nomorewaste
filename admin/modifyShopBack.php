@@ -149,8 +149,9 @@ if ($shopMail != $_POST["email"]){
 
 			);
 		}
+		$listOfErrors[] = "Commerce modifié";
     setcookie("errorForm", serialize($listOfErrors));
-    redirect("commerces.php");
+    redirect("modifyShop.php");
     die();
 		
 	}

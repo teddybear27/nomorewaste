@@ -139,6 +139,7 @@ if ($organizationMail != $_POST["email"]){
 
 			);
 		}
+		$listOfErrors[] = "Association modifiée";
     setcookie("errorForm", serialize($listOfErrors));
     redirect("associations.php");
     die();

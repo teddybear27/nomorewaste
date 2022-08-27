@@ -199,6 +199,7 @@ if ($_SESSION['mail'] != $_POST["email"]){
 
 			);
 		}
+		$listOfErrors[] = "Profil modifié";
     setcookie("errorForm", serialize($listOfErrors));
     redirect("modifyProfile.php");
     die();
