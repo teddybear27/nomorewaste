@@ -89,6 +89,11 @@ function getCarts($db) {
 	return $results;
 }
 
+function getCartsAvailable($db) {
+	$results = $db->query("SELECT * from panier where disponible = 'traitement' AND id_benevole = '0'");	
+	return $results;
+}
+
 function getCartsToShip($db) {
 	$results = $db->query("SELECT * from panier where etat='livraison' AND disponible != 'arrivee'");	
 	return $results;
