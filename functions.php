@@ -98,6 +98,11 @@ function getCartsToShip($db) {
 	$results = $db->query("SELECT * from panier where etat='livraison' AND disponible != 'arrivee'");	
 	return $results;
 }
+
+function getCartsForVolunteer($db,$id) {
+	$results = $db->query("SELECT * from panier where id_benevole='$id'");	
+	return $results;
+}
 /*
 function isConnected(){
 	if(!empty($_SESSION["email"])){

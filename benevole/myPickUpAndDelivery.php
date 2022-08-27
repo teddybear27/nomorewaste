@@ -7,7 +7,11 @@ if ($_SESSION['sid'] != 3){
 }
 
 $connect = connectDB();
-$res = getCartsAvailable($connect);
+
+$resUser = getCurrentUser($connect,$_SESSION("mail"));
+$dataUser = $resUser->fetch();
+
+$resIdBenevole = getCartsForVolunteer($connect,$dataUser["id"]);
 
 ?>
 
@@ -135,8 +139,8 @@ $res = getCartsAvailable($connect);
                     </tr>
                   </thead>
 <?php
-if (isset($res)){
-    while($data = $res->fetch()){
+if (isset($resIdBenevole)){
+    while($data = $resIdBenevole->fetch()){
         if($data["etat"] == "collecte"){
 ?>
                   <tbody>
@@ -171,7 +175,7 @@ if (isset($res)){
                         <div class="col-md-4 text-end">
                           <a href="arrivalCart.php" title="Arrivée du panier à destination">
                               <?php $_SESSION['arrivalC'] = $data["id"]; ?> 
-                              <i class='fas fa-shipping'></i>
+                              <i class='fas fa-shipping-fast'></i>
                           </a>
                         </div>
                       </td>
@@ -210,7 +214,7 @@ if (isset($res)){
                         <div class="col-md-4 text-end">
                           <a href="arrivalCart.php" title="Arrivée du panier à destination">
                               <?php $_SESSION['arrivalC'] = $data["id"]; ?> 
-                              <i class='fas fa-shipping'></i>
+                              <i class='fas fa-shipping-fast'></i>
                           </a>
                         </div>
                       </td>
