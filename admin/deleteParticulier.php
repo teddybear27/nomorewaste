@@ -7,7 +7,7 @@ if ($_SESSION['sid'] != 1){
 }
 
 	$connect = connectDB();
-	$adresseElectronique = $_POST['deleteP'];
+	$adresseElectronique = $_SESSION['deleteP'];
 	$q = "DELETE FROM user WHERE mail = '$adresseElectronique'";
 	$res = $connect->query($q);
 	redirect("particuliers.php");

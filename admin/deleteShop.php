@@ -7,7 +7,7 @@ if ($_SESSION['sid'] != 1){
 }
 
 	$connect = connectDB();
-	$adresseElectronique = $_POST['deleteS'];
+	$adresseElectronique = $_SESSION['deleteS'];
 	$q = "DELETE FROM shop WHERE mail = '$adresseElectronique'";
 	$res = $connect->query($q);
 	redirect("commerces.php");

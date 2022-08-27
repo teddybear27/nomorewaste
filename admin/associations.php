@@ -184,10 +184,10 @@ if (isset($res)){
                           </a>
                         </div>
                         <div class="col-md-4 text-end">
-                          <form action="deleteOrganization.php" method="post"> 
-                              <input type="submit" style="color:red" value="Supprimer">
-                              <input type="hidden" name="deleteO" value="<?=$data["mail"]?>">
-                          </form>
+                          <a href="deleteOrganization.php">
+                              <?php $_SESSION['deleteO'] = $data["mail"]; ?> 
+                              <i class='fas fa-trash-alt' style="color:red"></i>
+                          </a>
                         </div>
                       </td>
                     </tr>
@@ -220,10 +220,10 @@ if (isset($res)){
                           </a>
                         </div>
                         <div class="col-md-4 text-end">
-                          <form action="deleteOrganization.php" method="post"> 
-                              <input type="submit" style="color:red" value="Supprimer">
-                              <input type="hidden" name="deleteO" value="<?=$data["mail"]?>">
-                          </form>
+                          <a href="deleteOrganization.php">
+                              <?php $_SESSION['deleteO'] = $data["mail"]; ?> 
+                              <i class='fas fa-trash-alt' style="color:red"></i>
+                          </a>
                         </div>
                       </td>
                     </tr>                    
