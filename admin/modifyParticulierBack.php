@@ -29,7 +29,7 @@ if( count($_POST) == 11
 
 	$error = false;
 	$listOfErrors = [];
-	$userMail = $_POST['modifyP'];
+	$userMail = $_SESSION['modifyP'];
 
 	//lastname
 

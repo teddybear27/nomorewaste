@@ -30,7 +30,7 @@ if( count($_POST) == 12
 
 	$error = false;
 	$listOfErrors = [];
-	$shopMail = $_POST['modifyS'];
+	$shopMail = $_SESSION['modifyS'];
 
 	//shopname
 

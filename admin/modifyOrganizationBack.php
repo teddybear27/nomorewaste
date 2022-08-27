@@ -28,7 +28,7 @@ if( count($_POST) == 11
 
 	$error = false;
 	$listOfErrors = [];
-	$organizationMail = $_POST['modifyO'];
+	$organizationMail = $_SESSION['modifyO'];
 
 	//organizationName
 

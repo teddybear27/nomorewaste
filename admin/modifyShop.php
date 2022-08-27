@@ -8,7 +8,10 @@ if ($_SESSION['sid'] != 1){
 
 $connect = connectDB();
 
-$adresseElectronique = $_POST['modifyS'];
+if (!empty($_POST['modifyS'])){
+$_SESSION['modifyS'] = $_POST['modifyS'];
+}
+$adresseElectronique = $_SESSION['modifyS'];
 $q = "SELECT * FROM shop WHERE mail = '$adresseElectronique'";
 $res = $connect->query($q);
 $data = $res->fetch();
