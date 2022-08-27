@@ -7,11 +7,10 @@ if ($_SESSION['sid'] != 3){
 }
 
 $connect = connectDB();
-
 $resUser = getCurrentUser($connect,$_SESSION["mail"]);
 $dataUser = $resUser->fetch();
 
-$resIdBenevole = getCartsForVolunteer($connect,$dataUser["id"]);
+$resIdBenevole = getCartsForVolunteerArrival($connect,$dataUser["id"]);
 
 ?>
 
@@ -24,7 +23,7 @@ $resIdBenevole = getCartsForVolunteer($connect,$dataUser["id"]);
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Liste de mes Actions
+    Liste Paniers Disponibles
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -68,7 +67,7 @@ $resIdBenevole = getCartsForVolunteer($connect,$dataUser["id"]);
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="myPickUpAndDelivery.php">
+          <a class="nav-link text-white " href="myPickUpAndDelivery.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -76,7 +75,7 @@ $resIdBenevole = getCartsForVolunteer($connect,$dataUser["id"]);
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="accomplishedMissions.php">
+          <a class="nav-link text-white active bg-gradient-primary" href="accomplishedMissions.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fas fa-shipping-fast"></i>
             </div>
@@ -109,9 +108,9 @@ $resIdBenevole = getCartsForVolunteer($connect,$dataUser["id"]);
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Benevole</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Mes collectes et livraisons</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Missions Accomplies</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Mes collectes et livraisons</h6>
+          <h6 class="font-weight-bolder mb-0">Missions Accomplies</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -130,7 +129,7 @@ $resIdBenevole = getCartsForVolunteer($connect,$dataUser["id"]);
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Liste Paniers Disponibles</h6>
+                <h6 class="text-white text-capitalize ps-3">Missions Accomplies</h6>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -147,8 +146,8 @@ $resIdBenevole = getCartsForVolunteer($connect,$dataUser["id"]);
                     </tr>
                   </thead>
 <?php
-if (isset($resIdBenevole)){
-    while($data = $resIdBenevole->fetch()){
+if (isset($res)){
+    while($data = $res->fetch()){
         if($data["etat"] == "collecte"){
 ?>
                   <tbody>
@@ -175,15 +174,9 @@ if (isset($resIdBenevole)){
                       </td>
                       <td class="align-middle">
                         <div class="col-md-4 text-end">
-                          <a href="returnCart.php" title="Enlever du planning">
-                              <?php $_SESSION['returnC'] = $data["id"]; ?> 
-                              <i class='fas fa-toggle-on' style="color:#76a89c"></i>
-                          </a>
-                        </div>
-                        <div class="col-md-4 text-end">
-                          <a href="arrivalCart.php" title="Arrivée du panier à destination">
-                              <?php $_SESSION['arrivalC'] = $data["id"]; ?> 
-                              <i class='fas fa-shipping-fast'></i>
+                          <a href="takeCart.php" title="Ajouter dans le planning">
+                              <?php $_SESSION['takeC'] = $data["id"]; ?> 
+                              <i class='fas fa-toggle-off' style="color:#76a89c"></i>
                           </a>
                         </div>
                       </td>
@@ -214,15 +207,9 @@ if (isset($resIdBenevole)){
                       </td>
                       <td class="align-middle">
                         <div class="col-md-4 text-end">
-                          <a href="returnCart.php" title="Enlever du planning">
-                              <?php $_SESSION['returnC'] = $data["id"]; ?> 
-                              <i class='fas fa-toggle-on' style="color:#76a89c"></i>
-                          </a>
-                        </div>
-                        <div class="col-md-4 text-end">
-                          <a href="arrivalCart.php" title="Arrivée du panier à destination">
-                              <?php $_SESSION['arrivalC'] = $data["id"]; ?> 
-                              <i class='fas fa-shipping-fast'></i>
+                          <a href="takeCart.php" title="Ajouter dans le planning">
+                              <?php $_SESSION['takeC'] = $data["id"]; ?> 
+                              <i class='fas fa-toggle-off' style="color:#76a89c"></i>
                           </a>
                         </div>
                       </td>
@@ -232,7 +219,7 @@ if (isset($resIdBenevole)){
         }
     }
 }else{
-  echo("Liste de mes sélections de collecte/livraison vide");
+  echo("Liste des Paniers Disponibles vide");
 }
 ?>
                 </table>

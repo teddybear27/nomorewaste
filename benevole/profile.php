@@ -71,6 +71,14 @@ $data = $resCurrent->fetch();
             <span class="nav-link-text ms-1">Mes collectes et livraisons</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="accomplishedMissions.php">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fas fa-shipping-fast"></i>
+            </div>
+            <span class="nav-link-text ms-1">Missions Accomplies</span>
+          </a>
+        </li>
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Compte</h6>
         </li>

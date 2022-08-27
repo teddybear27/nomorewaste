@@ -84,7 +84,12 @@ function getCartsToShip($db) {
 }
 
 function getCartsForVolunteer($db,$id) {
-	$results = $db->query("SELECT * from panier where id_benevole='$id'");	
+	$results = $db->query("SELECT * from panier where id_benevole='$id' AND disponible != 'arrivee'");	
+	return $results;
+}
+
+function getCartsForVolunteerArrival($db,$id) {
+	$results = $db->query("SELECT * from panier where id_benevole='$id' AND disponible = 'arrivee'");	
 	return $results;
 }
 /*
