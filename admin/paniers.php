@@ -147,7 +147,7 @@ $res = getCarts($connect);
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Panier</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Quantité</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Date Consommation</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date Consommation</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Etat</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Suivi</th>
                       <th class="text-secondary opacity-7"></th>
