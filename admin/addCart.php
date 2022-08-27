@@ -157,7 +157,7 @@ $connect = connectDB();
                   <input type="date" name="consumptionDate" required>        
                 </li>
                 <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Id Benevole:</strong> &nbsp;
-                  <input type="text" name="id_benevole" placeholder="Attribuer à un bénévole (0 = personne)" >      
+                  <input type="text" name="id_benevole" placeholder="Attribuer à un bénévole (0 = personne)" required>      
                 </li> 
                 <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Quantité Totale Produits:</strong> &nbsp;
                   <input type="number"  name="quantite" placeholder="quantite" required>

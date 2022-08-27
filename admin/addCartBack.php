@@ -1,13 +1,12 @@
 <?php
 session_start();
 require "../functions.php";
-echo(count($_POST));
+
 if( count($_POST) == 6 
 	&& !empty($_POST["cartname"])
 	&& !empty($_POST["description"])
 	&& !empty($_POST["etat"])
 	&& !empty($_POST["consumptionDate"])
-	&& !empty($_POST["id_benevole"])
 	&& !empty($_POST["quantite"]) ) {
 
 	$connect = connectDB();
@@ -98,45 +97,24 @@ if( count($_POST) == 6
 			header("Location: addCart.php");
 
 	}else{
-		if ($_POST['id_benevole'] != "0"){
-			$queryPrepared = $connect->prepare("INSERT INTO panier (nom, description, etat, date_consommation, acteur, id_acteur, id_benevole, quantite_total, date_transaction, disponible) VALUES (:nom, :description, :etat, :date_consommation, :acteur, :id_acteur, :id_benevole, :quantite_total, :date_transaction, :disponible)");
+		$queryPrepared = $connect->prepare("INSERT INTO panier (nom, description, etat, date_consommation, acteur, id_acteur, id_benevole, quantite_total, date_transaction, disponible) VALUES (:nom, :description, :etat, :date_consommation, :acteur, :id_acteur, :id_benevole, :quantite_total, :date_transaction, :disponible)");
 
 
-			$queryPrepared->execute(
-				[
-					"nom"=>$_POST["cartname"],
-					"description"=>$_POST["description"],
-					"etat"=>$_POST["etat"],
-					"date_consommation" => $_POST["consumptionDate"],
-					"acteur" => $statusUser,
-					"id_acteur" => $idUser,
-					"id_benevole"=>$_POST["id_benevole"],
-					"quantite_total" => $_POST["quantite"],
-					"date_transaction" => $dateTransaction,
-					"disponible" => "traitement"
-				]
+		$queryPrepared->execute(
+			[
+				"nom"=>$_POST["cartname"],
+				"description"=>$_POST["description"],
+				"etat"=>$_POST["etat"],
+				"date_consommation" => $_POST["consumptionDate"],
+				"acteur" => $statusUser,
+				"id_acteur" => $idUser,
+				"id_benevole"=>$_POST["id_benevole"],
+				"quantite_total" => $_POST["quantite"],
+				"date_transaction" => $dateTransaction,
+				"disponible" => "traitement"
+			]
 
-			);
-		}else{
-			$queryPrepared = $connect->prepare("INSERT INTO panier (nom, description, etat, date_consommation, acteur, id_acteur, id_benevole, quantite_total, date_transaction, disponible) VALUES (:nom, :description, :etat, :date_consommation, :acteur, :id_acteur, :id_benevole, :quantite_total, :date_transaction, :disponible)");
-
-
-			$queryPrepared->execute(
-				[
-					"nom"=>$_POST["cartname"],
-					"description"=>$_POST["description"],
-					"etat"=>$_POST["etat"],
-					"date_consommation" => $_POST["consumptionDate"],
-					"acteur" => $statusUser,
-					"id_acteur" => $idUser,
-					"id_benevole"=> "0",
-					"quantite_total" => $_POST["quantite"],
-					"date_transaction" => $dateTransaction,
-					"disponible" => "traitement"
-				]
-
-			);
-		}
+		);
 		$listOfErrors[] = "Panier ajouté";
     setcookie("errorForm", serialize($listOfErrors));
     redirect("addCart.php");
