@@ -56,19 +56,19 @@ $data = $resCurrent->fetch();
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="collect.php">
+          <a class="nav-link text-white " href="cartsAvailable.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
-            <span class="nav-link-text ms-1">Collecte Paniers</span>
+            <span class="nav-link-text ms-1">Liste Paniers Disponibles</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="delivery.php">
+          <a class="nav-link text-white " href="myPickUpAndDelivery.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
-            <span class="nav-link-text ms-1">Livraison Paniers</span>
+            <span class="nav-link-text ms-1">Mes collectes et livraisons</span>
           </a>
         </li>
         <li class="nav-item mt-3">
