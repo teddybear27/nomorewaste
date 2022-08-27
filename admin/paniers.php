@@ -190,7 +190,7 @@ if (isset($res)){
                         <div class="col-md-4 text-end">
                           <a href="deleteCart.php">
                               <?php $_SESSION['deleteC'] = $data["id"]; ?> 
-                              <i class='fas fa-trash-alt'></i>
+                              <i class='fas fa-trash-alt' style="color:red"></i>
                           </a>
                         </div>
                       </td>
@@ -229,7 +229,7 @@ if (isset($res)){
                         <div class="col-md-4 text-end">
                           <a href="deleteCart.php">
                               <?php $_SESSION['deleteC'] = $data["id"]; ?> 
-                              <i class='fas fa-trash-alt'></i>
+                              <i class='fas fa-trash-alt' style="color:red"></i>
                           </a>
                         </div>
                       </td>
