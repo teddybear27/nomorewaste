@@ -2,13 +2,15 @@
 session_start();
 require "../functions.php";
 
-if( count($_POST) == 4 
+if( count($_POST) == 5 
 	&& !empty($_POST["cartname"])
 	&& !empty($_POST["description"])
 	&& !empty($_POST["consumptionDate"])
 	&& !empty($_POST["quantite"]) ) {
 
 	$connect = connectDB();
+
+	$idCart = $_POST["idCart"];
 
 	//Nettoyage
 	$_POST["cartname"] = strtoupper(trim($_POST["cartname"]));
@@ -90,7 +92,7 @@ if( count($_POST) == 4
 			header("Location: modifyCart.php");
 
 	}else{
-		$queryPrepared = $connect->prepare("UPDATE panier SET nom = :nom, description = :description, date_consommation = :date_consommation, quantite_total = :quantite_total");
+		$queryPrepared = $connect->prepare("UPDATE panier SET nom = :nom, description = :description, date_consommation = :date_consommation, quantite_total = :quantite_total where id = '$idCart'");
 
 
 		$queryPrepared->execute(
