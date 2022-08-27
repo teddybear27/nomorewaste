@@ -219,7 +219,7 @@ if (isset($res)){
         }
     }
 }else{
-  echo("Liste des Paniers Disponibles vide");
+  echo("Liste vide");
 }
 ?>
                 </table>
