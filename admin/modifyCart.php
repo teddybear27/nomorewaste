@@ -147,16 +147,16 @@ $data = $res->fetch();
               <hr class="horizontal gray-light my-4">
               <ul class="list-group">
                 <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nom du Panier:</strong> &nbsp;
-                  <input type="text" name="cartname" placeholder="Fruits, Légumes, Patisserie, ..."  required>      
+                  <input type="text" name="cartname" placeholder="Fruits, Légumes, Patisserie, ..." value="<?=$data["nom"]?>" required>      
                 </li>
                 <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Description:</strong> &nbsp;
-                  <textarea type="text"  name="description" placeholder="2 pommes, 1 banane, ..." required></textarea>        
+                  <textarea type="text"  name="description" placeholder="2 pommes, 1 banane, ..." value="<?=$data["description"]?>" required></textarea>        
                 </li>
                 <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Date Consommation:</strong> &nbsp;
-                  <input type="date" name="consumptionDate" required>        
+                  <input type="date" name="consumptionDate" value="<?=$data["date_consommation"]?>" required>        
                 </li>
                 <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Quantité Totale Produits:</strong> &nbsp;
-                  <input type="number"  name="quantite" placeholder="quantite" required>
+                  <input type="number"  name="quantite" placeholder="quantite" value="<?=$data["quantite_total"]?>" required>
                 </li>                              
                 <input type="submit" id="valider" value="Soumettre">
               </ul>
