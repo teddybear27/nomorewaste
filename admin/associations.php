@@ -178,10 +178,10 @@ if (isset($res)){
                       </td>
                       <td class="align-middle">
                         <div class="col-md-4 text-end">
-                          <form action="modifyOrganization.php" method="post"> 
-                              <input type="submit" style="color:#063b2d" value="Editer">
-                              <input type="hidden" name="modifyO" value="<?=$data["mail"]?>">
-                          </form>
+                          <a href="modifyOrganization.php">
+                              <?php $_SESSION['modifyO'] = $data["mail"]; ?> 
+                              <i class='fas fa-pencil-alt'>Editer</i>
+                          </a>
                         </div>
                         <div class="col-md-4 text-end">
                           <form action="deleteOrganization.php" method="post"> 

@@ -8,9 +8,6 @@ if ($_SESSION['sid'] != 1){
 
 $connect = connectDB();
 
-if (!empty($_POST['modifyO'])){
-$_SESSION['modifyO'] = $_POST['modifyO'];
-}
 $adresseElectronique = $_SESSION['modifyO'];
 $q = "SELECT * FROM organization WHERE mail = '$adresseElectronique'";
 $res = $connect->query($q);
