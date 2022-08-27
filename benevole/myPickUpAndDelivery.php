@@ -167,8 +167,8 @@ if (isset($resIdBenevole)){
                       </td>
                       <td class="align-middle">
                         <div class="col-md-4 text-end">
-                          <a href="takeCart.php" title="Enlever du planning">
-                              <?php $_SESSION['takeC'] = $data["id"]; ?> 
+                          <a href="returnCart.php" title="Enlever du planning">
+                              <?php $_SESSION['returnC'] = $data["id"]; ?> 
                               <i class='fas fa-toggle-on' style="color:#76a89c"></i>
                           </a>
                         </div>
@@ -206,8 +206,8 @@ if (isset($resIdBenevole)){
                       </td>
                       <td class="align-middle">
                         <div class="col-md-4 text-end">
-                          <a href="takeCart.php" title="Enlever du planning">
-                              <?php $_SESSION['takeC'] = $data["id"]; ?> 
+                          <a href="returnCart.php" title="Enlever du planning">
+                              <?php $_SESSION['returnC'] = $data["id"]; ?> 
                               <i class='fas fa-toggle-on' style="color:#76a89c"></i>
                           </a>
                         </div>

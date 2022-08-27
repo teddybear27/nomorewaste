@@ -2,18 +2,15 @@
 session_start();
 require "../functions.php";
 
-$idCart = $_SESSION['takeC'];
+$idCart = $_SESSION['returnC'];
 $connect = connectDB();
-
-$res = getCurrentUser($connect,$_SESSION["mail"]);
-$dataUser = $res->fetch();
 
 $queryPrepared = $connect->prepare("UPDATE panier SET id_benevole = :id_benevole, disponible = :disponible where id = '$idCart'");
 		$queryPrepared->execute(
 			[
-				"id_benevole"=>$dataUser["id"],
-				"disponible" => "expedie"
+				"id_benevole" => "0",
+				"disponible" => "traitement"
 			]
 
 		);
-redirect("cartsAvailable.php");
+redirect("myPickUpAndDelivery.php");
