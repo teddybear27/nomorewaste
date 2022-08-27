@@ -2,7 +2,7 @@
 session_start();
 require "../functions.php";
 
-if( count($_POST) == 5 
+if( count($_POST) == 4 
 	&& !empty($_POST["cartname"])
 	&& !empty($_POST["description"])
 	&& !empty($_POST["consumptionDate"])
@@ -11,7 +11,7 @@ if( count($_POST) == 5
 
 	$connect = connectDB();
 
-	$idCart = $_POST["idCart"];
+	$idCart = $_SESSION['modifyC'];
 
 	//Nettoyage
 	$_POST["cartname"] = strtoupper(trim($_POST["cartname"]));

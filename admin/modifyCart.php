@@ -162,7 +162,6 @@ $data = $res->fetch();
                   <input type="number"  name="quantite" placeholder="quantite" value="<?=$data["quantite_total"]?>" required>
                 </li>                              
                 <input type="submit" id="valider" value="Soumettre">
-                <input type="hidden" name="idCart" value="$idCart">
               </ul>
             </div>
           </div>
