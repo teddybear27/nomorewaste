@@ -118,7 +118,6 @@ if( count($_POST) == 6
 
 			);
 		}else{
-			if (!empty($_POST['id_benevole'])){
 			$queryPrepared = $connect->prepare("INSERT INTO panier (nom, description, etat, date_consommation, acteur, id_acteur, id_benevole, quantite_total, date_transaction, disponible) VALUES (:nom, :description, :etat, :date_consommation, :acteur, :id_acteur, :id_benevole, :quantite_total, :date_transaction, :disponible)");
 
 
