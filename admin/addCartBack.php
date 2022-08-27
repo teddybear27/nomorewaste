@@ -98,24 +98,46 @@ if( count($_POST) == 6
 			header("Location: addCart.php");
 
 	}else{
-		$queryPrepared = $connect->prepare("INSERT INTO panier (nom, description, etat, date_consommation, acteur, id_acteur, id_benevole, quantite_total, date_transaction, disponible) VALUES (:nom, :description, :etat, :date_consommation, :acteur, :id_acteur, :id_benevole, :quantite_total, :date_transaction, :disponible)");
+		if (!empty($_POST['id_benevole'])){
+			$queryPrepared = $connect->prepare("INSERT INTO panier (nom, description, etat, date_consommation, acteur, id_acteur, id_benevole, quantite_total, date_transaction, disponible) VALUES (:nom, :description, :etat, :date_consommation, :acteur, :id_acteur, :id_benevole, :quantite_total, :date_transaction, :disponible)");
 
 
-		$queryPrepared->execute(
-			[
-				"nom"=>$_POST["cartname"],
-				"description"=>$_POST["description"],
-				"etat"=>$_POST["etat"],
-				"date_consommation" => $_POST["consumptionDate"],
-				"acteur" => $statusUser,
-				"id_acteur" => $idUser,
-				"id_benevole"=>$_POST["id_benevole"],
-				"quantite_total" => $_POST["quantite"],
-				"date_transaction" => $dateTransaction,
-				"disponible" => "traitement"
-			]
+			$queryPrepared->execute(
+				[
+					"nom"=>$_POST["cartname"],
+					"description"=>$_POST["description"],
+					"etat"=>$_POST["etat"],
+					"date_consommation" => $_POST["consumptionDate"],
+					"acteur" => $statusUser,
+					"id_acteur" => $idUser,
+					"id_benevole"=>$_POST["id_benevole"],
+					"quantite_total" => $_POST["quantite"],
+					"date_transaction" => $dateTransaction,
+					"disponible" => "traitement"
+				]
 
-		);
+			);
+		}else{
+			if (!empty($_POST['id_benevole'])){
+			$queryPrepared = $connect->prepare("INSERT INTO panier (nom, description, etat, date_consommation, acteur, id_acteur, id_benevole, quantite_total, date_transaction, disponible) VALUES (:nom, :description, :etat, :date_consommation, :acteur, :id_acteur, :id_benevole, :quantite_total, :date_transaction, :disponible)");
+
+
+			$queryPrepared->execute(
+				[
+					"nom"=>$_POST["cartname"],
+					"description"=>$_POST["description"],
+					"etat"=>$_POST["etat"],
+					"date_consommation" => $_POST["consumptionDate"],
+					"acteur" => $statusUser,
+					"id_acteur" => $idUser,
+					"id_benevole"=> "0",
+					"quantite_total" => $_POST["quantite"],
+					"date_transaction" => $dateTransaction,
+					"disponible" => "traitement"
+				]
+
+			);
+		}
 		$listOfErrors[] = "Panier ajouté";
     setcookie("errorForm", serialize($listOfErrors));
     redirect("addCart.php");
