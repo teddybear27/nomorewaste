@@ -146,8 +146,8 @@ $resIdBenevole = getCartsForVolunteerArrival($connect,$dataUser["id"]);
                     </tr>
                   </thead>
 <?php
-if (isset($res)){
-    while($data = $res->fetch()){
+if (isset($resIdBenevole)){
+    while($data = $resIdBenevole->fetch()){
         if($data["etat"] == "collecte"){
 ?>
                   <tbody>
@@ -171,14 +171,6 @@ if (isset($res)){
                       </td>
                       <td class="align-middle text-center">
                         <span class="text-secondary text-xs font-weight-bold"><?=$data["disponible"]?></span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="col-md-4 text-end">
-                          <a href="takeCart.php" title="Ajouter dans le planning">
-                              <?php $_SESSION['takeC'] = $data["id"]; ?> 
-                              <i class='fas fa-toggle-off' style="color:#76a89c"></i>
-                          </a>
-                        </div>
                       </td>
                     </tr>
 <?php
@@ -204,14 +196,6 @@ if (isset($res)){
                       </td>
                       <td class="align-middle text-center">
                         <span class="text-secondary text-xs font-weight-bold"><?=$data["disponible"]?></span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="col-md-4 text-end">
-                          <a href="takeCart.php" title="Ajouter dans le planning">
-                              <?php $_SESSION['takeC'] = $data["id"]; ?> 
-                              <i class='fas fa-toggle-off' style="color:#76a89c"></i>
-                          </a>
-                        </div>
                       </td>
                     </tr>                    
                   </tbody>
