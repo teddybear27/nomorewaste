@@ -90,7 +90,7 @@ function getCarts($db) {
 }
 
 function getCartsToShip($db) {
-	$results = $db->query("SELECT * from panier");	
+	$results = $db->query("SELECT * from panier where etat='livraison' AND disponible != 'arrivee'");	
 	return $results;
 }
 /*
