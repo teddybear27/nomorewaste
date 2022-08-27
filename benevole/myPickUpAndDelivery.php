@@ -8,7 +8,7 @@ if ($_SESSION['sid'] != 3){
 
 $connect = connectDB();
 
-$resUser = getCurrentUser($connect,$_SESSION("mail"));
+$resUser = getCurrentUser($connect,$_SESSION["mail"]);
 $dataUser = $resUser->fetch();
 
 $resIdBenevole = getCartsForVolunteer($connect,$dataUser["id"]);
