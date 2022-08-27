@@ -146,6 +146,16 @@ $data = $res->fetch();
               </div>                  
               <hr class="horizontal gray-light my-4">
               <ul class="list-group">
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Autorisation Inscription :</strong> &nbsp;
+                  <div>
+                    <input type="radio" name="autorisation" id="autorisee" value="autorisee">
+                    <label for="autorisee">Valider</label>
+                  </div>
+                  <div>
+                    <input type="radio" name="autorisation" id="refusee" value="refusee" >
+                    <label for="refusee">Refuser</label>
+                  </div>  
+                </li>
                 <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nom de l'association:</strong> &nbsp;
                   <input type="text" name="organizationName" placeholder="Nom du commerce" value="<?=$data["nom"]?>" required>      
                 </li>

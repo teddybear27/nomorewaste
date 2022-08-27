@@ -2,7 +2,8 @@
 session_start();
 require "../functions.php";
 
-if( count($_POST) == 10 
+if( count($_POST) == 11 
+	&& !empty($_POST["autorisation"]) 
 	&& !empty($_POST["organizationName"])
 	&& !empty($_POST["siren"])
 	&& !empty($_POST["email"])
@@ -80,7 +81,7 @@ if ($organizationMail != $_POST["email"]){
 
 	}else{		
 		if ($mailChanged == 1){
-			$queryPrepared = $connect->prepare("UPDATE organization SET nom = :nom, siren = :siren, mail = :mail, annee_creation = :annee_creation, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays, check_mail = :check_mail WHERE mail = '$organizationMail'");
+			$queryPrepared = $connect->prepare("UPDATE organization SET nom = :nom, siren = :siren, mail = :mail, annee_creation = :annee_creation, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays, check_mail = :check_mail, autorisation = :autorisation WHERE mail = '$organizationMail'");
 
 			$organizationName = htmlspecialchars($_POST["organizationName"]);
 			$verifKey = md5(time().$organizationName); //Génère une clé avec le nom
@@ -96,7 +97,8 @@ if ($organizationMail != $_POST["email"]){
 					"code_postal" => $_POST["zip"],
 					"ville" => $_POST["city"],
 					"pays" => $_POST["country"],
-					"check_mail"=>$verifKey
+					"check_mail"=>$verifKey,
+					"autorisation" => $_POST["autorisation"]
 				]
 
 			);
@@ -120,7 +122,7 @@ if ($organizationMail != $_POST["email"]){
     		$listOfErrors[] = ["Un mail de confirmation vous a été envoyé (Voir spams / courriers indésirables)"];
     		$_SESSION['mail'] = $_POST["email"];
 		}else{
-			$queryPrepared = $connect->prepare("UPDATE organization SET nom = :nom, siren = :siren, annee_creation = :annee_creation, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays WHERE mail = '$organizationMail'");
+			$queryPrepared = $connect->prepare("UPDATE organization SET nom = :nom, siren = :siren, annee_creation = :annee_creation, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays, autorisation = :autorisation WHERE mail = '$organizationMail'");
 
 			$queryPrepared->execute(
 				[
@@ -131,7 +133,8 @@ if ($organizationMail != $_POST["email"]){
 					"adresse" => $_POST["address"],
 					"code_postal" => $_POST["zip"],
 					"ville" => $_POST["city"],
-					"pays" => $_POST["country"]
+					"pays" => $_POST["country"],
+					"autorisation" => $_POST["autorisation"]
 				]
 
 			);
