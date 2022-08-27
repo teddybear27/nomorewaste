@@ -107,7 +107,7 @@ if( count($_POST) == 5
 		);
 		$listOfErrors[] = "Panier ajouté";
     setcookie("errorForm", serialize($listOfErrors));
-    redirect("paniers.php");
+    redirect("modifyCart.php");
     die();
 		
 	}
