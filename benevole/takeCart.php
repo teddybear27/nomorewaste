@@ -21,6 +21,7 @@ if ($dataCart["id_benevole"] == '0' && $dataCart["disponible"] == "traitement"){
 				]
 
 			);
+	unset($_SESSION["takeC"]);
 	redirect("cartsAvailable.php");
 }else{
 	$queryPrepared = $connect->prepare("UPDATE panier SET id_benevole = :id_benevole, disponible = :disponible where id = '$idCart'");
@@ -31,5 +32,6 @@ if ($dataCart["id_benevole"] == '0' && $dataCart["disponible"] == "traitement"){
 				]
 
 			);
+	unset($_SESSION["takeC"]);
 	redirect("myPickUpAndDelivery.php");
 }
