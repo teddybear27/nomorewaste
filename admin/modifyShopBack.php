@@ -3,6 +3,7 @@ session_start();
 require "../functions.php";
 
 if( count($_POST) == 11 
+	&& !empty($_POST["autorisation"])
 	&& !empty($_POST["shopname"])
 	&& !empty($_POST["category"])
 	&& !empty($_POST["siren"])
@@ -88,7 +89,7 @@ if ($shopMail != $_POST["email"]){
 
 	}else{		
 		if ($mailChanged == 1){
-			$queryPrepared = $connect->prepare("UPDATE shop SET nom = :nom, categorie = :categorie, siren = :siren, mail = :mail, annee_immatriculation = :annee_immatriculation, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays, check_mail = :check_mail WHERE mail = '$shopMail'");
+			$queryPrepared = $connect->prepare("UPDATE shop SET nom = :nom, categorie = :categorie, siren = :siren, mail = :mail, annee_immatriculation = :annee_immatriculation, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays, check_mail = :check_mail, autorisation = :autorisation WHERE mail = '$shopMail'");
 
 			$shopname = htmlspecialchars($_POST["shopname"]);
 			$verifKey = md5(time().$shopname); //Génère une clé avec le nom
@@ -105,7 +106,8 @@ if ($shopMail != $_POST["email"]){
 					"code_postal" => $_POST["zip"],
 					"ville" => $_POST["city"],
 					"pays" => $_POST["country"],
-					"check_mail"=>$verifKey
+					"check_mail"=>$verifKey,
+					"autorisation" => $_POST["autorisation"]
 				]
 
 			);
@@ -129,7 +131,7 @@ if ($shopMail != $_POST["email"]){
     		$listOfErrors[] = ["Un mail de confirmation vous a été envoyé (Voir spams / courriers indésirables)"];
     		$_SESSION['mail'] = $_POST["email"];
 		}else{
-			$queryPrepared = $connect->prepare("UPDATE shop SET nom = :nom, categorie = :categorie, siren = :siren, annee_immatriculation = :annee_immatriculation, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays WHERE mail = '$shopMail'");
+			$queryPrepared = $connect->prepare("UPDATE shop SET nom = :nom, categorie = :categorie, siren = :siren, annee_immatriculation = :annee_immatriculation, numero_telephone = :numero_telephone, adresse = :adresse, code_postal = :code_postal, ville = :ville, pays = :pays, autorisation = :autorisation WHERE mail = '$shopMail'");
 
 			$queryPrepared->execute(
 				[
@@ -141,7 +143,8 @@ if ($shopMail != $_POST["email"]){
 					"adresse" => $_POST["address"],
 					"code_postal" => $_POST["zip"],
 					"ville" => $_POST["city"],
-					"pays" => $_POST["country"]
+					"pays" => $_POST["country"],
+					"autorisation" => $_POST["autorisation"]
 				]
 
 			);
