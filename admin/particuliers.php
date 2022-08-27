@@ -178,10 +178,10 @@ if (isset($res)){
                       </td>
                       <td class="align-middle">
                         <div class="col-md-4 text-end">
-                          <form action="modifyParticulier.php" method="post"> 
-                              <input type="submit" style="color:#063b2d" value="Editer">
-                              <input type="hidden" name="modifyP" value="<?=$data["mail"]?>">
-                          </form>
+                          <a href="modifyParticulier.php">
+                              <?php $_SESSION['modifyP'] = $data["mail"]; ?> 
+                              <i class='fas fa-pencil-alt'></i>
+                          </a>
                         </div>
                         <div class="col-md-4 text-end">
                           <form action="deleteParticulier.php" method="post"> 
@@ -214,10 +214,10 @@ if (isset($res)){
                       </td>
                       <td class="align-middle">
                         <div class="col-md-4 text-end">
-                          <form action="modifyParticulier.php" method="post"> 
-                              <input type="submit" style="color:#063b2d" value="Editer">
-                              <input type="hidden" name="modifyP" value="<?=$data["mail"]?>">
-                          </form>
+                          <a href="modifyParticulier.php">
+                              <?php $_SESSION['modifyP'] = $data["mail"]; ?> 
+                              <i class='fas fa-pencil-alt'></i>
+                          </a>
                         </div>
                         <div class="col-md-4 text-end">
                           <form action="deleteParticulier.php" method="post"> 

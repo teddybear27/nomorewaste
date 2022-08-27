@@ -6,7 +6,6 @@ if( count($_POST) == 4
 	&& !empty($_POST["cartname"])
 	&& !empty($_POST["description"])
 	&& !empty($_POST["consumptionDate"])
-	&& !empty($_POST["quantite"])
 	&& !empty($_POST["quantite"]) ) {
 
 	$connect = connectDB();

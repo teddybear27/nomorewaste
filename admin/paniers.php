@@ -182,10 +182,10 @@ if (isset($res)){
                       </td>
                       <td class="align-middle">
                         <div class="col-md-4 text-end">
-                          <form action="modifyCart.php" method="post"> 
-                              <input type="submit" style="color:#063b2d" value="Editer">
-                              <input type="hidden" name="modifyC" value="<?=$data["id"]?>">
-                          </form>
+                          <a href="modifyCart.php">
+                              <?php $_SESSION['modifyC'] = $data["id"]; ?> 
+                              <i class='fas fa-pencil-alt'></i>
+                          </a>
                         </div>
                         <div class="col-md-4 text-end">
                           <form action="deleteCart.php" method="post"> 
@@ -221,10 +221,10 @@ if (isset($res)){
                       </td>
                       <td class="align-middle">
                         <div class="col-md-4 text-end">
-                          <form action="modifyCart.php" method="post"> 
-                              <input type="submit" style="color:#063b2d" value="Editer">
-                              <input type="hidden" name="modifyC" value="<?=$data["id"]?>">
-                          </form>
+                          <a href="modifyCart.php">
+                              <?php $_SESSION['modifyC'] = $data["id"]; ?> 
+                              <i class='fas fa-pencil-alt'></i>
+                          </a>
                         </div>
                         <div class="col-md-4 text-end">
                           <form action="deleteCart.php" method="post"> 

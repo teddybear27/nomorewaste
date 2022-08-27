@@ -8,9 +8,7 @@ if ($_SESSION['sid'] != 1){
 
 $connect = connectDB();
 
-if (!empty($_POST['modifyC'])){
-$_SESSION['modifyC'] = $_POST['modifyC'];
-}
+
 $idCart = $_SESSION['modifyC'];
 $q = "SELECT * FROM panier WHERE id = '$idCart'";
 $res = $connect->query($q);

@@ -8,9 +8,7 @@ if ($_SESSION['sid'] != 1){
 
 $connect = connectDB();
 
-if (!empty($_POST['modifyP'])){
-$_SESSION['modifyP'] = $_POST['modifyP'];
-}
+
 $adresseElectronique = $_SESSION['modifyP'];
 $q = "SELECT * FROM user WHERE mail = '$adresseElectronique'";
 $res = $connect->query($q);
@@ -442,7 +440,6 @@ $data = $res->fetch();
       </select>
                 </li>
                 <input type="submit" id="valider" value="Soumettre">
-                <input type="hidden" name="modifyP" value="<?=$data["mail"]?>">
               </ul>
             </div>
           </div>
