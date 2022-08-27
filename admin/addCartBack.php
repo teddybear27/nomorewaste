@@ -98,7 +98,7 @@ if( count($_POST) == 6
 			header("Location: addCart.php");
 
 	}else{
-		$queryPrepared = $connect->prepare("INSERT INTO panier (nom, description, etat, date_consommation, acteur, id_acteur, id_benevole, quantite_total) VALUES (:nom, :description, :etat, :date_consommation, :acteur, :id_acteur, :id_benevole, :quantite_total)");
+		$queryPrepared = $connect->prepare("INSERT INTO panier (nom, description, etat, date_consommation, acteur, id_acteur, id_benevole, quantite_total, date_transaction, disponible) VALUES (:nom, :description, :etat, :date_consommation, :acteur, :id_acteur, :id_benevole, :quantite_total, :date_transaction, :disponible)");
 
 
 		$queryPrepared->execute(
@@ -110,7 +110,9 @@ if( count($_POST) == 6
 				"acteur" => $statusUser,
 				"id_acteur" => $idUser,
 				"id_benevole"=>$_POST["id_benevole"],
-				"quantite_total" => $_POST["quantite"]
+				"quantite_total" => $_POST["quantite"],
+				"date_transaction" => $dateTransaction,
+				"disponible" => "traitement"
 			]
 
 		);
