@@ -2,7 +2,7 @@
 session_start();
 require "../functions.php";
 
-if( count($_POST) == 11 
+if( count($_POST) == 12 
 	&& !empty($_POST["autorisation"])
 	&& !empty($_POST["shopname"])
 	&& !empty($_POST["category"])
