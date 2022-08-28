@@ -185,7 +185,7 @@ if (!empty($res)){
                       </td>
                       <td class="align-middle">
                         <div class="col-md-4 text-end">
-                          <a href="returnCart.php" title="Supprimer du panier">
+                          <a href="returnCart.php" title="Supprimer du panier" disabled>
                               <?php $_SESSION['returnC'] = $data["id"]; ?> 
                               <i class='material-icons' style="color:red">cancel</i>
                           </a>
