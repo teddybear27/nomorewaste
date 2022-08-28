@@ -75,7 +75,7 @@ $res = getCartsForOrganizationOrderHistory($connect,$idUser);
           </a>
         </li>        
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="cartsInProgress.php">
+          <a class="nav-link text-white " href="cartsInProgress.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-shopping-cart"></i>
             </div>
@@ -83,7 +83,7 @@ $res = getCartsForOrganizationOrderHistory($connect,$idUser);
           </a>
         </li>        
         <li class="nav-item">
-          <a class="nav-link text-white " href="orderHistory.php">
+          <a class="nav-link text-white active bg-gradient-primary" href="orderHistory.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-history"></i>
             </div>
