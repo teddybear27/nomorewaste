@@ -102,6 +102,11 @@ function getCartsForOrganizationOrderInProgress($db,$id) {
 	$results = $db->query("SELECT * from panier where acteur='Association' AND id_acteur='$id' AND disponible != 'arrivee'");	
 	return $results;
 }
+
+function getCartsForOrganizationOrderHistory($db,$id) {
+	$results = $db->query("SELECT * from panier where acteur='Association' AND id_acteur='$id' AND (disponible = 'arrivee' OR disponible = 'commandee')");	
+	return $results;
+}
 /*
 function isConnected(){
 	if(!empty($_SESSION["email"])){

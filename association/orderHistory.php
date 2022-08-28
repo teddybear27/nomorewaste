@@ -11,7 +11,7 @@ $mailUser = $_SESSION["mail"];
 $resUser = getCurrentOrganization($connect,$mailUser);
 $dataUser = $resUser->fetch();
 $idUser = $dataUser["id"];
-$res = getCartsForOrganizationOrderInProgress($connect,$idUser);
+$res = getCartsForOrganizationOrderHistory($connect,$idUser);
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +23,7 @@ $res = getCartsForOrganizationOrderInProgress($connect,$idUser);
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Dashboard Association - Paniers en cours
+    Dashboard Association - Historique de commandes
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -117,9 +117,9 @@ $res = getCartsForOrganizationOrderInProgress($connect,$idUser);
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Association</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Mes paniers en cours</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Historique de commandes</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Mes paniers en cours</h6>
+          <h6 class="font-weight-bolder mb-0">Historique de commandes</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -141,7 +141,7 @@ $res = getCartsForOrganizationOrderInProgress($connect,$idUser);
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Liste Paniers en cours</h6>
+                <h6 class="text-white text-capitalize ps-3">Historique de commandes</h6>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -154,6 +154,7 @@ $res = getCartsForOrganizationOrderInProgress($connect,$idUser);
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date Consommation</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Etat</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Suivi</th>
+                      <th class="text-secondary opacity-7"></th>
                       <th class="text-secondary opacity-7"></th>
                     </tr>
                   </thead>
@@ -182,27 +183,6 @@ if (!empty($res)){
                       </td>
                       <td>
                         <p class="text-xs font-weight-bold mb-0"><?=$data["disponible"]?></p>
-                      </td>
-                      <td class="align-middle">
-                        <div class="col-md-4 text-end">
-<?php
-  if ($data["disponible"] != "expedie") {
-?>
-                          <a href="returnCart.php" title="Supprimer du panier">
-                              <?php $_SESSION['returnC'] = $data["id"]; ?> 
-                              <i class='material-icons' style="color:red">cancel</i>
-                          </a>
-<?php
-}else{
-?>
-                          <a href="" title="Impossible de supprimer, livreur en route" disabled="disabled">
-                              <?php $_SESSION['returnC'] = $data["id"]; ?> 
-                              <i class='material-icons' style="color:gray">cancel</i>
-                          </a>
-<?php
-}
-?>
-                        </div>
                       </td>
                     </tr>                    
                   </tbody>
