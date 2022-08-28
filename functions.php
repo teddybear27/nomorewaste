@@ -92,6 +92,11 @@ function getCartsForVolunteerArrival($db,$id) {
 	$results = $db->query("SELECT * from panier where id_benevole='$id' AND disponible = 'arrivee'");	
 	return $results;
 }
+
+function getCartsForOrganizationOrder($db) {
+	$results = $db->query("SELECT * from panier where etat='collecte' AND disponible = 'arrivee'");	
+	return $results;
+}
 /*
 function isConnected(){
 	if(!empty($_SESSION["email"])){
