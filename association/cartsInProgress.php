@@ -154,13 +154,16 @@ $data=$res->fetch();
                       <th class="text-secondary opacity-7"></th>
                     </tr>
                   </thead>
+<?php
+if (!empty($res)){
+  while($data=$res->fetch()){
+?>
                   <tbody>
                     <tr>
                       <td>
                         <div class="d-flex px-2 py-1">                          
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm"><?=$data["nom"]?></h6>
-                            <p class="text-xs text-secondary mb-0"><?=$data["date_transaction"]?></p>
                           </div>
                         </div>
                       </td>
@@ -170,22 +173,29 @@ $data=$res->fetch();
                       <td>
                         <p class="text-xs font-weight-bold mb-0"><?=$data["date_consommation"]?></p>
                       </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Collecte</span>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0"><?=$data["etat"]?></p>
                       </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold"><?=$data["disponible"]?></span>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0"><?=$data["disponible"]?></p>
                       </td>
                       <td class="align-middle">
                         <div class="col-md-4 text-end">
-                          <a href="takeCart.php" title="Ajouter dans le planning">
-                              <?php $_SESSION['takeC'] = $data["id"]; ?> 
-                              <i class='fas fa-toggle-off' style="color:#76a89c"></i>
+                          <a href="returnCart.php" title="Supprimer du panier">
+                              <?php $_SESSION['returnC'] = $data["id"]; ?> 
+                              <i class='material-icons' style="color:red">cancel</i>
                           </a>
                         </div>
                       </td>
                     </tr>                    
                   </tbody>
+<?php
+  }
+}else{
+  echo("Aucun panier disponible pour le moment");
+  echo("Revenez plus tard");
+}
+?>
                 </table>
               </div>
             </div>
