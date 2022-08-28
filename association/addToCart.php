@@ -15,7 +15,7 @@ $userMail = $_SESSION["mail"];
 $resUser = $connect->query("SELECT * from user where mail = '$userMail'");
 $dataUser = $resUser->fetch();
 $idUser = $dataUser["id"];
-echo($idUser);
+echo($_SESSION["mail"]);
 
 $dateTransaction = date("Y-m-d H:i:s");
 
