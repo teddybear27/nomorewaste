@@ -7,7 +7,8 @@ if ($_SESSION['sid'] != 5){
 }
 
 $connect = connectDB();
-$res = getCartsForOrganizationOrder($connect);
+$idUser = $_SESSION["mail"];
+$res = getCartsForOrganizationOrderInProgress($connect,$idUser);
 $data=$res->fetch();
 ?>
 
@@ -20,7 +21,7 @@ $data=$res->fetch();
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Dashboard Association - Recevoir Produits
+    Dashboard Association - Paniers en cours
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -114,9 +115,9 @@ $data=$res->fetch();
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Association</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Commander paniers</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Mes paniers en cours</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Commander paniers</h6>
+          <h6 class="font-weight-bolder mb-0">Mes paniers en cours</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -138,7 +139,7 @@ $data=$res->fetch();
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Liste Paniers Disponibles</h6>
+                <h6 class="text-white text-capitalize ps-3">Liste Paniers en cours</h6>
               </div>
             </div>
             <div class="card-body px-0 pb-2">

@@ -97,6 +97,11 @@ function getCartsForOrganizationOrder($db) {
 	$results = $db->query("SELECT * from panier where etat='collecte' AND disponible = 'arrivee'");	
 	return $results;
 }
+
+function getCartsForOrganizationOrderInProgress($db,$id) {
+	$results = $db->query("SELECT * from panier where id_acteur='$id' AND disponible != 'arrivee'");	
+	return $results;
+}
 /*
 function isConnected(){
 	if(!empty($_SESSION["email"])){
