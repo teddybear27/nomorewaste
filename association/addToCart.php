@@ -11,11 +11,11 @@ $idCart = $_SESSION["moreInfosC"];
 $res = $connect->query("SELECT * from panier where id='$idCart'");
 $data=$res->fetch();
 
-$resUser = getCurrentUser($connect,$_SESSION["mail"]);
+$userMail = $_SESSION["mail"];
+$resUser = $connect->query("SELECT * from user where mail = '$userMail'");
 $dataUser = $resUser->fetch();
 $idUser = $dataUser["id"];
 echo($idUser);
-echo($idCart);
 
 $dateTransaction = date("Y-m-d H:i:s");
 
