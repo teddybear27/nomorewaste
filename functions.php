@@ -94,12 +94,12 @@ function getCartsForVolunteerArrival($db,$id) {
 }
 
 function getCartsForOrganizationOrder($db) {
-	$results = $db->query("SELECT * from panier where etat='collecte' AND disponible = 'arrivee'");	
+	$results = $db->query("SELECT * from panier where acteur='Association' AND etat='collecte' AND disponible = 'arrivee'");	
 	return $results;
 }
 
 function getCartsForOrganizationOrderInProgress($db,$id) {
-	$results = $db->query("SELECT * from panier where id_acteur='$id' AND disponible != 'arrivee'");	
+	$results = $db->query("SELECT * from panier where acteur='Association' AND id_acteur='$id' AND disponible != 'arrivee'");	
 	return $results;
 }
 /*
