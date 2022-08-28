@@ -122,6 +122,17 @@ function getCartsForOrganizationOrderHistory($db,$id) {
 	$results = $db->query("SELECT * from panier where acteur='Association' AND id_acteur='$id' AND (disponible = 'arrivee' OR disponible = 'commandee')");	
 	return $results;
 }
+
+function getActorInfosFromCart($db,$id,$actor) {
+	if ($actor == "particulier" || $actor == "admin"){
+		$results = $db->query("SELECT * from user where id='$id'");
+	}else if ($actor == "Commerce"){
+		$results = $db->query("SELECT * from shop where id='$id'");
+	}else if ($actor == "Association"){
+		$results = $db->query("SELECT * from organization where id='$id'");
+	}	
+	return $results;
+}
 /*
 function isConnected(){
 	if(!empty($_SESSION["email"])){

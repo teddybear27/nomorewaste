@@ -171,9 +171,9 @@ if (isset($res)){
                       </td>
                       <td class="align-middle">
                         <div class="col-md-4 text-end">
-                          <a href="takeCart.php" title="Ajouter dans le planning">
+                          <a href="takeCart.php" title="Plus de détails">
                               <?php $_SESSION['takeC'] = $data["id"]; ?> 
-                              <i class='fas fa-toggle-off' style="color:#76a89c"></i>
+                              <i class='fa fa-search' style="color:#76a89c"></i>
                           </a>
                         </div>
                       </td>
@@ -204,9 +204,9 @@ if (isset($res)){
                       </td>
                       <td class="align-middle">
                         <div class="col-md-4 text-end">
-                          <a href="takeCart.php" title="Ajouter dans le planning">
+                          <a href="takeCart.php" title="Plus de détails">
                               <?php $_SESSION['takeC'] = $data["id"]; ?> 
-                              <i class='fas fa-toggle-off' style="color:#76a89c"></i>
+                              <i class='fa fa-search' style="color:#76a89c"></i>
                           </a>
                         </div>
                       </td>
