@@ -195,7 +195,7 @@ if (!empty($res)){
 <?php
 }else{
 ?>
-                          <a href="returnCart.php" title="Supprimer du panier" disabled="disabled">
+                          <a href="" title="Impossible de supprimer, livreur en route" disabled="disabled">
                               <?php $_SESSION['returnC'] = $data["id"]; ?> 
                               <i class='material-icons' style="color:gray">cancel</i>
                           </a>
