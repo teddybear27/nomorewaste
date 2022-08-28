@@ -8,7 +8,7 @@ if ($_SESSION['sid'] != 5){
 
 $connect = connectDB();
 $mailUser = $_SESSION["mail"];
-$resUser = getCurrentUser($connect,$mailUser);
+$resUser = getCurrentOrganization($connect,$mailUser);
 $dataUser = $resUser->fetch();
 $idUser = $dataUser["id"];
 $res = getCartsForOrganizationOrderInProgress($connect,$idUser);
