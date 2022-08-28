@@ -16,11 +16,12 @@ $dataOrganization = $resOrganization->fetch();
 
 $dateTransaction = date("Y-m-d H:i:s");
 
-$queryPrepared = $connect->prepare("INSERT INTO panier (nom, description, etat, date_consommation, acteur, id_acteur, id_benevole, quantite_total, date_transaction, disponible) VALUES (:nom, :description, :etat, :date_consommation, :acteur, :id_acteur, :id_benevole, :quantite_total, :date_transaction, :disponible)");
+$queryPrepared = $connect->prepare("INSERT INTO panier (panier_origine, nom, description, etat, date_consommation, acteur, id_acteur, id_benevole, quantite_total, date_transaction, disponible) VALUES (:panier_origine, :nom, :description, :etat, :date_consommation, :acteur, :id_acteur, :id_benevole, :quantite_total, :date_transaction, :disponible)");
 
 
     $queryPrepared->execute(
       [
+        "panier_origine" => $idCart,
         "nom"=>$data["nom"],
         "description"=>$data["description"],
         "etat"=>"livraison",
