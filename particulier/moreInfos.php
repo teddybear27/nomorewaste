@@ -6,7 +6,10 @@ if ($_SESSION['sid'] != 2){
   redirect("../denied.php");
 }
 
-
+$connect = connectDB();
+$idCart = $_SESSION["moreInfosC"];
+$res = $connect->query("SELECT * from panier where id='$idCart'");
+$data=$res->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +21,7 @@ if ($_SESSION['sid'] != 2){
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Dashboard Particulier - Recevoir Produits
+    Dashboard Particulier - Commander paniers
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -62,20 +65,29 @@ if ($_SESSION['sid'] != 2){
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="receiveProducts.php">
+          <a class="nav-link text-white active bg-gradient-primary" href="orderCarts.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">assignment</i>
+              <i class="material-icons opacity-10">receipt_long</i>
             </div>
-            <span class="nav-link-text ms-1">Recevoir produits</span>
+            <span class="nav-link-text ms-1">Commander paniers</span>
+          </a>
+        </li>        
+        <li class="nav-item">
+          <a class="nav-link text-white " href="cartsInProgress.php">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa fa-shopping-cart"></i>
+            </div>
+            <span class="nav-link-text ms-1">Mes actions en cours</span>
+          </a>
+        </li>        
+        <li class="nav-item">
+          <a class="nav-link text-white " href="orderHistory.php">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa fa-history"></i>
+            </div>
+            <span class="nav-link-text ms-1">Historique commandes</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="serveCommunity.php">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">person</i>
-            </div>
-            <span class="nav-link-text ms-1">Servir la communauté</span>
-          </a>
         </li>
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Compte</h6>
@@ -103,9 +115,10 @@ if ($_SESSION['sid'] != 2){
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Particulier</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Recevoir Produits</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Commander paniers</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Plus de détails</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Recevoir Produits</h6>
+          <h6 class="font-weight-bolder mb-0">Plus de détails</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -120,8 +133,39 @@ if ($_SESSION['sid'] != 2){
 
 
 
-    
-
+    <!-- End Navbar -->
+    <div class="container-fluid py-4">
+        <div class="col-12 col-xl-4">
+          <div class="card card-plain h-100">
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-md-8 d-flex align-items-center">
+                  <h6 class="mb-0">Détails du panier</h6>
+                </div>                
+                <div class="col-md-4 text-end">
+                  <a href="addToCart.php" title="Ajouter au panier">
+                      <i class='fa fa-shopping-cart' style="color:#76a89c"></i>
+                  </a>
+                </div>
+              </div>                  
+              <hr class="horizontal gray-light my-4">
+              <ul class="list-group">
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nom du Panier:</strong> &nbsp;
+                  <input type="text" name="cartname" placeholder="Fruits, Légumes, Patisserie, ..." value="<?=$data["nom"]?>" disabled>      
+                </li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Description:</strong> &nbsp;
+                  <textarea type="text"  name="description" placeholder="2 pommes, 1 banane, ..." disabled><?=$data["description"]?></textarea>        
+                </li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Date Consommation:</strong> &nbsp;
+                  <input type="date" name="consumptionDate" value="<?=$data["date_consommation"]?>" disabled>        
+                </li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Quantité Totale Produits:</strong> &nbsp;
+                  <input type="number"  name="quantite" placeholder="quantite" value="<?=$data["quantite_total"]?>" disabled>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
 
 
@@ -157,6 +201,7 @@ if ($_SESSION['sid'] != 2){
           </div>
         </div>
       </footer>
+    </div>
   </main>
   <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">

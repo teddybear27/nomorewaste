@@ -64,20 +64,29 @@ $data = $resCurrent->fetch();
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="receiveProducts.php">
+          <a class="nav-link text-white " href="orderCarts.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">assignment</i>
+              <i class="material-icons opacity-10">receipt_long</i>
             </div>
-            <span class="nav-link-text ms-1">Recevoir produits</span>
+            <span class="nav-link-text ms-1">Commander paniers</span>
+          </a>
+        </li>        
+        <li class="nav-item">
+          <a class="nav-link text-white " href="cartsInProgress.php">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa fa-shopping-cart"></i>
+            </div>
+            <span class="nav-link-text ms-1">Mes actions en cours</span>
+          </a>
+        </li>        
+        <li class="nav-item">
+          <a class="nav-link text-white " href="orderHistory.php">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa fa-history"></i>
+            </div>
+            <span class="nav-link-text ms-1">Historique commandes</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="serveCommunity.php">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">person</i>
-            </div>
-            <span class="nav-link-text ms-1">Servir la communauté</span>
-          </a>
         </li>
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Compte</h6>

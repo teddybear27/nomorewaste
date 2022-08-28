@@ -93,6 +93,21 @@ function getCartsForVolunteerArrival($db,$id) {
 	return $results;
 }
 
+function getCartsForUserOrder($db) {
+	$results = $db->query("SELECT * from user where acteur='particulier' AND etat='collecte' AND disponible = 'arrivee'");	
+	return $results;
+}
+
+function getCartsForUserInProgress($db,$id) {
+	$results = $db->query("SELECT * from panier where acteur='particulier' AND id_acteur='$id' AND disponible != 'arrivee'");	
+	return $results;
+}
+
+function getCartsForUserOrderHistory($db,$id) {
+	$results = $db->query("SELECT * from panier where acteur='particulier' AND id_acteur='$id' AND (disponible = 'arrivee' OR disponible = 'commandee')");	
+	return $results;
+}
+
 function getCartsForOrganizationOrder($db) {
 	$results = $db->query("SELECT * from panier where acteur='Association' AND etat='collecte' AND disponible = 'arrivee'");	
 	return $results;

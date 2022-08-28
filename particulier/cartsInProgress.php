@@ -6,7 +6,12 @@ if ($_SESSION['sid'] != 2){
   redirect("../denied.php");
 }
 
-
+$connect = connectDB();
+$mailUser = $_SESSION["mail"];
+$resUser = getCurrentUser($connect,$mailUser);
+$dataUser = $resUser->fetch();
+$idUser = $dataUser["id"];
+$res = getCartsForUserInProgress($connect,$idUser);
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +23,7 @@ if ($_SESSION['sid'] != 2){
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Dashboard Particulier
+    Dashboard Particulier - Actions en cours
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -46,7 +51,7 @@ if ($_SESSION['sid'] != 2){
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="particulier.php">
+          <a class="nav-link text-white " href="particulier.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
@@ -70,7 +75,7 @@ if ($_SESSION['sid'] != 2){
           </a>
         </li>        
         <li class="nav-item">
-          <a class="nav-link text-white " href="cartsInProgress.php">
+          <a class="nav-link text-white active bg-gradient-primary" href="cartsInProgress.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-shopping-cart"></i>
             </div>
@@ -84,6 +89,7 @@ if ($_SESSION['sid'] != 2){
             </div>
             <span class="nav-link-text ms-1">Historique commandes</span>
           </a>
+        </li>
         </li>
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Compte</h6>
@@ -111,9 +117,9 @@ if ($_SESSION['sid'] != 2){
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Particulier</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Mes actions en cours</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+          <h6 class="font-weight-bolder mb-0">Mes actions en cours</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -128,7 +134,91 @@ if ($_SESSION['sid'] != 2){
 
 
 
-    
+    <!-- End Navbar -->
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-12">
+          <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                <h6 class="text-white text-capitalize ps-3">Liste actions en cours</h6>
+              </div>
+            </div>
+            <div class="card-body px-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Panier</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Quantité</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date Consommation</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Etat</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Suivi</th>
+                      <th class="text-secondary opacity-7"></th>
+                    </tr>
+                  </thead>
+<?php
+if (!empty($res)){
+  while($data=$res->fetch()){
+?>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="d-flex px-2 py-1">                          
+                          <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm"><?=$data["nom"]?></h6>
+                            <p class="text-xs text-secondary mb-0"><?=$data["date_transaction"]?></p>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0"><?=$data["quantite_total"]?></p>
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0"><?=$data["date_consommation"]?></p>
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0"><?=$data["etat"]?></p>
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0"><?=$data["disponible"]?></p>
+                      </td>
+                      <td class="align-middle">
+                        <div class="col-md-4 text-end">
+<?php
+  if ($data["disponible"] != "expedie") {
+?>
+                          <a href="returnCart.php" title="Supprimer du panier">
+                              <?php $_SESSION['returnC'] = $data["id"]; ?> 
+                              <i class='material-icons' style="color:red">cancel</i>
+                          </a>
+<?php
+}else{
+?>
+                          <a href="" title="Impossible de supprimer, livreur en route" disabled="disabled">
+                              <?php $_SESSION['returnC'] = $data["id"]; ?> 
+                              <i class='material-icons' style="color:gray">cancel</i>
+                          </a>
+<?php
+}
+?>
+                        </div>
+                      </td>
+                    </tr>                    
+                  </tbody>
+<?php
+  }
+}else{
+  echo("Aucun panier disponible pour le moment");
+  echo("Revenez plus tard");
+}
+?>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
 
@@ -165,6 +255,7 @@ if ($_SESSION['sid'] != 2){
           </div>
         </div>
       </footer>
+    </div>
   </main>
   <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
