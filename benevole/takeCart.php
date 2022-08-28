@@ -160,7 +160,7 @@ $dataActor = $resActor->fetch();
                   <?=$data["quantite_total"]?>
                 </li>
                 <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Suivi:</strong> &nbsp;
-                  <?=$data["diponible"]?>        
+                  <?=$data["disponible"]?>        
                 </li>
                 <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nom proprietaire:</strong> &nbsp;
                   <?=$dataActor["nom"]?>       

@@ -177,13 +177,13 @@ if (isset($resIdBenevole)){
                         <div class="col-md-4 text-end">
                           <a href="returnCart.php" title="Enlever du planning">
                               <?php $_SESSION['returnC'] = $data["id"]; ?> 
-                              <i class='fas fa-toggle-on' style="color:#76a89c"></i>
+                              <i class='fa fa-minus' style="color:red"></i>
                           </a>
                         </div>
                         <div class="col-md-4 text-end">
                           <a href="arrivalCart.php" title="Arrivée du panier à destination">
                               <?php $_SESSION['arrivalC'] = $data["id"]; ?> 
-                              <i class='fas fa-shipping-fast'></i>
+                              <i class='fas fa-shipping-fast' style="color:#76a89c"></i>
                           </a>
                         </div>
                       </td>
@@ -216,13 +216,13 @@ if (isset($resIdBenevole)){
                         <div class="col-md-4 text-end">
                           <a href="returnCart.php" title="Enlever du planning">
                               <?php $_SESSION['returnC'] = $data["id"]; ?> 
-                              <i class='fas fa-toggle-on' style="color:#76a89c"></i>
+                              <i class='fa fa-minus' style="color:red"></i>
                           </a>
                         </div>
                         <div class="col-md-4 text-end">
                           <a href="arrivalCart.php" title="Arrivée du panier à destination">
                               <?php $_SESSION['arrivalC'] = $data["id"]; ?> 
-                              <i class='fas fa-shipping-fast'></i>
+                              <i class='fas fa-shipping-fast' style="color:#76a89c"></i>
                           </a>
                         </div>
                       </td>
