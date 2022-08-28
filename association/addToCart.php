@@ -11,11 +11,8 @@ $idCart = $_SESSION["moreInfosC"];
 $res = $connect->query("SELECT * from panier where id='$idCart'");
 $data=$res->fetch();
 
-$userMail = $_SESSION["mail"];
-$resUser = $connect->query("SELECT * from user where mail = '$userMail'");
-$dataUser = $resUser->fetch();
-$idUser = $dataUser["id"];
-echo($_SESSION["mail"]);
+$resOrganization = getCurrentOrganization($connect,$_SESSION["mail"]);
+$dataOrganization = $resOrganization->fetch();
 
 $dateTransaction = date("Y-m-d H:i:s");
 
@@ -29,7 +26,7 @@ $queryPrepared = $connect->prepare("INSERT INTO panier (nom, description, etat, 
         "etat"=>"livraison",
         "date_consommation" => $data["date_consommation"],
         "acteur" => "Association",
-        "id_acteur" => $idUser,
+        "id_acteur" => $dataOrganization["id"],
         "id_benevole"=>"0",
         "quantite_total" => $data["quantite_total"],
         "date_transaction" => $dateTransaction,
