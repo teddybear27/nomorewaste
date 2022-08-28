@@ -8,7 +8,7 @@ if ($_SESSION['sid'] != 5){
 
 $connect = connectDB();
 $res = getCartsForOrganizationOrder($connect);
-$data->fetch();
+$data=$res->fetch();
 ?>
 
 <!DOCTYPE html>

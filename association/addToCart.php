@@ -14,6 +14,8 @@ $data=$res->fetch();
 $resUser = getCurrentUser($connect,$_SESSION["mail"]);
 $dataUser = $resUser->fetch();
 $idUser = $dataUser["id"];
+echo($idUser);
+echo($idCart);
 
 $dateTransaction = date("Y-m-d H:i:s");
 
