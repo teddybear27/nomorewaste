@@ -73,7 +73,7 @@ if ($_SESSION['sid'] != 5){
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-shopping-cart"></i>
             </div>
-            <span class="nav-link-text ms-1">Mes paniers en cours</span>
+            <span class="nav-link-text ms-1">Mes actions en cours</span>
           </a>
         </li>        
         <li class="nav-item">
