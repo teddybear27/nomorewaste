@@ -152,6 +152,9 @@ $data=$res->fetch();
                       <th class="text-secondary opacity-7"></th>
                     </tr>
                   </thead>
+<?php
+if (!empty($res)){
+?>
                   <tbody>
                     <tr>
                       <td>
@@ -177,6 +180,12 @@ $data=$res->fetch();
                       </td>
                     </tr>                    
                   </tbody>
+<?php
+}else{
+  echo("Aucun panier disponible pour le moment");
+  echo("Revenez plus tard");
+}
+?>
                 </table>
               </div>
             </div>
