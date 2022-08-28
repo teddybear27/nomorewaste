@@ -94,7 +94,7 @@ function getCartsForVolunteerArrival($db,$id) {
 }
 
 function getCartsForUserOrder($db) {
-	$results = $db->query("SELECT * from user where acteur='particulier' AND etat='collecte' AND disponible = 'arrivee'");	
+	$results = $db->query("SELECT * from panier where acteur='particulier' AND etat='collecte' AND disponible = 'arrivee'");	
 	return $results;
 }
 
