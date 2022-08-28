@@ -148,7 +148,7 @@ $dataActor = $resActor->fetch();
                   <?=$data["nom"]?>      
                 </li>
                 <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Description:</strong> &nbsp;
-                  <textarea type="text"  name="description" placeholder="2 pommes, 1 banane, ..." disabled><?=$data["description"]?></textarea>        
+                  <?=$data["description"]?>        
                 </li>
                 <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Etat:</strong> &nbsp;
                   <?=$data["etat"]?>        
