@@ -13,6 +13,7 @@ $data=$res->fetch();
 
 $resUser = getCurrentUser($connect,$_SESSION["mail"]);
 $dataUser = $resUser->fetch();
+$idUser = $dataUser["id"];
 
 $dateTransaction = date("Y-m-d H:i:s");
 
@@ -26,7 +27,7 @@ $queryPrepared = $connect->prepare("INSERT INTO panier (nom, description, etat, 
         "etat"=>"livraison",
         "date_consommation" => $data["date_consommation"],
         "acteur" => "Association",
-        "id_acteur" => $dataUser["id"],
+        "id_acteur" => $idUser,
         "id_benevole"=>"0",
         "quantite_total" => $data["quantite_total"],
         "date_transaction" => $dateTransaction,

@@ -186,13 +186,6 @@ $data->fetch();
                       </td>
                     </tr>                    
                   </tbody>
-<?php
-        }
-    }
-}else{
-  echo("Liste des Paniers Disponibles vide");
-}
-?>
                 </table>
               </div>
             </div>

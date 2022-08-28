@@ -142,7 +142,7 @@ $data=$res->fetch();
                 <div class="col-md-8 d-flex align-items-center">
                   <h6 class="mb-0">Détails du panier</h6>
                 </div>                
-                <div>
+                <div class="col-md-4 text-end">
                   <a href="addToCart.php" title="Ajouter au panier">
                       <i class='fa fa-shopping-cart' style="color:#76a89c"></i>
                   </a>
