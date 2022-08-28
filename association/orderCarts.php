@@ -8,7 +8,6 @@ if ($_SESSION['sid'] != 5){
 
 $connect = connectDB();
 $res = getCartsForOrganizationOrder($connect);
-$data=$res->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -154,6 +153,7 @@ $data=$res->fetch();
                   </thead>
 <?php
 if (!empty($res)){
+  while($data=$res->fetch()){
 ?>
                   <tbody>
                     <tr>
@@ -181,6 +181,7 @@ if (!empty($res)){
                     </tr>                    
                   </tbody>
 <?php
+  }
 }else{
   echo("Aucun panier disponible pour le moment");
   echo("Revenez plus tard");
