@@ -133,27 +133,25 @@ function getActorInfosFromCart($db,$id,$actor) {
 	}	
 	return $results;
 }
-/*
-function isConnected(){
-	if(!empty($_SESSION["email"])){
-		$connect = connectDB();
-		if(emailExist($connect, $_SESSION["email"])){
-			
-			if($_SESSION["token"] == createToken( $_SESSION["email"])){
-				return true;
-			}else{
-				return false;
-			}
 
-		}else{
-			return false;
-		}
 
-	}else{
+function emailExist($connect, $email){
+
+	$queryPrepared = $connect->prepare("SELECT id FROM users WHERE email=:email");
+
+	$queryPrepared->execute(["email"=>$email]);
+
+	$result = $queryPrepared->fetch();
+	//$result = $queryPrepared->fetchAll();
+
+	if( empty($result)){
 		return false;
 	}
+	
+	return true;
 }
-*/
+
+
 
 function logout(){
 	$curMail = $_SESSION['mail'];

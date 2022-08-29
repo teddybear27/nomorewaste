@@ -52,7 +52,7 @@ if( count($_POST) == 11
 			$listOfErrors[] = "Votre email est incorrect";
 	}else if(  emailExist($connect, $_POST['email'])  ){
 			$error = true;
-			$listOfErrors[] = "Cette adresse mail est déjà utilisé";
+			$listOfErrors[] = "Cette adresse mail est déjà utilisée";
 	}
 
 	//// Vérifier birthday
