@@ -137,7 +137,7 @@ function getActorInfosFromCart($db,$id,$actor) {
 
 function emailExist($connect, $email){
 
-	$queryPrepared = $connect->prepare("SELECT id FROM users WHERE mail=:mail");
+	$queryPrepared = $connect->prepare("SELECT id FROM user WHERE mail=:mail");
 
 	$queryPrepared->execute(["mail"=>$email]);
 
